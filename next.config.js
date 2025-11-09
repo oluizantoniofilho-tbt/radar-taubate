@@ -1,16 +1,22 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    output: 'standalone',
-    eslint: { ignoreDuringBuilds: true },
-    typescript: { ignoreBuildErrors: true },
-    experimental: {
-      serverActions: false,
-    },
-    webpack: (config) => {
-      // Impede o Next de tentar gerar páginas para rotas API
-      config.externals.push({ './src/app/api/loader/route.ts': 'commonjs ./src/app/api/loader/route.ts' });
-      return config;
-    },
-  };
-  
-  module.exports = nextConfig;
+  webpack: (config, { isServer }) => {
+    // Impede o Next de empacotar APIs que usam fs/pdf-parse
+    if (isServer) {
+      config.externals.push({ "./src/app/api/loader/route.ts": "commonjs ./src/app/api/loader/route.ts" });
+    }
+    return config;
+  },
+  experimental: {
+    // ⚙️ Força o uso do Webpack em vez do Turbopack
+    turbo: false,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+};
+
+module.exports = nextConfig;
