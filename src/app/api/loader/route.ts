@@ -1,49 +1,44 @@
 import { NextResponse } from "next/server";
 import path from "path";
 import fs from "fs";
-import { readCSV, toNumber } from "../../../lib/csv";
+import { readCSV, toNumber } from "../../../lib/csv"; // ajusta o caminho se necessário
 
+// Força execução Node (evita tentativa de usar DOM)
+export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
-export const runtime = "nodejs";
 
 export async function GET() {
   try {
     const base = process.cwd();
 
-    // 📁 Lê os CSVs da pasta public/data
+    // 🗂️ Caminhos para os arquivos CSV dentro da pasta public/data
     const receitasPath = path.join(base, "public/data/receitas.csv");
     const despesasPath = path.join(base, "public/data/despesas.csv");
 
+    // 📊 Lê os dados dos arquivos CSV
     const receitas = readCSV(receitasPath);
     const despesas = readCSV(despesasPath);
 
     // 💰 Calcula totais
-    const totalReceitas = receitas.reduce((acc, r) => acc + toNumber(r.valor), 0);
-    const totalDespesas = despesas.reduce((acc, r) => acc + toNumber(r.valor), 0);
+    const totalReceitas = receitas.reduce((acc, r) => acc + toNumber(r.valor  r.Value  0), 0);
+    const totalDespesas = despesas.reduce((acc, r) => acc + toNumber(r.valor  r.Value  0), 0);
 
-    // 📑 Faz leitura parcial do PDF (LOA)
-    const pdfPath = path.join(base, "public/data/loa.pdf");
-    let pdfPreview = "";
-
-    if (fs.existsSync(pdfPath)) {
-      // 👉 Importa pdf-parse dinamicamente (sem quebrar o build ESM)
-      const pdfParseModule = await import("pdf-parse");
-      const pdfParse = (pdfParseModule as any).default || pdfParseModule;
-    
-      const buf = fs.readFileSync(pdfPath);
-      const parsed = await pdfParse(buf);
-      pdfPreview = (parsed.text || "").slice(0, 800);
-    }
-
-    // ✅ Retorna resposta consolidada
+    // ✅ Retorna JSON consolidado
     return NextResponse.json({
       ok: true,
-      totais: { receitas: totalReceitas, despesas: totalDespesas },
-      pdfPreview,
+      totais: {
+        receitas: totalReceitas,
+        despesas: totalDespesas,
+        saldo: totalReceitas - totalDespesas,
+      },
+      fontes: {
+        receitas: receitas.slice(0, 5),
+        despesas: despesas.slice(0, 5),
+      },
     });
   } catch (error) {
-    console.error("Erro ao processar API:", error);
+    console.error("Erro ao processar API CSV:", error);
     return NextResponse.json({ ok: false, error: String(error) });
   }
 }
