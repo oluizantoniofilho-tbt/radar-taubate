@@ -29,6 +29,9 @@ export default function RootLayout({
             <Header />
             <main className="flex-1 pt-20">{children}</main>
           </div>
+          <footer className="w-full border-t border-border py-4 mt-8 text-center text-sm text-muted-foreground">
+           © {new Date().getFullYear()} <strong>Aletheia</strong> — Observatório de Governança e Dados Públicos
+          </footer>
         </ThemeProvider>
       </body>
     </html>
