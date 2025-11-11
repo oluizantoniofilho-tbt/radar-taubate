@@ -2,87 +2,88 @@
 
 import React from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 type Trend = "up" | "down" | "flat";
 
-type Card = {
+interface Card {
   id: number;
   title: string;
   value: string;
   trend: Trend;
-  color: string;      // classes Tailwind do fundo
-  textColor: string;  // classes Tailwind do texto
-  link: string;
   description: string;
-};
+  link: string;
+  color: string;
+}
 
-const cards: Card[] = [
+// === Dados dos Cards ===
+const CARDS: Card[] = [
   {
     id: 1,
-    title: "Total de Receitas",
+    title: "Receitas Arrecadadas",
     value: "R$ 50.000.000,00",
     trend: "up",
-    color: "from-emerald-600 to-emerald-700",
-    textColor: "text-white",
+    description: "Total de receitas arrecadadas (base demo).",
     link: "/indicadores",
-    description: "Receitas arrecadadas (base demo).",
+    color: "bg-green-600",
   },
   {
     id: 2,
-    title: "Total de Despesas",
+    title: "Despesas Liquidadas",
     value: "R$ 45.000.000,00",
     trend: "down",
-    color: "from-rose-600 to-rose-700",
-    textColor: "text-white",
+    description: "Total de despesas liquidadas (base demo).",
     link: "/indicadores",
-    description: "Despesas liquidadas (base demo).",
+    color: "bg-red-600",
   },
   {
     id: 3,
     title: "Saldo Atual",
     value: "R$ 5.000.000,00",
     trend: "flat",
-    color: "from-sky-600 to-sky-700",
-    textColor: "text-white",
+    description: "Diferença entre receitas e despesas (base demo).",
     link: "/indicadores",
-    description: "Diferença receitas – despesas (base demo).",
+    color: "bg-blue-600",
   },
 ];
 
 export default function DashboardCards() {
   return (
-    <section className="container mx-auto px-4 -mt-16">
-      <div className="grid gap-4 md:grid-cols-3">
-        {cards.map((card) => (
-          <div
-            key={card.id}
-            className={`rounded-2xl p-6 shadow-xl bg-gradient-to-br ${`cards.color`} ${`cards.textColor`} hover:shadow-2xl transition-all duration-300`}
-          >
-            <div className="flex items-start justify-between">
-              <h3 className="text-lg font-semibold">{`cards.title`}</h3>
-              <span className="text-xl opacity-80">
-                {`cards.trend === "up" ? "↗️" : cards.trend === "down" ? "↘️" : "≍"`}
-              </span>
-            </div>
+    <section className="container mx-auto px-6 py-12 grid gap-8 md:grid-cols-3">
+      {CARDS.map((item, index) => (
+        <motion.div
+          key={item.id}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: index * 0.15 }}
+          viewport={{ once: true }}
+          className={`${item.color} text-white rounded-2xl shadow-lg p-6 flex flex-col justify-between hover:shadow-xl hover:scale-105 transition-transform`}
+        >
+          {/* Cabeçalho */}
+          <div>
+            <h3 className="text-lg font-semibold mb-2 flex items-center justify-between">
+              {item.title}
+              {item.trend === "up" && <span className="text-white text-xl">⬆️</span>}
+              {item.trend === "down" && <span className="text-white text-xl">⬇️</span>}
+              {item.trend === "flat" && <span className="text-white text-xl">⟷</span>}
+            </h3>
 
-            <p className="mt-3 text-3xl font-extrabold tracking-tight">
-              {`cards.value`}
-            </p>
-
-            <p className="mt-2 text-sm opacity-80">Atualizado: nov/2025</p>
-
-            <div className="mt-4 flex items-center justify-between">
-              <p className="text-sm opacity-90">{card.description}</p>
-              <Link
-                href={card.link}
-                className="ml-3 inline-flex items-center rounded-lg bg-white/15 px-3 py-1 text-sm font-medium hover:bg-white/25"
-              >
-                Saiba mais →
-              </Link>
-            </div>
+            <p className="text-3xl font-bold mb-2">{item.value}</p>
+            <p className="text-sm opacity-80">Atualizado: nov/2025</p>
           </div>
-        ))}
-      </div>
+
+          {/* Rodapé refinado */}
+          <div className="mt-4">
+            <p className="text-sm opacity-90 mb-3">{item.description}</p>
+            <Link
+              href={item.link}
+              className="inline-block text-center bg-white/20 hover:bg-white/30 text-white text-xs px-3 py-1.5 rounded-md transition-all duration-200"
+            >
+              Saiba mais →
+            </Link>
+          </div>
+        </motion.div>
+      ))}
     </section>
   );
 }

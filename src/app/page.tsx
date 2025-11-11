@@ -4,64 +4,42 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import DashboardCards from "../components/DashboardCards";
+import DashboardCards from "../components/DashboardCards"; // ✅ caminho correto
 
-
-<DashboardCards />
 export default function HomePage() {
   return (
-    <main className="relative min-h-screen flex flex-col justify-center items-center text-center overflow-hidden">
+    <main className="relative min-h-screen flex flex-col justify-center items-center text-center">
       {/* ==== Fundo com imagem e overlay ==== */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/taubate-panorama.jpg" // ✅ Corrigido — o Next acessa direto da pasta /public
+          src="/taubate-panorama.jpg"
           alt="Cidade de Taubaté"
           fill
           priority
           className="object-cover opacity-35"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-blue-900/40 to-slate-900/90"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80"></div>
       </div>
 
       {/* ==== Conteúdo principal ==== */}
-      <section className="relative z-10 px-6 py-12 max-w-4xl">
-        <motion.h1
-          className="text-5xl md:text-6xl font-extrabold text-white drop-shadow-lg"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
+      <section className="relative z-10 px-6 py-16 max-w-4xl">
+        <h1 className="text-5xl font-bold text-white drop-shadow-lg mb-4">
           Radar Taubaté
-        </motion.h1>
-
-        <motion.p
-          className="mt-4 text-lg md:text-xl text-blue-100 font-medium"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4, duration: 0.8 }}
-        >
+        </h1>
+        <p className="text-lg text-gray-200 mb-8">
           Painel de Inteligência Pública • Transparência e análise inteligente das finanças municipais
-        </motion.p>
-
-        <motion.div
-          className="mt-10"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8, duration: 0.8 }}
-        >
-          <Link
-            href="/indicadores"
-            className="inline-flex items-center gap-2 px-6 py-3 text-lg font-semibold text-white rounded-full bg-blue-600 hover:bg-blue-700 transition-all duration-300 shadow-md hover:shadow-blue-500/40"
-          >
+        </p>
+        <Link href="/indicadores">
+          <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg shadow-md transition-all">
             Explorar Indicadores →
-          </Link>
-        </motion.div>
-      </section>
+          </button>
+        </Link>
 
-      {/* ==== Rodapé do Hero (opcional) ==== */}
-      <div className="absolute bottom-4 text-xs text-blue-200">
-        © {new Date().getFullYear()} Aletheia — Observatório de Governança e Dados Públicos
-      </div>
+        {/* ==== Bloco de Cards ==== */}
+        <div className="mt-16">
+          <DashboardCards />
+        </div>
+      </section>
     </main>
   );
 }
