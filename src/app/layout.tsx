@@ -1,18 +1,34 @@
-import type { Metadata } from "next";
 import "./globals.css";
-import { ThemeProvider } from "next-themes";
+import { Inter } from "next/font/google";
+import { ThemeProvider } from "@/components/theme-provider";
+import Header from "@/components/Header";
+import React from "react";
 
-export const metadata: Metadata = {
+const inter = Inter({ subsets: ["latin"] });
+
+export const metadata = {
   title: "Radar Taubaté",
-  description: "Painel de finanças públicas municipais",
+  description: "Painel Financeiro Municipal",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="pt-BR" suppressHydrationWarning>
-      <body className="bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100">
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-          {children}
+      <body className={`${inter.className} bg-background text-foreground`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className="relative flex min-h-screen flex-col">
+            <Header />
+            <main className="flex-1 pt-20">{children}</main>
+          </div>
         </ThemeProvider>
       </body>
     </html>

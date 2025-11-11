@@ -1,43 +1,62 @@
 # Blueprint: Radar Taubaté
 
-## Visão Geral
+## Overview
 
-O Radar Taubaté é um painel analítico de finanças municipais (com dados simulados) que exibe receitas, despesas, convênios e a execução orçamentária da cidade de Taubaté-SP. O design da aplicação é institucional, moderno e limpo, proporcionando uma experiência de usuário clara e objetiva.
+Radar Taubaté is an analytical dashboard for municipal finances (with simulated data) that displays revenues, expenses, and budget execution for the city of Taubaté-SP. The application's design has been revamped to be modern, clean, and visually appealing, providing a clear and objective user experience. It now features a dark mode and a more refined user interface.
 
-## Estilo e Design
+## Style and Design
 
-- **Cores Principais**:
-  - Azul Institucional: `#1E40AF`
-  - Cinza Neutro: `#F9FAFB`
-  - Branco: `#FFFFFF`
+-   **Color Palette:**
+    -   **Light Mode:**
+        -   Background: `#FFFFFF`
+        -   Foreground: `#09090B`
+        -   Card: `#FFFFFF`
+        -   Primary: `#18181B`
+        -   Destructive: `#dc2626`
+    -   **Dark Mode:**
+        -   Background: `#09090B`
+        -   Foreground: `#FAFAFA`
+        -   Card: `#09090B`
+        -   Primary: `#FAFAFA`
+        -   Destructive: `#7f1d1d`
+-   **Typography:**
+    -   Font: Inter (sans-serif)
+-   **Visual Components:**
+    -   **Header:** A fixed header with the application title and a theme toggle button (light/dark/system).
+    -   **Dashboard Cards:** Modern, lifted cards with subtle shadows and hover effects to display key financial totals (Revenues, Expenses, Balance).
+    -   **Charts:**
+        -   **Time Series Chart:** A line chart to show the monthly evolution of revenues and expenses.
+        -   **Top 5 Charts:** Vertical bar charts to display the top 5 revenue sources and top 5 expense functions.
+    -   **Layout:** Responsive layout for desktop, tablet, and mobile, with a clean and organized structure.
+    -   **Animations:** Subtle fade-in animations for a more dynamic user experience.
 
-- **Tipografia**:
-  - Fonte: Montserrat
+## Functionalities
 
-- **Componentes Visuais**:
-  - Navbar superior com título e subtítulo.
-  - Sidebar à esquerda com ícones e labels para navegação.
-  - Cards-resumo para exibir dados principais.
-  - Gráficos de barras e de pizza para visualização de dados.
-  - Layout responsivo para desktop, tablet e mobile.
-  - Elementos com bordas arredondadas, sombras leves e animações sutis.
+-   **Dashboard:**
+    -   Displays the following simulated data:
+        -   Total Revenues
+        -   Total Expenses
+        -   Balance
+-   **Charts:**
+    -   **Monthly Evolution:** A line chart comparing monthly revenues and expenses.
+    -   **Top 5 Revenue Sources:** A vertical bar chart showing the top 5 revenue sources.
+    -   **Top 5 Expense Functions:** A vertical bar chart showing the top 5 expense functions.
+-   **Theme Toggle:**
+    -   Allows users to switch between light, dark, and system themes.
 
-## Funcionalidades
+## Current Changes (Refactoring and Visual Enhancement)
 
-- **Painel Principal**:
-  - Exibe os seguintes dados simulados:
-    - Total de Receitas: R$ 232.000.000
-    - Total de Despesas: R$ 198.000.000
-    - Convênios Ativos: 42
-    - Execução Orçamentária: 85%
-
-- **Gráficos**:
-  - Gráfico de barras comparando receitas e despesas mensais.
-  - Gráfico de pizza mostrando a distribuição de despesas por categoria.
-
-- **Navegação**:
-  - Sidebar com links para as seções:
-    - Início
-    - Receitas
-    - Despesas
-    - Indicadores
+-   **Dependency Installation:**
+    -   Installed `tailwindcss`, `postcss`, `autoprefixer`, `lucide-react`, `next-themes`, `recharts`, `clsx`, and `tailwind-merge`.
+-   **Configuration:**
+    -   Configured `tailwind.config.ts` with the new theme and plugins.
+    -   Updated `globals.css` with the new theme variables.
+-   **Component Refactoring:**
+    -   Refactored `ThemeToggle.tsx` to use `lucide-react` icons and a dropdown menu.
+    -   Created a new `Header.tsx` component.
+    -   Refactored `Dashboard.tsx` with the new design, including updated cards and charts.
+    -   Updated `layout.tsx` to include the new `Header` and `ThemeProvider`.
+-   **UI Components:**
+    -   Created new UI components for `button` and `dropdown-menu`.
+-   **Linting:**
+    -   Attempted to run `npm run lint -- --fix` and `npm run lint` but encountered errors. Decided to proceed with the visual enhancements as the primary goal.
