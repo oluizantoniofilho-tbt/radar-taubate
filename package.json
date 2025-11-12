@@ -3,11 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "deploy": "git add . && git commit -m \"Deploy automático\" && git push origin main && npm run build && vercel --prod --force",
-    "build": "next build --webpack",
-    "start": "next start",
-    "lint": "next lint"
+  "dev": "next dev",
+  "build": "next build --webpack",
+  "start": "next start",
+  "lint": "next lint"
   },
   "dependencies": {
     "@headlessui/react": "^2.1.0",
