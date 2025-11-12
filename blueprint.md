@@ -1,62 +1,36 @@
-# Blueprint: Radar Taubaté
+# Blueprint - Radar Taubaté
 
-## Overview
+## Visão Geral
 
-Radar Taubaté is an analytical dashboard for municipal finances (with simulated data) that displays revenues, expenses, and budget execution for the city of Taubaté-SP. The application's design has been revamped to be modern, clean, and visually appealing, providing a clear and objective user experience. It now features a dark mode and a more refined user interface.
+O Radar Taubaté é um painel de inteligência pública que oferece uma análise detalhada e transparente das finanças e dados públicos do município de Taubaté. A aplicação foi desenvolvida para ser uma ferramenta poderosa para cidadãos, jornalistas, pesquisadores e gestores públicos que desejam acompanhar de perto a aplicação dos recursos públicos.
 
-## Style and Design
+## Design e Estilo
 
--   **Color Palette:**
-    -   **Light Mode:**
-        -   Background: `#FFFFFF`
-        -   Foreground: `#09090B`
-        -   Card: `#FFFFFF`
-        -   Primary: `#18181B`
-        -   Destructive: `#dc2626`
-    -   **Dark Mode:**
-        -   Background: `#09090B`
-        -   Foreground: `#FAFAFA`
-        -   Card: `#09090B`
-        -   Primary: `#FAFAFA`
-        -   Destructive: `#7f1d1d`
--   **Typography:**
-    -   Font: Inter (sans-serif)
--   **Visual Components:**
-    -   **Header:** A fixed header with the application title and a theme toggle button (light/dark/system).
-    -   **Dashboard Cards:** Modern, lifted cards with subtle shadows and hover effects to display key financial totals (Revenues, Expenses, Balance).
-    -   **Charts:**
-        -   **Time Series Chart:** A line chart to show the monthly evolution of revenues and expenses.
-        -   **Top 5 Charts:** Vertical bar charts to display the top 5 revenue sources and top 5 expense functions.
-    -   **Layout:** Responsive layout for desktop, tablet, and mobile, with a clean and organized structure.
-    -   **Animations:** Subtle fade-in animations for a more dynamic user experience.
+O design do Radar Taubaté segue uma abordagem moderna e limpa, com foco na usabilidade e na clareza das informações. A paleta de cores é vibrante e energética, e a tipografia foi cuidadosamente escolhida para garantir a legibilidade e a hierarquia visual. A aplicação é totalmente responsiva, adaptando-se a diferentes tamanhos de tela para oferecer a melhor experiência em qualquer dispositivo.
 
-## Functionalities
+## Funcionalidades
 
--   **Dashboard:**
-    -   Displays the following simulated data:
-        -   Total Revenues
-        -   Total Expenses
-        -   Balance
--   **Charts:**
-    -   **Monthly Evolution:** A line chart comparing monthly revenues and expenses.
-    -   **Top 5 Revenue Sources:** A vertical bar chart showing the top 5 revenue sources.
-    -   **Top 5 Expense Functions:** A vertical bar chart showing the top 5 expense functions.
--   **Theme Toggle:**
-    -   Allows users to switch between light, dark, and system themes.
+### Análise de Receitas
 
-## Current Changes (Refactoring and Visual Enhancement)
+- **Arrecadação Mensal:** Gráfico de barras que mostra a evolução da arrecadação mensal, permitindo a comparação com o mês anterior e com o mesmo mês do ano anterior.
+- **Arrecadação por Fonte:** Gráfico de pizza que detalha a composição da receita por fonte, como impostos, transferências e outras receitas.
+- **Top 5 Receitas:** Lista das cinco maiores fontes de receita do município, com valores e percentuais correspondentes.
 
--   **Dependency Installation:**
-    -   Installed `tailwindcss`, `postcss`, `autoprefixer`, `lucide-react`, `next-themes`, `recharts`, `clsx`, and `tailwind-merge`.
--   **Configuration:**
-    -   Configured `tailwind.config.ts` with the new theme and plugins.
-    -   Updated `globals.css` with the new theme variables.
--   **Component Refactoring:**
-    -   Refactored `ThemeToggle.tsx` to use `lucide-react` icons and a dropdown menu.
-    -   Created a new `Header.tsx` component.
-    -   Refactored `Dashboard.tsx` with the new design, including updated cards and charts.
-    -   Updated `layout.tsx` to include the new `Header` and `ThemeProvider`.
--   **UI Components:**
-    -   Created new UI components for `button` and `dropdown-menu`.
--   **Linting:**
-    -   Attempted to run `npm run lint -- --fix` and `npm run lint` but encountered errors. Decided to proceed with the visual enhancements as the primary goal.
+### Análise de Despesas
+
+- **Despesa Mensal:** Gráfico de linhas que acompanha a evolução dos gastos mensais, com a possibilidade de comparar com o mês anterior e o mesmo mês do ano anterior.
+- **Despesa por Função:** Gráfico de rosca que apresenta a distribuição dos gastos por função, como saúde, educação, segurança, etc.
+- **Top 5 Despesas:** Lista das cinco maiores despesas do município, com valores e percentuais correspondentes.
+
+### Indicadores de Desempenho
+
+- **Indicadores de Educação:** Apresenta dados sobre o desempenho da educação no município, como a taxa de aprovação, o IDEB e o número de matrículas.
+- **Indicadores de Saúde:** Mostra informações sobre a saúde pública, como a taxa de mortalidade infantil, o número de leitos por habitante e a cobertura da atenção básica.
+- **Indicadores de Saneamento:** Apresenta dados sobre o saneamento básico, como o percentual da população com acesso à água tratada e à coleta de esgoto.
+
+## Próximos Passos
+
+- **Implementação do Layout da Página Principal:** Criação da estrutura da página principal, incluindo o cabeçalho, o menu de navegação e o rodapé.
+- **Desenvolvimento dos Componentes de Análise de Receitas:** Criação dos gráficos e tabelas para a análise das receitas municipais.
+- **Desenvolvimento dos Componentes de Análise de Despesas:** Criação dos gráficos e tabelas para a análise das despesas municipais.
+- **Desenvolvimento dos Componentes de Indicadores de Desempenho:** Criação dos componentes para a exibição dos indicadores de educação, saúde e saneamento.

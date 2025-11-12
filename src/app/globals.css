@@ -24,8 +24,8 @@
     --radius: 16px;
 
     /* Indicadores */
-    --color-receitas: 142 76% 36%; /* HSL do verde #16a34a */
-    --color-despesas: 0 72% 50%; /* HSL do vermelho #dc2626 */
+    --color-receitas: #16a34a;
+    --color-despesas: #dc2626;
 
     /* Estilo visual Aletheia */
     --gradient-primary: linear-gradient(135deg, #1e3a8a, #2563eb);

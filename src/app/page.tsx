@@ -1,47 +1,65 @@
-"use client";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { promises as fs } from 'fs';
+import path from 'path';
+import { z } from "zod";
 
-import React from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { motion } from "framer-motion";
-import DashboardCards from "../components/DashboardCards"; // ✅ caminho correto
-import MiniCharts from "../components/MiniCharts";
+const DataSchema = z.object({
+  month: z.string(),
+  revenue: z.number(),
+  expense: z.number(),
+});
 
-export default function HomePage() {
+type Data = z.infer<typeof DataSchema>;
+
+async function getData(): Promise<Data[]> {
+  const filePath = path.join(process.cwd(), 'src', 'data', 'financial_data.json');
+  const fileContents = await fs.readFile(filePath, 'utf8');
+  const data = JSON.parse(fileContents);
+  return data.map((item: any) => DataSchema.parse(item));
+}
+
+export default async function HomePage() {
+  const data = await getData();
+
+  const totalRevenue = data.reduce((acc, item) => acc + item.revenue, 0);
+  const totalExpense = data.reduce((acc, item) => acc + item.expense, 0);
+  const balance = totalRevenue - totalExpense;
+
   return (
-    <main className="relative min-h-screen flex flex-col justify-center items-center text-center">
-      {/* ==== Fundo com imagem e overlay ==== */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/taubate-panorama.jpg"
-          alt="Cidade de Taubaté"
-          fill
-          priority
-          className="object-cover opacity-35"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80"></div>
+    <div className="container mx-auto p-4 md:p-8 pt-24">
+      <header className="text-center mb-10">
+        <h1 className="text-4xl md:text-5xl font-bold text-primary">Radar Taubaté</h1>
+        <p className="text-lg text-muted-foreground mt-2">Seu painel de inteligência para as finanças de Taubaté</p>
+      </header>
+
+      <div className="grid gap-4 md:grid-cols-3">
+        <Card>
+          <CardHeader>
+            <CardTitle>Receita Total</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-3xl font-bold">R$ {totalRevenue.toLocaleString('pt-BR')}</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader>
+            <CardTitle>Despesa Total</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className="text-3xl font-bold">R$ {totalExpense.toLocaleString('pt-BR')}</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader>
+            <CardTitle>Saldo</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <p className={`text-3xl font-bold ${balance >= 0 ? 'text-green-500' : 'text-red-500'}`}>
+              R$ {balance.toLocaleString('pt-BR')}
+            </p>
+          </CardContent>
+        </Card>
       </div>
-
-      {/* ==== Conteúdo principal ==== */}
-      <section className="relative z-10 px-6 py-16 max-w-4xl">
-        <h1 className="text-5xl font-bold text-white drop-shadow-lg mb-4">
-          Radar Taubaté
-        </h1>
-        <p className="text-lg text-gray-200 mb-8">
-          Painel de Inteligência Pública • Transparência e análise inteligente das finanças municipais
-        </p>
-        <Link href="/indicadores">
-          <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg shadow-md transition-all">
-            Explorar Indicadores →
-          </button>
-        </Link>
-
-        {/* ==== Bloco de Cards ==== */}
-        <div className="mt-16">
-          <DashboardCards />
-          <MiniCharts />
-        </div>
-      </section>
-    </main>
+    </div>
   );
 }
