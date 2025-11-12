@@ -7,7 +7,7 @@ export default function Hero() {
   return (
     <section className="relative h-[65vh] flex items-center justify-center text-center text-white">
       <Image
-        src="/img/taubate-panorama.jpg"
+        src="/taubate-panorama.jpg"
         alt="Vista panorâmica de Taubaté"
         fill
         className="object-cover brightness-50"
