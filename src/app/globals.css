@@ -22,8 +22,15 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
     --radius: 16px;
-    --color-receitas: #16a34a; /* VERDE */
-    --color-despesas: #dc2626; /* VERMELHO */
+
+    /* Indicadores */
+    --color-receitas: 142 76% 36%; /* HSL do verde #16a34a */
+    --color-despesas: 0 72% 50%; /* HSL do vermelho #dc2626 */
+
+    /* Estilo visual Aletheia */
+    --gradient-primary: linear-gradient(135deg, #1e3a8a, #2563eb);
+    --shadow-soft: 0 8px 24px rgba(0,0,0,0.08);
+    --shadow-strong: 0 12px 40px rgba(0,0,0,0.15);
   }
 
   .dark {
@@ -47,6 +54,6 @@
   }
 
   html, body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased min-h-screen;
   }
 }
