@@ -7,7 +7,7 @@ import Link from 'next/link';
 import InsightsDrawer from './InsightsDrawer';
 
 const secretarias = [
-  { name: 'Educação', value: 400, color: '#1E40AF' },
+  { name: 'Educação', value: 43005530, color: '#1E40AF' },
   { name: 'Saúde', value: 300, color: '#16A34A' },
   { name: 'Infraestrutura', value: 200, color: '#D97706' },
   { name: 'Segurança', value: 150, color: '#DC2626' },
