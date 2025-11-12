@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import DashboardCards from "../components/DashboardCards"; // ✅ caminho correto
+import MiniCharts from "../components/MiniCharts";
 
 export default function HomePage() {
   return (
@@ -38,6 +39,7 @@ export default function HomePage() {
         {/* ==== Bloco de Cards ==== */}
         <div className="mt-16">
           <DashboardCards />
+          <MiniCharts />
         </div>
       </section>
     </main>
