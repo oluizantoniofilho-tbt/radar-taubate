@@ -18,14 +18,14 @@ export function CamaraOrcamentoChart() {
 
       <ResponsiveContainer width="100%" height="100%">
         <BarChart data={data} layout="vertical" margin={{ left: 50 }}>
-          <XAxis type="number" tickFormatter={(v) => v.toLocaleString("pt-BR")} />
+          <XAxis type="number" tickFormatter={(v: number) => v.toLocaleString("pt-BR")} />
           <YAxis type="category" dataKey="label" width={120} />
-          <Tooltip formatter={(v) => v.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })} />
+          <Tooltip formatter={(v: number) => v.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })} />
           <Bar dataKey="value" fill="#1E40AF" radius={[4, 4, 4, 4]}>
             <LabelList
               dataKey="value"
               position="right"
-              formatter={(v) => v.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}
+              formatter={(v: number) => v.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })}
               className="text-sm dark:text-white"
             />
           </Bar>
