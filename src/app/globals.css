@@ -10,7 +10,7 @@
     --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-    --primary: 222.2 47.4% 11.2%;
+    --primary: 221.2 83.2% 53.3%;
     --primary-foreground: 210 40% 98%;
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
@@ -55,5 +55,46 @@
 
   html, body {
     @apply bg-background text-foreground antialiased min-h-screen;
+  }
+}
+
+@layer utilities {
+  .header-light {
+    @apply bg-white border-b border-[#e2e8f0] text-slate-900;
+  }
+  .header-light a:hover {
+    @apply text-[#1E40AF];
+  }
+
+  .hero-light-overlay {
+    @apply bg-gradient-to-t from-white/80 to-transparent;
+  }
+
+  .hero-light-text {
+    @apply text-slate-900;
+  }
+
+  .kpi-card-light {
+    @apply border border-[#e2e8f0] bg-white shadow-[0_1px_2px_rgba(0,0,0,0.06)] text-slate-900;
+  }
+
+  .chart-label-light {
+    @apply text-slate-700;
+  }
+
+  .chart-grid-light {
+    @apply stroke-[#e5e7eb];
+  }
+
+  .tooltip-light {
+    @apply bg-white border border-[#e5e7eb];
+  }
+
+  .link-light {
+    @apply text-[#1E40AF];
+  }
+
+  .link-light:hover {
+    @apply text-[#1a2f8f];
   }
 }
