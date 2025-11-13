@@ -1,6 +1,7 @@
 'use client'
 import * as React from 'react'
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip } from 'recharts'
+import { useMediaQuery } from 'react-responsive'
 
 const dataTop10 = [
   { credor: "Folha de Pagamento – 45.176.005/0001-08", valor: 464576000 },
@@ -16,16 +17,23 @@ const dataTop10 = [
 ];
 
 export function TopFornecedoresChart() {
+  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
   const formatValue = (v: number) => `R$ ${(v / 1_000_000).toFixed(1)} mi`
+  const formatCredor = (credor: string) => {
+    if (isMobile) {
+        return credor.split(" – ")[0].substring(0, 20) + "...";
+    }
+    return credor;
+  }
   return (
     <section className="py-16 px-4 bg-gray-100 dark:bg-gray-900/50">
         <div className="max-w-7xl mx-auto">
             <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">Top 10 Fornecedores Municipais (Jan–Nov 2025)</h2>
-            <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+            <div className="bg-white dark:bg-gray-800 p-2 sm:p-6 rounded-lg shadow-md overflow-x-auto">
                 <ResponsiveContainer width="100%" height={400}>
-                    <BarChart data={dataTop10} layout="vertical" margin={{ top: 5, right: 30, left: 150, bottom: 5 }}>
+                    <BarChart data={dataTop10} layout="vertical" margin={{ top: 5, right: isMobile ? 10 : 30, left: isMobile ? 80: 150, bottom: 5 }}>
                     <XAxis type="number" tickFormatter={formatValue} stroke="#9CA3AF" />
-                    <YAxis dataKey="credor" type="category" width={250} tick={{ fill: '#9CA3AF', fontSize: 12 }} />
+                    <YAxis dataKey="credor" type="category" width={isMobile ? 100 : 250} tickFormatter={formatCredor} tick={{ fill: '#9CA3AF', fontSize: 12 }} />
                     <Tooltip formatter={(v) => formatValue(Number(v))}             contentStyle={{
                     backgroundColor: 'rgba(31, 41, 55, 0.8)',
                     borderColor: 'rgba(255, 255, 255, 0.2)',
