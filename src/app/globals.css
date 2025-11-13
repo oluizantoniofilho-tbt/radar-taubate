@@ -58,6 +58,28 @@
   }
 }
 
+@layer components {
+  header {
+    @apply bg-white border-b border-gray-200 text-slate-900;
+  }
+
+  .header-scrolled {
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  }
+
+  header a, header span, header h1 {
+    color: #0f172a;
+  }
+
+  .logo-radar {
+    color: #1E40AF; /* Radar */
+  }
+
+  .logo-taubate {
+    color: #0f172a; /* Taubaté */
+  }
+}
+
 @layer utilities {
   .header-light {
     @apply bg-white border-b border-[#e2e8f0] text-slate-900;

@@ -23,19 +23,14 @@ export default function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-background/80 backdrop-blur-md shadow-sm">
       <div className="mx-auto flex items-center justify-between max-w-7xl px-6 py-4">
         {/* Identidade */}
-        <div className="flex flex-col items-start text-left">
-          <h1 className="text-2xl md:text-3xl font-bold tracking-tight">
-            <span className="text-white">Radar </span>
-            <span className="text-cyan-400">Taubaté</span>
-          </h1>
-          <p className="text-sm md:text-base text-gray-300 leading-tight">
-            Transparência dos dados públicos
-          </p>
-        </div>
+        <Link href="/" className="flex items-center gap-1 text-2xl md:text-3xl tracking-tight">
+           <span className="logo-radar font-bold">Radar</span>
+           <span className="logo-taubate font-bold">Taubaté</span>
+       </Link>
 
         {/* Botão Mobile */}
         <button
-          className="md:hidden text-gray-300 hover:text-white transition"
+          className="md:hidden text-gray-500 dark:text-gray-300 hover:text-black dark:hover:text-white transition"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Abrir menu"
         >
@@ -51,8 +46,8 @@ export default function Header() {
               className={clsx(
                 "relative text-base font-medium transition-all duration-300",
                 pathname === item.href
-                  ? "text-cyan-400 after:absolute after:left-0 after:-bottom-1 after:w-full after:h-[2px] after:bg-cyan-400"
-                  : "text-gray-300 hover:text-white hover:scale-105"
+                  ? "text-[#1E40AF] dark:text-cyan-400 after:absolute after:left-0 after:-bottom-1 after:w-full after:h-[2px] after:bg-[#1E40AF] dark:after:bg-cyan-400"
+                  : "text-gray-500 dark:text-gray-300 hover:text-black dark:hover:text-white hover:scale-105"
               )}
             >
               {item.name}
@@ -68,7 +63,7 @@ export default function Header() {
 
       {/* Menu Mobile Expandido */}
       {menuOpen && (
-        <div className="md:hidden bg-background/95 backdrop-blur-lg border-t border-white/10 px-6 pb-4">
+        <div className="md:hidden bg-white dark:bg-background/95 backdrop-blur-lg border-t border-gray-200 dark:border-white/10 px-6 pb-4">
           <nav className="flex flex-col space-y-3 pt-2">
             {navItems.map((item) => (
               <Link
@@ -78,14 +73,14 @@ export default function Header() {
                 className={clsx(
                   "text-base font-medium transition-all duration-200",
                   pathname === item.href
-                    ? "text-cyan-400"
-                    : "text-gray-300 hover:text-white"
+                    ? "text-[#1E40AF] dark:text-cyan-400"
+                    : "text-gray-500 dark:text-gray-300 hover:text-black dark:hover:text-white"
                 )}
               >
                 {item.name}
               </Link>
             ))}
-            <div className="pt-3 border-t border-white/10">
+            <div className="pt-3 border-t border-gray-200 dark:border-white/10">
               <ThemeToggle />
             </div>
           </nav>
