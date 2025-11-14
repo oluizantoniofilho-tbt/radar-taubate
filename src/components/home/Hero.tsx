@@ -31,7 +31,7 @@ export default function Hero() {
         md:bg-gradient-to-r md:from-black/80 md:via-black/55 md:to-black/25" 
       />
       {/* Content */}
-      <div className="relative z-20 flex flex-col items-center text-center px-6">
+      <div className="relative z-20 flex flex-col text-center px-6 mt-[8vh] md:mt-[12vh] lg:mt-[14vh] gap-6 md:gap-8">
         {/* Title */}
         <motion.h1
           initial={{ opacity: 0, y: 22 }}
