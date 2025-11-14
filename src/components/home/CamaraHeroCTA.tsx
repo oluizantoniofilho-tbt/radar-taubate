@@ -34,7 +34,7 @@ export function CamaraHeroCTA() {
 
         <Link
           href="/camara"
-          className="mt-6 inline-block bg-white/90 text-[#0f172a] font-semibold px-6 py-3 rounded-xl shadow hover:bg-white transition-all duration-300"
+          className="mt-6 w-fit bg-white/90 text-[#0f172a] font-semibold px-6 py-3 rounded-xl shadow hover:bg-white transition-all duration-300"
         >
           Ver dados completos →
         </Link>
