@@ -23,18 +23,18 @@ export function CamaraHeroCTA() {
 
       <div className="absolute inset-0 bg-gradient-to-r from-[#0f172a]/85 via-[#0f172a]/70 to-[#1E40AF]/55" />
 
-      <div className="absolute inset-0 flex flex-col justify-center px-6 md:px-14">
-        <h2 className="text-2xl md:text-3xl lg:text-4xl text-white font-bold mb-3 drop-shadow">
+      <div className="absolute inset-0 flex flex-col justify-center px-6 md:px-14 text-center">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl text-white font-bold mb-3 drop-shadow">
           Câmara Municipal de Taubaté
         </h2>
 
-        <p className="text-slate-100 md:text-lg max-w-xl leading-snug">
+        <p className="text-slate-100 md:text-lg max-w-xl leading-snug mx-auto text-center">
           Execução orçamentária • despesas • folha • contratos
         </p>
 
         <Link
           href="/camara"
-          className="mt-6 w-fit bg-white/90 text-[#0f172a] font-semibold px-6 py-3 rounded-xl shadow hover:bg-white transition-all duration-300"
+          className="mt-6 w-fit bg-white/90 text-[#0f172a] font-semibold px-6 py-3 rounded-xl shadow hover:bg-white transition-all duration-300 self-center"
         >
           Ver dados completos →
         </Link>
