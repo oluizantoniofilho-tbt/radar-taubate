@@ -16,8 +16,8 @@ export default function Home() {
       <MacroDashboard />
       <FiscalOverview />
       <SecretariasGrid />
-      <CamaraHeroCTA />
       <TopFornecedoresChart />
+      <CamaraHeroCTA />
     </main>
   );
 }
