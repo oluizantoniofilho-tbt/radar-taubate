@@ -37,7 +37,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 22 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.35, duration: 0.9 }}
-          className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white drop-shadow-xl tracking-tight"
+          className="text-5xl md:text-7xl lg:text-[5.5rem] font-extrabold text-white drop-shadow-xl tracking-tight"
         >
           Radar 
           <span className="text-cyan-300 drop-shadow-xl"> Taubaté</span>
@@ -47,7 +47,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.55, duration: 0.9 }}
-          className="mt-4 text-lg md:text-2xl text-white/90 max-w-2xl leading-snug drop-shadow"
+          className="mt-6 text-xl md:text-3xl text-white/90 max-w-3xl leading-snug drop-shadow-md"
         >
           Transparência, inteligência municipal e dados públicos de forma clara e acessível.
         </motion.p>
@@ -59,8 +59,7 @@ export default function Hero() {
         >
           <Link
             href="/indicadores"
-            className="mt-10 bg-white/95 text-[#0f172a] font-semibold px-8 py-4 
-                       rounded-2xl text-lg shadow-2xl hover:bg-white transition-all duration-300"
+            className="mt-14 md:mt-16 bg-white/95 text-[#0f172a] font-semibold px-10 py-4 rounded-2xl text-xl md:text-2xl shadow-2xl hover:bg-white transition-all duration-300"
           >
             Acessar dados →
           </Link>
