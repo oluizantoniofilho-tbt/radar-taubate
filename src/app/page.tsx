@@ -2,7 +2,7 @@
 
 import dynamic from 'next/dynamic';
 import Hero from '@/components/home/Hero';
-import { CamaraSection } from "@/components/home/CamaraSection";
+import { CamaraHeroCTA } from "@/components/home/CamaraHeroCTA";
 
 const MacroDashboard = dynamic(() => import('@/components/home/MacroDashboard'), { ssr: false });
 const FiscalOverview = dynamic(() => import('@/components/home/FiscalOverview'), { ssr: false });
@@ -16,8 +16,8 @@ export default function Home() {
       <MacroDashboard />
       <FiscalOverview />
       <SecretariasGrid />
+      <CamaraHeroCTA />
       <TopFornecedoresChart />
-      <CamaraSection />
     </main>
   );
 }
