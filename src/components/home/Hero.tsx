@@ -24,7 +24,7 @@ export default function Hero() {
           alt="Panorama de Taubaté"
           fill
           priority
-          className="object-cover object-[55%_50%]"
+          className="object-cover object-[50%_48%]"
         />
       </motion.div>
 
@@ -35,14 +35,14 @@ export default function Hero() {
       />
 
       {/* Content */}
-      <div className="relative z-20 flex flex-col items-center text-center px-6 gap-6 mt-[10vh] md:mt-[14vh] lg:mt-[15vh]">
+      <div className="relative z-20 flex flex-col items-center text-center px-6 gap-6 mt-[8vh] md:mt-[10vh] lg:mt-[14vh]">
 
         {/* HEADLINE INSTITUCIONAL */}
         <motion.h1
           initial={{ opacity: 0, y: 22 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.35, duration: 0.9 }}
-          className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white drop-shadow-2xl max-w-4xl"
+          className="text-[2.6rem] md:text-[3.4rem] lg:text-[5rem] xl:text-[5.5rem] font-extrabold tracking-tight text-white drop-shadow-2xl max-w-4xl"
         >
           O Primeiro Observatório Independente do Vale do Paraíba
         </motion.h1>
@@ -52,9 +52,9 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.55, duration: 0.9 }}
-          className="mt-2 text-lg md:text-2xl text-white/90 max-w-2xl leading-snug drop-shadow-md"
+          className="mt-1 md:mt-2 text-lg md:text-2xl text-white/90 max-w-2xl leading-snug drop-shadow-md"
         >
-          Educação cívica e informação verdadeira para formar uma cidade mais consciente.
+          Iniciativa fundada em Taubaté e dedicada a todo o Vale.
         </motion.p>
 
         {/* LINHA DE APOIO */}
@@ -62,7 +62,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.65, duration: 0.9 }}
-          className="text-base md:text-xl text-white/80 max-w-xl leading-snug"
+          className="mt-2 text-base md:text-lg text-white/80 max-w-xl leading-snug"
         >
           Transparência e educação pública para fortalecer o cidadão.
         </motion.p>
@@ -75,7 +75,7 @@ export default function Hero() {
         >
           <Link
             href="/indicadores"
-            className="mt-10 bg-white/95 text-[#0f172a] font-semibold 
+            className="mt-[14vh] md:mt-20 bg-white/95 text-[#0f172a] font-semibold 
                        px-10 py-4 rounded-2xl text-xl md:text-2xl shadow-2xl
                        hover:bg-white transition-all duration-300"
           >

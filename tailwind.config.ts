@@ -11,7 +11,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Montserrat', 'sans-serif'],
+        sans: ['Inter Tight', 'sans-serif'],
       },
       colors: {
         'primary': '#2563eb', // Azul institucional Aletheia

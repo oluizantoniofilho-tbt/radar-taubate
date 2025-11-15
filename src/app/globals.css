@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -26,6 +28,8 @@
     /* Indicadores */
     --color-receitas: #16a34a;
     --color-despesas: #dc2626;
+    
+    --color-primary: #0033A0;
 
     /* Estilo visual Aletheia */
     --gradient-primary: linear-gradient(135deg, #1e3a8a, #2563eb);
