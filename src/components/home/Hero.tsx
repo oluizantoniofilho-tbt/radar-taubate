@@ -62,7 +62,8 @@ export default function Hero() {
             xl:text-[5.4rem]
           "
         >
-          O Primeiro Observatório Independente do Vale do Paraíba
+          O Primeiro Observatório<br />
+          Independente do Vale do Paraíba
         </motion.h1>
 
         {/* Subtítulo */}
@@ -70,14 +71,9 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.45, duration: 0.9 }}
-          className="
-            text-base md:text-xl lg:text-2xl
-            text-white/90 drop-shadow
-            leading-snug
-            max-w-[700px]
-          "
+          className="text-base md:text-xl lg:text-2xl text-white/90 drop-shadow leading-snug max-w-[700px]"
         >
-          Iniciativa fundada em Taubaté e dedicada a todo o Vale.
+          Criado em Taubaté para inspirar uma nova cultura de transparência no Vale.
         </motion.p>
 
         {/* Terceira frase – apenas Desktop */}
