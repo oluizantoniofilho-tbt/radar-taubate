@@ -10,11 +10,11 @@ export default function Hero() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1.2 }}
-      className="relative w-full h-[92vh] md:h-[100vh] overflow-hidden flex items-center justify-center"
+      className="relative w-full h-[92vh] md:h-[100vh] overflow-hidden flex items-center"
     >
-      {/* Background Cinematic Zoom */}
+      {/* Background zoom */}
       <motion.div
-        initial={{ scale: 1.18 }}
+        initial={{ scale: 1.22 }}
         animate={{ scale: 1 }}
         transition={{ duration: 2.4, ease: 'easeOut' }}
         className="absolute inset-0"
@@ -24,45 +24,68 @@ export default function Hero() {
           alt="Panorama de Taubaté"
           fill
           priority
-          className="object-cover object-[50%_48%]"
+          className="object-cover object-[57%_50%]"
         />
       </motion.div>
 
-      {/* Cinematic Institutional Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b
-        from-black/85 via-black/60 to-black/30
-        md:bg-gradient-to-r md:from-black/85 md:via-black/60 md:to-black/25" 
+      {/* Overlay */}
+      <div
+        className="
+          absolute inset-0
+          bg-gradient-to-b from-black/85 via-black/60 to-black/30
+          md:bg-gradient-to-r md:from-black/85 md:via-black/60 md:to-black/25
+        "
       />
 
       {/* Content */}
-      <div className="relative z-20 flex flex-col items-center text-center px-6 gap-6 mt-[8vh] md:mt-[10vh] lg:mt-[14vh]">
+      <div
+        className="
+          relative z-20 flex flex-col gap-6 px-6
+          mt-[10vh] md:mt-[12vh] lg:mt-[14vh]
+          text-center md:text-left
+          items-center md:items-start
+          max-w-[90%] md:max-w-[750px] lg:max-w-[900px]
+          mx-auto md:ml-[6vw] lg:ml-[8vw]
+        "
+      >
 
-        {/* HEADLINE INSTITUCIONAL */}
+        {/* Headline */}
         <motion.h1
-          initial={{ opacity: 0, y: 22 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.35, duration: 0.9 }}
-          className="text-[2.6rem] md:text-[3.4rem] lg:text-[5rem] xl:text-[5.5rem] font-extrabold tracking-tight text-white drop-shadow-2xl max-w-4xl"
+          transition={{ delay: 0.3, duration: 0.9 }}
+          className="
+            font-extrabold tracking-tight text-white drop-shadow-2xl
+            text-[2.4rem] leading-[2.8rem]
+            md:text-[3.4rem] md:leading-[3.6rem]
+            lg:text-[5rem] lg:leading-[5.2rem]
+            xl:text-[5.4rem]
+          "
         >
           O Primeiro Observatório Independente do Vale do Paraíba
         </motion.h1>
 
-        {/* SUBTÍTULO */}
+        {/* Subtítulo */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.55, duration: 0.9 }}
-          className="mt-1 md:mt-2 text-lg md:text-2xl text-white/90 max-w-2xl leading-snug drop-shadow-md"
+          transition={{ delay: 0.45, duration: 0.9 }}
+          className="
+            text-base md:text-xl lg:text-2xl
+            text-white/90 drop-shadow
+            leading-snug
+            max-w-[700px]
+          "
         >
           Iniciativa fundada em Taubaté e dedicada a todo o Vale.
         </motion.p>
 
-        {/* LINHA DE APOIO */}
+        {/* Terceira frase – apenas Desktop */}
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.65, duration: 0.9 }}
-          className="mt-2 text-base md:text-lg text-white/80 max-w-xl leading-snug"
+          transition={{ delay: 0.6, duration: 0.9 }}
+          className="hidden md:block text-white/80 text-lg max-w-[600px] leading-snug"
         >
           Transparência e educação pública para fortalecer o cidadão.
         </motion.p>
@@ -75,9 +98,13 @@ export default function Hero() {
         >
           <Link
             href="/indicadores"
-            className="mt-[14vh] md:mt-20 bg-white/95 text-[#0f172a] font-semibold 
-                       px-10 py-4 rounded-2xl text-xl md:text-2xl shadow-2xl
-                       hover:bg-white transition-all duration-300"
+            className="
+              mt-10 md:mt-16
+              bg-white/95 text-[#0f172a] font-semibold
+              px-10 py-4 rounded-2xl
+              text-lg md:text-xl shadow-xl
+              hover:bg-white transition-all duration-300
+            "
           >
             Acessar dados →
           </Link>
