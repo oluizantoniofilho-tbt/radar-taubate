@@ -35,7 +35,7 @@ export default function FiscalOverview() {
           <div className="text-right mt-3">
             <button 
               onClick={() => setDrawerOpen(true)} 
-              className="text-blue-500 dark:text-blue-400 hover:underline text-sm font-medium"
+              className="inline-flex items-center gap-2 px-5 py-2.5 mt-4 text-sm font-semibold rounded-xl shadow-md bg-white/90 text-slate-900 hover:bg-white dark:bg-slate-800 dark:text-white dark:hover:bg-slate-700 transition-all duration-300 border border-white/20 hover:scale-[1.03] active:scale-[1.00]"
             >
               Saiba mais
             </button>
@@ -55,7 +55,7 @@ export default function FiscalOverview() {
           <div className="text-right mt-3">
             <button 
               onClick={() => setDrawerOpen(true)} 
-              className="text-blue-500 dark:text-blue-400 hover:underline text-sm font-medium"
+              className="inline-flex items-center gap-2 px-5 py-2.5 mt-4 text-sm font-semibold rounded-xl shadow-md bg-white/90 text-slate-900 hover:bg-white dark:bg-slate-800 dark:text-white dark:hover:bg-slate-700 transition-all duration-300 border border-white/20 hover:scale-[1.03] active:scale-[1.00]"
             >
               Saiba mais
             </button>

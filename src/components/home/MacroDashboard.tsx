@@ -93,7 +93,7 @@ export default function MacroDashboard() {
             </ResponsiveContainer>
           </div>
           <div className="text-right mt-4">
-            <button onClick={() => setDrawerOpen(true)} className="text-blue-500 hover:underline">Saiba mais</button>
+            <button onClick={() => setDrawerOpen(true)} className="inline-flex items-center gap-2 px-5 py-2.5 mt-4 text-sm font-semibold rounded-xl shadow-md bg-white/90 text-slate-900 hover:bg-white dark:bg-slate-800 dark:text-white dark:hover:bg-slate-700 transition-all duration-300 border border-white/20 hover:scale-[1.03] active:scale-[1.00]">Saiba mais</button>
           </div>
         </div>
       </div>
