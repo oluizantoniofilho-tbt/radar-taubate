@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 export function ManifestoSection() {
   return (
     <section className="py-20 px-4 bg-white dark:bg-slate-950">
-      <div className="max-w-3xl mx-auto">
+      <div className="max-w-6xl mx-auto">
 
         {/* TÍTULO */}
         <motion.h2

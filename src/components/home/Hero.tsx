@@ -14,7 +14,7 @@ export function Hero() {
         className="relative z-10 flex flex-col items-start px-4 text-left mt-[12vh] md:mt-[14vh] lg:mt-[16vh]"
         style={{ fontFamily: '"Neue Haas Grotesk Display", "Inter", "system-ui", sans-serif' }}
       >
-        <div className="max-w-4xl lg:max-w-6xl">
+        <div className="max-w-5xl lg:max-w-7xl">
           {/* TÍTULO */}
           <motion.h1
             initial={{ opacity: 0, y: 16 }}
