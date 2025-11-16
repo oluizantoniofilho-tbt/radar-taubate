@@ -1,111 +1,68 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
 import { motion } from "framer-motion";
+import Link from "next/link";
+import { HeroBackground } from "./HeroBackground";
+import { ArrowRight } from "lucide-react";
 
-export default function Hero() {
+export function Hero() {
   return (
-    <motion.section
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1.2 }}
-      className="relative w-full h-[92vh] md:h-[100vh] overflow-hidden flex items-center"
-    >
-      {/* Background zoom */}
-      <motion.div
-        initial={{ scale: 1.22 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 2.4, ease: 'easeOut' }}
-        className="absolute inset-0"
-      >
-        <Image
-          src="/taubate-panorama.jpg"
-          alt="Panorama de Taubaté"
-          fill
-          priority
-          className="object-cover object-[57%_50%]"
-        />
-      </motion.div>
+    <section className="relative w-full h-[85vh] min-h-[600px] md:h-screen md:min-h-[720px] flex items-center justify-center text-white overflow-hidden">
+      <HeroBackground />
 
-      {/* Overlay */}
       <div
-        className="
-          absolute inset-0
-          bg-gradient-to-b from-black/85 via-black/60 to-black/30
-          md:bg-gradient-to-r md:from-black/85 md:via-black/60 md:to-black/25
-        "
-      />
-
-      {/* Content */}
-      <div
-        className="
-          relative z-20 flex flex-col gap-6 px-6
-          mt-[10vh] md:mt-[12vh] lg:mt-[14vh]
-          text-center md:text-left
-          items-center md:items-start
-          max-w-[90%] md:max-w-[750px] lg:max-w-[900px]
-          mx-auto md:ml-[6vw] lg:ml-[8vw]
-        "
+        className="relative z-10 flex flex-col items-center justify-center px-4 text-center md:items-start md:text-left"
+        style={{ fontFamily: '"Neue Haas Grotesk Display", "Inter", "system-ui", sans-serif' }}
       >
-
-        {/* Headline */}
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.9 }}
-          className="
-            font-extrabold tracking-tight text-white drop-shadow-2xl
-            text-[2.4rem] leading-[2.8rem]
-            md:text-[3.4rem] md:leading-[3.6rem]
-            lg:text-[5rem] lg:leading-[5.2rem]
-            xl:text-[5.4rem]
-          "
-        >
-          O Primeiro Observatório<br />
-          Independente do Vale do Paraíba
-        </motion.h1>
-
-        {/* Subtítulo */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.45, duration: 0.9 }}
-          className="text-base md:text-xl lg:text-2xl text-white/90 drop-shadow leading-snug max-w-[700px]"
-        >
-          Criado em Taubaté para inspirar uma nova cultura de transparência no Vale.
-        </motion.p>
-
-        {/* Terceira frase – apenas Desktop */}
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.9 }}
-          className="hidden md:block text-white/80 text-lg max-w-[600px] leading-snug"
-        >
-          Transparência e educação pública para fortalecer o cidadão.
-        </motion.p>
-
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 26 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.85, duration: 0.9 }}
-        >
-          <Link
-            href="/indicadores"
-            className="
-              mt-10 md:mt-16
-              bg-white/95 text-[#0f172a] font-semibold
-              px-10 py-4 rounded-2xl
-              text-lg md:text-xl shadow-xl
-              hover:bg-white transition-all duration-300
-            "
+        <div className="max-w-4xl lg:max-w-6xl">
+          {/* TÍTULO */}
+          <motion.h1
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.9 }}
+            className="font-bold text-white text-[2.2rem] leading-[2.6rem] md:text-[3.4rem] md:leading-[3.6rem] lg:text-[5rem] lg:leading-[5.2rem]"
           >
-            Acessar dados →
-          </Link>
-        </motion.div>
+            O Primeiro Observatório
+            <br />
+            Independente do Vale do Paraíba
+          </motion.h1>
+
+          {/* SUBTÍTULO */}
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.9 }}
+            className="max-w-2xl mt-6 text-base text-white/90 md:text-xl lg:text-2xl"
+          >
+            Criado em Taubaté para inspirar uma nova cultura de transparência no Vale.
+          </motion.p>
+          
+          {/* LINHA DE APOIO - SÓ DESKTOP */}
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.9 }}
+            className="hidden max-w-2xl mt-4 text-lg text-white/80 md:block"
+          >
+            Transparência e educação pública para fortalecer o cidadão.
+          </motion.p>
+
+          {/* CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 0.9 }}
+            className="mt-10 md:mt-16"
+          >
+            <Link href="/explorar">
+              <span className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-300 bg-blue-600 rounded-full shadow-lg hover:bg-blue-700 hover:scale-105 active:scale-100 ring-2 ring-blue-500/50">
+                Explorar Dados
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </span>
+            </Link>
+          </motion.div>
+        </div>
       </div>
-    </motion.section>
+    </section>
   );
 }
