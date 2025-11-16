@@ -11,7 +11,7 @@ export function Hero() {
       <HeroBackground />
 
       <div
-        className="relative z-10 flex flex-col items-center justify-center px-4 text-center md:items-start md:text-left"
+        className="relative z-10 flex flex-col items-start px-4 text-left mt-[12vh] md:mt-[14vh] lg:mt-[16vh]"
         style={{ fontFamily: '"Neue Haas Grotesk Display", "Inter", "system-ui", sans-serif' }}
       >
         <div className="max-w-4xl lg:max-w-6xl">
@@ -20,7 +20,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.9 }}
-            className="font-bold text-white text-[2.2rem] leading-[2.6rem] md:text-[3.4rem] md:leading-[3.6rem] lg:text-[5rem] lg:leading-[5.2rem]"
+            className="font-bold text-white max-w-[850px] text-[2.2rem] leading-[2.6rem] md:text-[3rem] md:leading-[3.4rem] lg:text-[4.2rem] lg:leading-[4.6rem] xl:text-[4.6rem] xl:leading-[5rem]"
           >
             O Primeiro Observatório
             <br />
@@ -54,7 +54,7 @@ export function Hero() {
             transition={{ delay: 0.8, duration: 0.9 }}
             className="mt-10 md:mt-16"
           >
-            <Link href="/explorar">
+            <Link href="/indicadores">
               <span className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-300 bg-blue-600 rounded-full shadow-lg hover:bg-blue-700 hover:scale-105 active:scale-100 ring-2 ring-blue-500/50">
                 Explorar Dados
                 <ArrowRight className="w-5 h-5 ml-2" />
