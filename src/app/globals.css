@@ -30,6 +30,7 @@
     --color-despesas: #dc2626;
     
     --color-primary: #0033A0;
+    --color-primary-soft: #0033A040;
 
     /* Estilo visual Aletheia */
     --gradient-primary: linear-gradient(135deg, #1e3a8a, #2563eb);
@@ -55,6 +56,7 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
+    --color-primary-soft: #0033A026;
   }
 
   html, body {
