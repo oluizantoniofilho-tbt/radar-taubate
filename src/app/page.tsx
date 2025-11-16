@@ -1,7 +1,7 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import Hero from '@/components/home/Hero';
+import { Hero } from '@/components/home/Hero';
 import { CamaraHeroCTA } from "@/components/home/CamaraHeroCTA";
 import { ManifestoSection } from "@/components/home/ManifestoSection";
 
