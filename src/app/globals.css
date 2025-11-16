@@ -36,6 +36,9 @@
     --gradient-primary: linear-gradient(135deg, #1e3a8a, #2563eb);
     --shadow-soft: 0 8px 24px rgba(0,0,0,0.08);
     --shadow-strong: 0 12px 40px rgba(0,0,0,0.15);
+
+    --highlight-bg: rgba(0, 51, 160, 0.1);
+    --highlight-text: #0033A0;
   }
 
   .dark {
@@ -57,6 +60,9 @@
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
     --color-primary-soft: #0033A026;
+
+    --highlight-bg: rgba(0, 81, 255, 0.35);
+    --highlight-text: #ffffff;
   }
 
   html, body {
@@ -140,4 +146,13 @@
   .link-light:hover {
     @apply text-[#1a2f8f];
   }
+}
+
+/* Highlight institucional */
+.hlt {
+  background-color: var(--highlight-bg);
+  color: var(--highlight-text);
+  padding: 2px 4px;
+  border-radius: 2px; /* leve e editorial */
+  font-weight: 500;
 }
