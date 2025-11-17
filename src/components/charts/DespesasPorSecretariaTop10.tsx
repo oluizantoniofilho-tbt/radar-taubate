@@ -10,7 +10,7 @@ import {
   Tooltip,
   Cell,
 } from "recharts";
-import { InsightsDrawer } from "@/components/home/InsightsDrawer";
+import InsightsDrawer from "@/components/home/InsightsDrawer";
 
 // Raw data as provided
 const rawData = [
@@ -114,18 +114,18 @@ export function DespesasPorSecretariaTop10() {
           Saiba mais
         </button>
       </div>
-      <InsightsDrawer
-        isOpen={isDrawerOpen}
-        onClose={() => setIsDrawerOpen(false)}
-        title="Despesas por Secretaria – Top 10 + Outras"
-        insights={[
-          "As secretarias de Educação e Saúde lideram com folga o volume de despesas pagas, representando juntas cerca de 60% de todo o orçamento executado no período.",
-          "Em seguida, a Secretaria da Fazenda e a de Serviços Públicos ocupam posições estratégicas por operarem contratos essenciais de manutenção da máquina pública e infraestrutura urbana.",
-          "A presença de múltiplos fundos municipais — Saúde, Assistência Social, Esporte Amador, Iluminação e Transporte — evidencia a descentralização orçamentária e a existência de caixas específicos para políticas públicas.",
-          "As áreas de Cultura, Esporte e Meio Ambiente possuem valores menores, porém são fundamentais para a política social e qualidade de vida do município.",
-          "Ao consolidar as “Outras Secretarias”, observa-se um bloco significativo de despesas pulverizadas, reforçando a importância de análises agregadas para evitar que gastos relevantes passem despercebidos.",
-        ]}
-      />
+        <InsightsDrawer
+  isOpen={isDrawerOpen}
+  onClose={() => setIsDrawerOpen(false)}
+  title="Despesas por Secretaria – Top 10 + Outras"
+>
+  <p>📌 Educação e Saúde dominam o orçamento, concentrando cerca de 60% das despesas pagas.</p>
+  <p>📌 Fazenda e Serviços Públicos vêm logo atrás, refletindo despesas operacionais e contratos de infraestrutura.</p>
+  <p>📌 A presença de diversos fundos municipais revela descentralização orçamentária.</p>
+  <p>📌 Áreas culturais e esportivas têm participação moderada, mas importante no conjunto.</p>
+        </InsightsDrawer>
+
+      
     </div>
   );
 }

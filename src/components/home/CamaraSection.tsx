@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import Link from "next/link";
 import { CamaraOrcamentoChart } from "../charts/CamaraOrcamentoChart";
 import { CamaraDespesasTop10Chart } from "../charts/CamaraDespesasTop10Chart";
