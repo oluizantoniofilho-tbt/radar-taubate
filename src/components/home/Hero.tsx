@@ -14,15 +14,24 @@ export function Hero() {
         className="relative z-10 flex flex-col items-start px-4 text-left mt-[12vh] md:mt-[14vh] lg:mt-[16vh]"
         style={{ fontFamily: '"Neue Haas Grotesk Display", "Inter", "system-ui", sans-serif' }}
       >
-        <div className="max-w-5xl lg:max-w-7xl">
+        <div className="max-w-[1100px]">
           {/* TÍTULO */}
           <motion.h1
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.9 }}
-            className="font-bold text-white max-w-[850px] text-[2.2rem] leading-[2.6rem] md:text-[3rem] md:leading-[3.4rem] lg:text-[4.2rem] lg:leading-[4.6rem] xl:text-[4.6rem] xl:leading-[5rem]"
+            className="
+              font-bold text-white
+              text-[2rem] leading-[2.4rem]
+              md:text-[3.2rem] md:leading-[3.4rem]
+              lg:text-[4rem] lg:leading-[4.4rem]
+              xl:text-[4.4rem] xl:leading-[4.8rem]
+              drop-shadow-2xl
+              tracking-tight
+              w-full
+            "
           >
-            O Primeiro Observatório
+            O Primeiro Observatório Social
             <br />
             Independente do Vale do Paraíba
           </motion.h1>
