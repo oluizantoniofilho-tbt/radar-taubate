@@ -45,7 +45,7 @@ const othersSum = otherData.reduce((acc, curr) => acc + curr.value, 0);
 const chartData = [
   ...top10Data,
   { name: "Outras Secretarias", value: othersSum },
-].sort((a, b) => a.value - b.value);
+].sort((a, b) => b.value - a.value);
 
 const formatValue = (value: number) =>
   new Intl.NumberFormat("pt-BR", {
@@ -109,7 +109,7 @@ export function DespesasPorSecretariaTop10() {
       <div className="mt-4 text-center">
         <button
           onClick={() => setIsDrawerOpen(true)}
-          className="rounded-lg bg-[var(--color-primary)] px-6 py-2 font-semibold text-white transition hover:opacity-90"
+          className="mt-4 inline-block rounded-xl px-5 py-2 font-semibold text-white bg-[var(--color-primary)] hover:bg-[#00257A] transition shadow-md"
         >
           Saiba mais
         </button>
