@@ -13,10 +13,10 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const navItems = [
-    { name: "Dashboard", href: "/" },
-    { name: "Relatórios", href: "/relatorios" },
-    { name: "Planejamento", href: "/indicadores/ppa-analise" },
-    { name: "Configurações", href: "/configuracoes" },
+    { name: "Radar", href: "/" },
+    { name: "Indicadores", href: "/relatorios" },
+    { name: "Câmara Municipal", href: "/indicadores/ppa-analise" },
+    { name: "Educacional", href: "/configuracoes" },
   ];
 
   return (
