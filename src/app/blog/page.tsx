@@ -6,13 +6,27 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 
-const ArticleCard = ({ article, index }) => (
+type Article = {
+  title: string;
+  summary?: string;
+  description?: string;
+  slug: string;
+  date?: string;
+};
+
+type ArticleCardProps = {
+  article: Article;
+  index: number;
+};
+
+const ArticleCard = ({ article, index }: ArticleCardProps) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
     className="bg-card border border-border rounded-lg overflow-hidden flex flex-col"
   >
+  
     <div className="p-6 flex-grow flex flex-col">
       <h3 className="text-xl font-bold mb-2">{article.title}</h3>
       <p className="text-muted-foreground flex-grow mb-4">{article.summary}</p>
