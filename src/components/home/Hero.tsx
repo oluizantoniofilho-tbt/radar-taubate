@@ -18,7 +18,7 @@ export function Hero() {
           w-full max-w-[1400px]
           mx-auto
         "
-        style={{ fontFamily: '"Neue Haas Grotesk Display", "Inter", "system-ui", sans-serif' }}
+        style={{ fontFamily: '\"Neue Haas Grotesk Display\", \"Inter\", \"system-ui\", sans-serif' }}
       >
         {/* HEADLINE */}
         <motion.h1
@@ -27,10 +27,10 @@ export function Hero() {
           transition={{ delay: 0.2, duration: 0.9 }}
           className="
             font-bold text-white drop-shadow-2xl
-            text-[2.1rem] leading-[2.6rem]
-            md:text-[3.2rem] md:leading-[3.6rem]
-            lg:text-[4.2rem] lg:leading-[4.6rem]
-            xl:text-[4.6rem] xl:leading-[5rem]
+            text-[1.9rem] leading-[2.3rem]
+            md:text-[2.8rem] md:leading-[3.2rem]
+            lg:text-[3.6rem] lg:leading-[3.9rem]
+            xl:text-[4.2rem] xl:leading-[4.5rem]
             max-w-[80%]
           "
         >
