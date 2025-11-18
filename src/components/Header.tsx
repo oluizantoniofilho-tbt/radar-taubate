@@ -13,10 +13,12 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const navItems = [
-    { name: "Radar", href: "/" },
-    { name: "Indicadores", href: "/relatorios" },
-    { name: "Câmara Municipal", href: "/indicadores/ppa-analise" },
-    { name: "Educacional", href: "/configuracoes" },
+    { name: "Início", href: "/" },
+    { name: "Indicadores", href: "/indicadores" },
+    { name: "Planejamento (PPA & LOA)", href: "/planejamento" },
+    { name: "Câmara Municipal", href: "/camara" },
+    { name: "TransfereGov", href: "/transferegov" },
+    { name: "Artigos & Análises", href: "/blog" },
   ];
 
   return (
