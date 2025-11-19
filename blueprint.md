@@ -32,6 +32,7 @@ O design do Radar Taubaté segue uma abordagem moderna e limpa, com foco na usab
 *   `DashboardCards.tsx`
 *   `Header.tsx`
 *   `MiniCharts.tsx`
+*   `PpaLoaContent.tsx`
 *   `ThemeToggle.tsx`
 *   `theme-provider.tsx`
 *   **`charts/`**
@@ -68,9 +69,17 @@ O design do Radar Taubaté segue uma abordagem moderna e limpa, com foco na usab
 
 *   *A pasta não existe.*
 
+## Atualizações Recentes
+
+*   **Página da Câmara Municipal (`/camara`):**
+    *   Substituídos os placeholders de conteúdo na página da Câmara Municipal por textos informativos sobre a função fiscalizadora do Legislativo e a base legal para a sua gestão financeira (LRF).
+    *   O conteúdo agora explica a importância da Câmara de Vereadores no controle de gastos e na fiscalização do Executivo.
+    *   Detalha a Lei de Responsabilidade Fiscal (LRF) e as fontes de receita da Câmara (duodécimo).
+
 ## Próximos Passos
 
 - **Implementação do Layout da Página Principal:** Criação da estrutura da página principal, incluindo o cabeçalho, o menu de navegação e o rodapé.
 - **Desenvolvimento dos Componentes de Análise de Receitas:** Criação dos gráficos e tabelas para a análise das receitas municipais.
 - **Desenvolvimento dos Componentes de Análise de Despesas:** Criação dos gráficos e tabelas para a análise das despesas municipais.
 - **Desenvolvimento dos Componentes de Indicadores de Desempenho:** Criação dos componentes para a exibição dos indicadores de educação, saúde e saneamento.
+- **Preenchimento de Conteúdo Adicional:** Preencher os placeholders restantes em outras seções do site, como as páginas de indicadores, planejamento e relatórios.
