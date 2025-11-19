@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -27,30 +27,22 @@ export function Hero({ title, subtitle, supportingLine, ctaLabel, ctaLink }: Her
           mx-auto
         "
       >
-        {/* HEADLINE - FOCO DA MUDANÇA NAS CLASSES TAILWIND */}
         <motion.h1
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.9 }}
           className="
             font-bold text-white drop-shadow-2xl
-            
-            /* Mobile/Small Desktop (3 linhas): Fonte ligeiramente menor */
             text-4xl leading-tight 
-            md:text-6xl md:leading-snug
-            
-            /* Large Desktop (Duas Linhas - Aumentando o max-w e a fonte): */
-            lg:text-7xl lg:leading-tight
-            xl:text-8xl xl:leading-tight
-            
-            /* Aumentando a largura máxima para ocupar mais a tela no desktop (70% do contêiner) */
-            max-w-full md:max-w-[800px] lg:max-w-[950px]
+            md:text-5xl md:leading-snug
+            lg:text-5xl lg:leading-tight
+            xl:text-6xl xl:leading-tight
+            max-w-full md:max-w-4xl lg:max-w-5xl
           "
         >
           {title}
         </motion.h1>
 
-        {/* SUBTÍTULO */}
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -60,7 +52,6 @@ export function Hero({ title, subtitle, supportingLine, ctaLabel, ctaLink }: Her
           {subtitle}
         </motion.p>
 
-        {/* LINHA DE APOIO */}
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -70,7 +61,6 @@ export function Hero({ title, subtitle, supportingLine, ctaLabel, ctaLink }: Her
           {supportingLine}
         </motion.p>
 
-        {/* CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
