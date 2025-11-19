@@ -32,8 +32,7 @@ import { CamaraDespesasTop10Chart } from "../../components/charts/CamaraDespesas
 export default function CamaraPage() {
   return (
     // Max-w-7xl para dar mais respiro na tela e px-6 para padding em mobile
-    <main className="max-w-7xl mx-auto px-6 py-16">
-
+    <main className="max-w-7xl mx-auto px-6 pt-24 pb-16">
       {/* CABEÇALHO */}
       <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-4">
         Câmara Municipal — Transparência e Execução Orçamentária
