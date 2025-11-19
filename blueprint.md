@@ -8,25 +8,65 @@ O Radar Taubaté é um painel de inteligência pública que oferece uma análise
 
 O design do Radar Taubaté segue uma abordagem moderna e limpa, com foco na usabilidade e na clareza das informações. A paleta de cores é vibrante e energética, e a tipografia foi cuidadosamente escolhida para garantir a legibilidade e a hierarquia visual. A aplicação é totalmente responsiva, adaptando-se a diferentes tamanhos de tela para oferecer a melhor experiência em qualquer dispositivo.
 
-## Funcionalidades
+## Inventário do Projeto
 
-### Análise de Receitas
+### `src/app/`
 
-- **Arrecadação Mensal:** Gráfico de barras que mostra a evolução da arrecadação mensal, permitindo a comparação com o mês anterior e com o mesmo mês do ano anterior.
-- **Arrecadação por Fonte:** Gráfico de pizza que detalha a composição da receita por fonte, como impostos, transferências e outras receitas.
-- **Top 5 Receitas:** Lista das cinco maiores fontes de receita do município, com valores e percentuais correspondentes.
+*   `config.ts`
+*   `favicon.ico`
+*   `globals.css`
+*   `layout.tsx`
+*   `page.tsx` - **Contém 'use client'**: Sim
+*   `blog/page.tsx` - **Contém 'use client'**: Não
+*   `camara/page.tsx` - **Contém 'use client'**: Não
+*   `configuracoes/page.tsx` - **Contém 'use client'**: Não
+*   `indicadores/page.tsx` - **Contém 'use client'**: Não
+*   `planejamento/page.tsx` - **Contém 'use client'**: Não
+*   `relatorios/page.tsx` - **Contém 'use client'**: Não
+*   `transferegov/page.tsx` - **Contém 'use client'**: Não
+*   `indicadores/ppa-analise/page.tsx` - **Contém 'use client'**: Não
 
-### Análise de Despesas
+### `src/components/`
 
-- **Despesa Mensal:** Gráfico de linhas que acompanha a evolução dos gastos mensais, com a possibilidade de comparar com o mês anterior e o mesmo mês do ano anterior.
-- **Despesa por Função:** Gráfico de rosca que apresenta a distribuição dos gastos por função, como saúde, educação, segurança, etc.
-- **Top 5 Despesas:** Lista das cinco maiores despesas do município, com valores e percentuais correspondentes.
+*   `CardKPI.tsx`
+*   `DashboardCards.tsx`
+*   `Header.tsx`
+*   `MiniCharts.tsx`
+*   `ThemeToggle.tsx`
+*   `theme-provider.tsx`
+*   **`charts/`**
+    *   `CamaraDespesasTop10Chart.tsx`
+    *   `CamaraOrcamentoChart.tsx`
+    *   `DespesasPorSecretariaTop10.tsx`
+    *   `ExecucaoTermometros.tsx`
+    *   `OrcadoExecutadoAreas.tsx`
+*   **`home/`**
+    *   `CamaraHeroCTA.tsx`
+    *   `CamaraSection.tsx`
+    *   `FiscalOverview.tsx`
+    *   `Hero.tsx`
+    *   `HeroBackground.tsx`
+    *   `InsightsDrawer.tsx`
+    *   `MacroDashboard.tsx`
+    *   `ManifestoSection.tsx`
+    *   `SecretariasGrid.tsx`
+    *   `TopFornecedoresChart.tsx`
+*   **`ui/`**
+    *   `button.tsx`
+    *   `card.tsx`
+    *   `dropdown-menu.tsx`
 
-### Indicadores de Desempenho
+### `src/hooks/`
 
-- **Indicadores de Educação:** Apresenta dados sobre o desempenho da educação no município, como a taxa de aprovação, o IDEB e o número de matrículas.
-- **Indicadores de Saúde:** Mostra informações sobre a saúde pública, como a taxa de mortalidade infantil, o número de leitos por habitante e a cobertura da atenção básica.
-- **Indicadores de Saneamento:** Apresenta dados sobre o saneamento básico, como o percentual da população com acesso à água tratada e à coleta de esgoto.
+*   *A pasta não existe.*
+
+### `src/services/`
+
+*   *A pasta não existe.*
+
+### `src/utils/`
+
+*   *A pasta não existe.*
 
 ## Próximos Passos
 
