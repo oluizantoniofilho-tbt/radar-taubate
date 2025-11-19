@@ -38,8 +38,8 @@ export function PpaLoaContent() {
             </h2>
             
             <p className="text-lg text-slate-700 dark:text-slate-300 max-w-4xl">
-                Taubaté tem um orçamento total de **R$ 2,578 Bilhões** para 2025. Isso parece muito, mas a maior parte desse valor está <strong className="text-red-500">'engessada'</strong> ou <strong className="text-red-500">'carimbada'</strong>.
-                Para entender onde a 'Vontade' do PPA encontra a 'Realidade' da LOA, precisamos dividir o orçamento em duas partes:
+                Taubaté tem um orçamento total de **R$ 2,578 Bilhões** para 2025. Isso parece muito, mas a maior parte desse valor está <strong className="text-red-500">&apos;engessada&apos;</strong> ou <strong className="text-red-500">&apos;carimbada&apos;</strong>.
+                Para entender onde a &apos;Vontade&apos; do PPA encontra a &apos;Realidade&apos; da LOA, precisamos dividir o orçamento em duas partes:
             </p>
 
             {/* TABELA DE CUSTEIO VS INVESTIMENTO */}
@@ -115,7 +115,7 @@ export function PpaLoaContent() {
                         O Tesouro de Taubaté tem que tirar dinheiro do próprio bolso (Recursos Livres) para cobrir o déficit da aposentadoria dos servidores (IPMT).
                     </p>
                     <p className="text-xs italic text-red-600 dark:text-red-300/80">
-                        **Bloqueio:** Este repasse drena centenas de milhões de reais que poderiam estar financiando as obras e inovações do PPA. É um custo que cresce e <strong className='font-bold'>'rouba'</strong> o investimento do futuro.
+                        **Bloqueio:** Este repasse drena centenas de milhões de reais que poderiam estar financiando as obras e inovações do PPA. É um custo que cresce e <strong className='font-bold'>&apos;rouba&apos;</strong> o investimento do futuro.
                     </p>
                 </div>
                 {/* Gargalo 2: Custos Rígidos (Custeio) */}
@@ -125,14 +125,14 @@ export function PpaLoaContent() {
                         Educação (R$ 892 Mi) e Saúde (R$ 508 Mi) consomem mais da metade do orçamento, o que é obrigatório.
                     </p>
                     <p className="text-xs italic text-blue-600 dark:text-blue-300/80">
-                        **Bloqueio:** Se estes grandes blocos não forem geridos com foco em Resultado (OPR), eles se tornam <strong className='font-bold'>'ralos de dinheiro'</strong>, sem gerar o Impacto prometido no PPA.
+                        **Bloqueio:** Se estes grandes blocos não forem geridos com foco em Resultado (OPR), eles se tornam <strong className='font-bold'>&apos;ralos de dinheiro&apos;</strong>, sem gerar o Impacto prometido no PPA.
                     </p>
                 </div>
                 {/* Gargalo 3: Aposta Arriscada */}
                 <div className="p-5 border rounded-lg shadow-sm bg-yellow-50/50 dark:bg-yellow-900/20">
                     <h3 className="font-bold text-xl mb-2 text-yellow-700 dark:text-yellow-400">3. Aposta Arriscada (Receita de Capital)</h3>
                     <p className="text-sm text-slate-700 dark:text-slate-300 mb-3">
-                        A LOA conta com dinheiro de eventos não recorrentes, como a <strong className='font-bold'>'venda de bens públicos'</strong> (Alienação de Bens), para compor o investimento.
+                        A LOA conta com dinheiro de eventos não recorrentes, como a <strong className='font-bold'>&apos;venda de bens públicos&apos;</strong> (Alienação de Bens), para compor o investimento.
                     </p>
                     <p className="text-xs italic text-yellow-600 dark:text-yellow-300/80">
                         **Bloqueio:** Se o município não conseguir vender esses bens, a pequena margem de investimento (menos de 10%) diminui drasticamente. O PPA fica refém de uma aposta.
@@ -150,8 +150,8 @@ export function PpaLoaContent() {
                 O lado positivo é que o PPA usa a linguagem moderna do **Orçamento por Resultado (OPR)**. Isso permite que você faça cobranças mais inteligentes.
             </p>
             <div className="text-lg font-bold text-blue-600 dark:text-blue-400 mt-4 mb-4">
-                <p>Não pergunte: <span className='italic'>"Quanto gastou?"</span></p>
-                <p className="text-2xl mt-1">Pergunte: <span className='italic'>"Qual foi o **RESULTADO** e o **IMPACTO** desse gasto?"</span></p>
+                <p>Não pergunte: <span className='italic'>&quot;Quanto gastou?&quot;</span></p>
+                <p className="text-2xl mt-1">Pergunte: <span className='italic'>&quot;Qual foi o **RESULTADO** e o **IMPACTO** desse gasto?&quot;</span></p>
             </div>
             
             {/* EXEMPLOS DE COBRANÇA */}
@@ -186,7 +186,7 @@ export function PpaLoaContent() {
             <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-2">Desafios para o Observatório</h3>
             <p className="text-md text-slate-700 dark:text-slate-300">
             O foco não é só auditar contas, é garantir que Taubaté transforme o **PPA (Vontade)** em **LOA (Resultado)**.
-            Nossa Meta: Usar a própria promessa de "Gestão Moderna" do PPA contra as fragilidades fiscais da LOA, exigindo que a Prefeitura demonstre: **Onde está a eficiência que vai transformar 10% de investimento na execução de 100% das promessas?**
+            Nossa Meta: Usar a própria promessa de &quot;Gestão Moderna&quot; do PPA contra as fragilidades fiscais da LOA, exigindo que a Prefeitura demonstre: **Onde está a eficiência que vai transformar 10% de investimento na execução de 100% das promessas?**
             </p>
         </aside>
     </section>
