@@ -18,7 +18,7 @@ export function Hero() {
           w-full max-w-[1400px]
           mx-auto
         "
-        style={{ fontFamily: '\"Neue Haas Grotesk Display\", \"Inter\", \"system-ui\", sans-serif' }}
+        style= '{{ fontFamily: "Neue Haas Grotesk Display", Segoe UI, Roboto , Inter , system-ui , sans-serif }}'
       >
         {/* HEADLINE */}
         <motion.h1
@@ -27,11 +27,11 @@ export function Hero() {
           transition={{ delay: 0.2, duration: 0.9 }}
           className="
             font-bold text-white drop-shadow-2xl
-            text-[1.9rem] leading-[2.3rem]
+            text-[1.9rem] leading-[2.2rem]
             md:text-[2.8rem] md:leading-[3.2rem]
             lg:text-[3.6rem] lg:leading-[3.9rem]
-            xl:text-[4.2rem] xl:leading-[4.5rem]
-            max-w-[80%]
+            xl:text-[4.2rem] xl:leading-[4.6rem]
+            max-w-[90%] md:max-w-[720px] lg:max-w-[820px]
           "
         >
           O Primeiro Observatório Social
@@ -44,7 +44,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.9 }}
-          className="max-w-2xl mt-6 text-base text-white/90 md:text-xl lg:text-2xl"
+          className="max-w-2xl mt-6 text-white/90 text-base md:text-lg lg:text-xl"
         >
           Criado em Taubaté para inspirar uma nova cultura de transparência no Vale.
         </motion.p>
@@ -54,7 +54,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.9 }}
-          className="hidden md:block max-w-2xl mt-4 text-lg text-white/80"
+          className="hidden md:block max-w-2xl mt-4 text-white/80 text-base lg:text-lg"
         >
           Transparência e educação pública para fortalecer o cidadão.
         </motion.p>
