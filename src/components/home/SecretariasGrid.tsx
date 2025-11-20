@@ -1,6 +1,6 @@
 'use client';
 
-import { DespesasPorSecretariaTop10 } from "@/components/charts/DespesasPorSecretariaTop10";
+import { DespesasPorSecretariaChart } from "@/components/charts/DespesasPorSecretariaTop10";
 
 export default function SecretariasGrid() {
   return (
@@ -11,7 +11,7 @@ export default function SecretariasGrid() {
             <p className="mt-2 text-lg text-gray-600 dark:text-gray-400">Visualize a distribuição dos gastos nas principais áreas da administração.</p>
         </div>
         <div className="max-w-4xl mx-auto">
-          <DespesasPorSecretariaTop10 />
+          <DespesasPorSecretariaChart />
         </div>
       </div>
     </section>
