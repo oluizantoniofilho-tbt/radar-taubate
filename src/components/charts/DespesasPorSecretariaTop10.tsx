@@ -3,65 +3,91 @@
 
 import React from "react";
 import {
+  ResponsiveContainer,
   BarChart,
   Bar,
   XAxis,
   YAxis,
   Tooltip,
-  ResponsiveContainer,
   LabelList,
-  Cell,
 } from "recharts";
-import { despesasPorSecretariaTop10Data } from "../../lib/data/charts-data";
+import { AnalyticCard } from "@/components/ui/AnalyticCard";
+
+// Top 10 despesas por secretaria (valores de exemplo / ajuste conforme seus dados reais)
+const despesasPorSecretariaData = [
+  { label: "Secretaria de Educação", value: 430_055_300 },
+  { label: "Fundo Municipal de Saúde", value: 390_021_100 },
+  { label: "Secretaria da Fazenda", value: 99_386_450 },
+  { label: "Secretaria de Serviços Públicos", value: 73_133_240 },
+  { label: "Secretaria de Obras", value: 68_554_900 },
+  { label: "Administração", value: 51_774_320 },
+  { label: "Desenvolvimento Social", value: 44_210_800 },
+  { label: "Gabinete do Prefeito", value: 32_998_500 },
+  { label: "Segurança", value: 27_441_900 },
+  { label: "Planejamento", value: 21_389_700 },
+];
+
+// Formata tooltip em R$
+const formatCurrency = (value: number) =>
+  value.toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+    maximumFractionDigits: 0,
+  });
 
 export function DespesasPorSecretariaChart() {
   return (
-    <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl shadow">
-      <h2 className="text-2xl font-bold mb-4 text-slate-900 dark:text-white">
-        Despesas por Secretaria — Top 10
-      </h2>
-
-      <div className="w-full h-[380px]">
+    <AnalyticCard
+      title="Despesas por Secretaria — Top 10"
+      subtitle="Visualize as secretarias com maior volume de gastos no período analisado."
+      delay={0.2}
+    >
+      <div className="w-full h-[420px]">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart
-            data={despesasPorSecretariaTop10Data}
-            margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+            data={despesasPorSecretariaData}
+            layout="vertical"
+            margin={{ top: 16, right: 16, left: 0, bottom: 16 }}
           >
             <XAxis
-              dataKey="label"
-              tick={{ fill: "#475569", fontSize: 12 }}
-              interval={0}
-            />
-            <YAxis
-              tick={{ fill: "#475569", fontSize: 12 }}
+              type="number"
               tickFormatter={(value) =>
-                Intl.NumberFormat("pt-BR", {
-                  notation: "compact",
-                  compactDisplay: "short",
-                }).format(value)
+                `R$ ${(value as number / 1_000_000).toFixed(0)} mi`
               }
+              tick={{ fontSize: 12, fill: "currentColor" }}
             />
+
+            <YAxis
+              type="category"
+              dataKey="label"
+              width={200}
+              tick={{ fontSize: 11, fill: "currentColor" }}
+            />
+
             <Tooltip
-              formatter={(value: number) =>
-                `R$ ${value.toLocaleString("pt-BR")}`
-              }
+              formatter={(value) => formatCurrency(value as number)}
+              labelFormatter={(label) => label}
+              contentStyle={{
+                backgroundColor: "rgba(15,23,42,0.95)",
+                borderRadius: 10,
+                border: "none",
+                color: "white",
+              }}
             />
-            <Bar dataKey="value" radius={[6, 6, 0, 0]}>
-              {despesasPorSecretariaTop10Data.map((item, index) => (
-                <Cell key={index} fill="#2563eb" /> // azul institucional
-              ))}
+
+            <Bar dataKey="value" radius={[4, 4, 4, 4]} fill="#0ea5e9">
               <LabelList
                 dataKey="value"
-                position="top"
-                formatter={(value: number) =>
-                  `R$ ${value.toLocaleString("pt-BR")}`
+                position="right"
+                formatter={(value: any) =>
+                  `R$ ${(Number(value) / 1_000_000).toFixed(0)} mi`
                 }
-                style={{ fill: "#0f172a", fontSize: 12 }}
+                style={{ fontSize: 11, fill: "currentColor" }}
               />
             </Bar>
           </BarChart>
         </ResponsiveContainer>
       </div>
-    </div>
+    </AnalyticCard>
   );
 }
