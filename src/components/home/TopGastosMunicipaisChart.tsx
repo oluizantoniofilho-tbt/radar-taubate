@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from "react";
@@ -12,19 +11,19 @@ import {
   LabelList,
   Cell,
 } from "recharts";
-import { despesasPorSecretariaTop10Data } from "../../lib/data/charts-data";
+import { topGastosMunicipaisData } from "@/lib/data/charts-data";
 
-export function DespesasPorSecretariaChart() {
+export function TopGastosMunicipaisChart() {
   return (
     <div className="bg-white dark:bg-slate-900 p-6 rounded-2xl shadow">
       <h2 className="text-2xl font-bold mb-4 text-slate-900 dark:text-white">
-        Despesas por Secretaria — Top 10
+        Top 10 Gastos Municipais
       </h2>
 
       <div className="w-full h-[380px]">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart
-            data={despesasPorSecretariaTop10Data}
+            data={topGastosMunicipaisData}
             margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
           >
             <XAxis
@@ -47,8 +46,8 @@ export function DespesasPorSecretariaChart() {
               }
             />
             <Bar dataKey="value" radius={[6, 6, 0, 0]}>
-              {despesasPorSecretariaTop10Data.map((item, index) => (
-                <Cell key={index} fill="#2563eb" /> // azul institucional
+              {topGastosMunicipaisData.map((item, index) => (
+                <Cell key={index} fill="#16a34a" /> // verde institucional
               ))}
               <LabelList
                 dataKey="value"

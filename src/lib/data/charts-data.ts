@@ -41,6 +41,20 @@ export const composicaoData: IComposicao[] = [
   { nome: "Outros", valor: 10 },
 ];
 
+// === Top 10 Gastos Municipais ===
+export const topGastosMunicipaisData = [
+  { label: "Folha de Pagamento", value: 464576000 },
+  { label: "Santa Casa de Misericórdia Chavantes", value: 135859700 },
+  { label: "Instituto de Previdência do Município de Taubaté", value: 130213000 },
+  { label: "Fundação Caixa Beneficente – Servidores UNITAU", value: 71416750 },
+  { label: "Instituto Esperança", value: 54879250 },
+  { label: "Ecotaubaté Ambiental S/A", value: 48586720 },
+  { label: "SHA Comércio de Alimentos Ltda.", value: 40145700 },
+  { label: "Tribunal de Justiça do Estado de São Paulo (TJSP)", value: 23807750 },
+  { label: "Milclean Comércio e Serviços Ltda.", value: 21822060 },
+  { label: "ABC Transporte Coletivo Vale do Paraíba Ltda.", value: 17477400 },
+];
+
 // === Despesas da Câmara — Top 10 ===
 export const camaraDespesasTop10Data = [
   { label: "Vencimentos Fixos", value: 20909693.0 },
@@ -68,22 +82,22 @@ export const despesasPorSecretariaTop10Data = [
   { label: "Fundo Municipal de Saúde", value: 390021100 },
   { label: "Secretaria da Fazenda", value: 99386450 },
   { label: "Secretaria de Serviços Públicos", value: 73133240 },
-  { name: "Secretaria de Segurança Pública Municipal", value: 27474410 },
-  { name: "Fundo Municipal de Assistência Social", value: 26701080 },
-  { name: "Secretaria de Obras", value: 25190030 },
-  { name: "Secretaria de Administração", value: 24036030 },
-  { name: "Secretaria de Mobilidade Urbana", value: 24030710 },
-  { name: "Secretaria de Saúde (Admin. Direta)", value: 11613220 },
-  { name: "Secretaria de Esportes", value: 11508090 },
-  { name: "Fundo de Iluminação Pública", value: 10721320 },
-  { name: "Secretaria de Cultura", value: 9274740 },
-  { name: "Fundo de Assistência ao Esporte Amador", value: 9215490 },
-  { name: "Procuradoria Geral", value: 9050780 },
-  { name: "Desenvolvimento e Inclusão Social", value: 8989880 },
-  { name: "Fundo Municipal de Transporte", value: 7759680 },
-  { name: "Sec. Governo e Relações Institucionais", value: 6425940 },
-  { name: "Secretaria de Gabinete", value: 6077560 },
-  { name: "Meio Ambiente", value: 5207080 },
+  { label: "Secretaria de Segurança Pública Municipal", value: 27474410 },
+  { label: "Fundo Municipal de Assistência Social", value: 26701080 },
+  { label: "Secretaria de Obras", value: 25190030 },
+  { label: "Secretaria de Administração", value: 24036030 },
+  { label: "Secretaria de Mobilidade Urbana", value: 24030710 },
+  { label: "Secretaria de Saúde (Admin. Direta)", value: 11613220 },
+  { label: "Secretaria de Esportes", value: 11508090 },
+  { label: "Fundo de Iluminação Pública", value: 10721320 },
+  { label: "Secretaria de Cultura", value: 9274740 },
+  { label: "Fundo de Assistência ao Esporte Amador", value: 9215490 },
+  { label: "Procuradoria Geral", value: 9050780 },
+  { label: "Desenvolvimento e Inclusão Social", value: 8989880 },
+  { label: "Fundo Municipal de Transporte", value: 7759680 },
+  { label: "Sec. Governo e Relações Institucionais", value: 6425940 },
+  { label: "Secretaria de Gabinete", value: 6077560 },
+  { label: "Meio Ambiente", value: 5207080 },
 ];
 
 // === Execução por Área — Termômetros ===

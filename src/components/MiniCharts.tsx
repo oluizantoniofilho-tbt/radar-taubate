@@ -12,7 +12,7 @@ import {
     composicaoData, 
     PIE_CHART_COLORS,
     ISecretaria
-} from "@/lib/data/charts-data";
+} from "../lib/data/charts-data";
 
 export default function MiniCharts() {
   
