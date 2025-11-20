@@ -4,7 +4,7 @@ import { TopGastosMunicipaisChart } from "@/components/charts/TopGastosMunicipai
 
 export default function GastosMunicipaisGrid() {
   return (
-    <section className="py-16 px-4 bg-white dark:bg-gray-900">
+    <section className="py-16 px-4 bg-gray-100 dark:bg-gray-900/50">
       <div className="max-w-7xl mx-auto">
         
         <div className="text-center mb-12">

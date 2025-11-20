@@ -41,7 +41,7 @@ export function TopGastosMunicipaisChart() {
         </div>
 
         {/* Card Externo */}
-        <div className="bg-white dark:bg-slate-900/70 backdrop-blur-sm border border-slate-300/40 dark:border-slate-700/40 shadow-lg rounded-2xl p-6">
+        <div className="bg-white dark:bg-slate-900/70 backdrop-blur-sm border border-slate-300/40 dark:border-slate-700/40 shadow-lg rounded-xl p-6">
 
           {/* Card Interno */}
           <div className="bg-white dark:bg-slate-900 rounded-xl p-4 shadow-md">
