@@ -7,6 +7,7 @@ import dynamic from 'next/dynamic';
 import { Hero } from '@/components/home/Hero';
 import { ManifestoSection } from "@/components/home/ManifestoSection";
 import { CamaraHeroCTA } from "@/components/home/CamaraHeroCTA";
+import GastosMunicipaisGrid from "@/components/home/GastosMunicipaisGrid";
 
 // Mantidos como dynamic
 const MacroDashboard = dynamic(() => import('@/components/home/MacroDashboard'), { ssr: false });
@@ -21,6 +22,7 @@ export default function Home() {
       <MacroDashboard />
       <FiscalOverview />
       <SecretariasGrid />
+      <GastosMunicipaisGrid />  
       <CamaraHeroCTA />
     </main>
   );
