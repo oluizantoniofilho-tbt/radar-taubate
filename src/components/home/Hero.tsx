@@ -5,15 +5,7 @@ import Link from "next/link";
 import { HeroBackground } from "./HeroBackground";
 import { ArrowRight } from "lucide-react";
 
-interface HeroProps {
-  title: string;
-  subtitle: string;
-  supportingLine: string;
-  ctaLabel: string;
-  ctaLink: string;
-}
-
-export function Hero({ title, subtitle, supportingLine, ctaLabel, ctaLink }: HeroProps) {
+export function Hero() {
   return (
     <section className="relative w-full h-[85vh] min-h-[600px] md:h-screen md:min-h-[720px] flex items-center text-white overflow-hidden">
       <HeroBackground />
@@ -40,7 +32,7 @@ export function Hero({ title, subtitle, supportingLine, ctaLabel, ctaLink }: Her
             max-w-full md:max-w-4xl lg:max-w-5xl
           "
         >
-          {title}
+          O Primeiro Observatório Social Independente do Vale do Paraíba
         </motion.h1>
 
         <motion.p
@@ -49,7 +41,7 @@ export function Hero({ title, subtitle, supportingLine, ctaLabel, ctaLink }: Her
           transition={{ delay: 0.4, duration: 0.9 }}
           className="max-w-2xl mt-6 text-white/90 text-base md:text-lg lg:text-xl"
         >
-          {subtitle}
+          Criado em Taubaté para inspirar uma nova cultura de transparência no Vale.
         </motion.p>
 
         <motion.p
@@ -58,7 +50,7 @@ export function Hero({ title, subtitle, supportingLine, ctaLabel, ctaLink }: Her
           transition={{ delay: 0.6, duration: 0.9 }}
           className="hidden md:block max-w-2xl mt-4 text-white/80 text-base lg:text-lg"
         >
-          {supportingLine}
+          Transparência e educação pública para fortalecer o cidadão.
         </motion.p>
 
         <motion.div
@@ -67,16 +59,18 @@ export function Hero({ title, subtitle, supportingLine, ctaLabel, ctaLink }: Her
           transition={{ delay: 0.8, duration: 0.9 }}
           className="mt-10 md:mt-16"
         >
-          <Link href={ctaLink}>
-            <span className="
-              inline-flex items-center justify-center
-              px-8 py-4 text-lg font-bold text-white
-              bg-blue-600 hover:bg-blue-700
-              rounded-full shadow-lg
-              hover:scale-105 active:scale-100
-              ring-2 ring-blue-500/50 transition-all
-            ">
-              {ctaLabel}
+          <Link href="/indicadores">
+            <span
+              className="
+                inline-flex items-center justify-center
+                px-8 py-4 text-lg font-bold text-white
+                bg-blue-600 hover:bg-blue-700
+                rounded-full shadow-lg
+                hover:scale-105 active:scale-100
+                ring-2 ring-blue-500/50 transition-all
+              "
+            >
+              Explorar Dados
               <ArrowRight className="w-5 h-5 ml-2" />
             </span>
           </Link>
