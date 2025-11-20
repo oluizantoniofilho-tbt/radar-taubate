@@ -13,8 +13,7 @@ import {
   CartesianGrid
 } from "recharts";
 
-// Top 10 secretarias — valores fictícios/placeholder
-// (pode substituir depois pelos valores da LOA/Execução real)
+// Dados do gráfico (temporários)
 const despesasSecretariaData = [
   { label: "Saúde", value: 420000000 },
   { label: "Educação", value: 380000000 },
@@ -30,80 +29,65 @@ const despesasSecretariaData = [
 
 export function DespesasPorSecretariaChart() {
   return (
-    <section className="py-16 px-4 bg-white dark:bg-gray-900/50">
-      <div className="max-w-7xl mx-auto">
+    <div
+      className="
+        bg-white dark:bg-slate-900/70 
+        backdrop-blur-sm 
+        border border-slate-300/40 dark:border-slate-700/40 
+        shadow-lg rounded-xl 
+        p-6
+      "
+    >
+      <ResponsiveContainer width="100%" height={460}>
+        <BarChart
+          data={despesasSecretariaData}
+          layout="vertical"
+          margin={{ left: 80, right: 40, top: 20, bottom: 20 }}
+        >
+          <CartesianGrid strokeDasharray="3 3" opacity={0.15} />
 
-        {/* TÍTULO */}
-        <div className="text-center mb-10">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
-            Despesas por Secretaria — Top 10
-          </h2>
-          <p className="mt-2 text-lg text-gray-600 dark:text-gray-400">
-            Visualize as secretarias com maior volume de gastos na administração municipal.
-          </p>
-        </div>
+          <YAxis
+            dataKey="label"
+            type="category"
+            width={180}
+            tick={{ fill: "currentColor", fontSize: 12 }}
+          />
 
-        {/* CARD */}
-        <div className="bg-white dark:bg-slate-900/70 backdrop-blur-sm border border-slate-300/40 dark:border-slate-700/40 shadow-lg rounded-xl p-6">
+          <XAxis
+            type="number"
+            tickFormatter={(v) => `R$ ${(v / 1_000_000).toFixed(1)} mi`}
+            tick={{ fill: "currentColor", fontSize: 12 }}
+          />
 
-          <ResponsiveContainer width="100%" height={460}>
-            <BarChart
-              data={despesasSecretariaData}
-              layout="vertical"
-              margin={{ left: 80, right: 40, top: 20, bottom: 20 }}
-            >
-              <CartesianGrid strokeDasharray="3 3" opacity={0.15} />
+          <Tooltip
+            formatter={(v: any) =>
+              v.toLocaleString("pt-BR", {
+                style: "currency",
+                currency: "BRL"
+              })
+            }
+            contentStyle={{
+              backgroundColor: "rgba(15,23,42,0.9)",
+              borderRadius: 10,
+              border: "none",
+              color: "white"
+            }}
+          />
 
-              {/* Categorias */}
-              <YAxis
-                dataKey="label"
-                type="category"
-                width={180}
-                tick={{ fill: "currentColor", fontSize: 12 }}
-              />
-
-              {/* Valores */}
-              <XAxis
-                type="number"
-                tickFormatter={(v) => `R$ ${(v / 1_000_000).toFixed(1)} mi`}
-                tick={{ fill: "currentColor", fontSize: 12 }}
-              />
-
-              {/* Tooltip formatado */}
-              <Tooltip
-                formatter={(v: any) =>
-                  v.toLocaleString("pt-BR", {
-                    style: "currency",
-                    currency: "BRL",
-                  })
-                }
-                contentStyle={{
-                  backgroundColor: "rgba(15,23,42,0.9)",
-                  borderRadius: 10,
-                  border: "none",
-                  color: "white",
-                }}
-              />
-
-              {/* Barras */}
-              <Bar dataKey="value" fill="#3b82f6" radius={[6, 6, 6, 6]}>
-                <LabelList
-                  dataKey="value"
-                  position="right"
-                  formatter={(v: any) =>
-                    `R$ ${(v / 1_000_000).toFixed(1)} mi`
-                  }
-                  style={{
-                    fill: "currentColor",
-                    fontSize: 12,
-                    fontWeight: 600,
-                  }}
-                />
-              </Bar>
-            </BarChart>
-          </ResponsiveContainer>
-        </div>
-      </div>
-    </section>
+          <Bar dataKey="value" fill="#3b82f6" radius={[6, 6, 6, 6]}>
+            <LabelList
+              dataKey="value"
+              position="right"
+              formatter={(v: any) => `R$ ${(v / 1_000_000).toFixed(1)} mi`}
+              style={{
+                fill: "currentColor",
+                fontSize: 12,
+                fontWeight: 600
+              }}
+            />
+          </Bar>
+        </BarChart>
+      </ResponsiveContainer>
+    </div>
   );
 }
