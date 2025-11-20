@@ -10,84 +10,100 @@ import {
   YAxis,
   Tooltip,
   LabelList,
+  CartesianGrid
 } from "recharts";
-import { AnalyticCard } from "@/components/ui/AnalyticCard";
 
-// Top 10 despesas por secretaria (valores de exemplo / ajuste conforme seus dados reais)
-const despesasPorSecretariaData = [
-  { label: "Secretaria de Educação", value: 430_055_300 },
-  { label: "Fundo Municipal de Saúde", value: 390_021_100 },
-  { label: "Secretaria da Fazenda", value: 99_386_450 },
-  { label: "Secretaria de Serviços Públicos", value: 73_133_240 },
-  { label: "Secretaria de Obras", value: 68_554_900 },
-  { label: "Administração", value: 51_774_320 },
-  { label: "Desenvolvimento Social", value: 44_210_800 },
-  { label: "Gabinete do Prefeito", value: 32_998_500 },
-  { label: "Segurança", value: 27_441_900 },
-  { label: "Planejamento", value: 21_389_700 },
+// Top 10 secretarias — valores fictícios/placeholder
+// (pode substituir depois pelos valores da LOA/Execução real)
+const despesasSecretariaData = [
+  { label: "Saúde", value: 420000000 },
+  { label: "Educação", value: 380000000 },
+  { label: "Obras", value: 120000000 },
+  { label: "Administração", value: 98000000 },
+  { label: "Segurança", value: 42000000 },
+  { label: "Assistência Social", value: 28000000 },
+  { label: "Esportes", value: 21000000 },
+  { label: "Cultura", value: 18000000 },
+  { label: "Mobilidade Urbana", value: 15000000 },
+  { label: "Meio Ambiente", value: 12000000 }
 ];
-
-// Formata tooltip em R$
-const formatCurrency = (value: number) =>
-  value.toLocaleString("pt-BR", {
-    style: "currency",
-    currency: "BRL",
-    maximumFractionDigits: 0,
-  });
 
 export function DespesasPorSecretariaChart() {
   return (
-    <AnalyticCard
-      title="Despesas por Secretaria — Top 10"
-      subtitle="Visualize as secretarias com maior volume de gastos no período analisado."
-      delay={0.2}
-    >
-      <div className="w-full h-[420px]">
-        <ResponsiveContainer width="100%" height="100%">
-          <BarChart
-            data={despesasPorSecretariaData}
-            layout="vertical"
-            margin={{ top: 16, right: 16, left: 0, bottom: 16 }}
-          >
-            <XAxis
-              type="number"
-              tickFormatter={(value) =>
-                `R$ ${(value as number / 1_000_000).toFixed(0)} mi`
-              }
-              tick={{ fontSize: 12, fill: "currentColor" }}
-            />
+    <section className="py-16 px-4 bg-white dark:bg-gray-900/50">
+      <div className="max-w-7xl mx-auto">
 
-            <YAxis
-              type="category"
-              dataKey="label"
-              width={200}
-              tick={{ fontSize: 11, fill: "currentColor" }}
-            />
+        {/* TÍTULO */}
+        <div className="text-center mb-10">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+            Despesas por Secretaria — Top 10
+          </h2>
+          <p className="mt-2 text-lg text-gray-600 dark:text-gray-400">
+            Visualize as secretarias com maior volume de gastos na administração municipal.
+          </p>
+        </div>
 
-            <Tooltip
-              formatter={(value) => formatCurrency(value as number)}
-              labelFormatter={(label) => label}
-              contentStyle={{
-                backgroundColor: "rgba(15,23,42,0.95)",
-                borderRadius: 10,
-                border: "none",
-                color: "white",
-              }}
-            />
+        {/* CARD */}
+        <div className="bg-white dark:bg-slate-900/70 backdrop-blur-sm border border-slate-300/40 dark:border-slate-700/40 shadow-lg rounded-xl p-6">
 
-            <Bar dataKey="value" radius={[4, 4, 4, 4]} fill="#0ea5e9">
-              <LabelList
-                dataKey="value"
-                position="right"
-                formatter={(value: any) =>
-                  `R$ ${(Number(value) / 1_000_000).toFixed(0)} mi`
-                }
-                style={{ fontSize: 11, fill: "currentColor" }}
+          <ResponsiveContainer width="100%" height={460}>
+            <BarChart
+              data={despesasSecretariaData}
+              layout="vertical"
+              margin={{ left: 80, right: 40, top: 20, bottom: 20 }}
+            >
+              <CartesianGrid strokeDasharray="3 3" opacity={0.15} />
+
+              {/* Categorias */}
+              <YAxis
+                dataKey="label"
+                type="category"
+                width={180}
+                tick={{ fill: "currentColor", fontSize: 12 }}
               />
-            </Bar>
-          </BarChart>
-        </ResponsiveContainer>
+
+              {/* Valores */}
+              <XAxis
+                type="number"
+                tickFormatter={(v) => `R$ ${(v / 1_000_000).toFixed(1)} mi`}
+                tick={{ fill: "currentColor", fontSize: 12 }}
+              />
+
+              {/* Tooltip formatado */}
+              <Tooltip
+                formatter={(v: any) =>
+                  v.toLocaleString("pt-BR", {
+                    style: "currency",
+                    currency: "BRL",
+                  })
+                }
+                contentStyle={{
+                  backgroundColor: "rgba(15,23,42,0.9)",
+                  borderRadius: 10,
+                  border: "none",
+                  color: "white",
+                }}
+              />
+
+              {/* Barras */}
+              <Bar dataKey="value" fill="#3b82f6" radius={[6, 6, 6, 6]}>
+                <LabelList
+                  dataKey="value"
+                  position="right"
+                  formatter={(v: any) =>
+                    `R$ ${(v / 1_000_000).toFixed(1)} mi`
+                  }
+                  style={{
+                    fill: "currentColor",
+                    fontSize: 12,
+                    fontWeight: 600,
+                  }}
+                />
+              </Bar>
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
       </div>
-    </AnalyticCard>
+    </section>
   );
 }
