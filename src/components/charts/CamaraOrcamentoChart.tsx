@@ -2,6 +2,7 @@
 
 import React from 'react'; // Import explícito para corrigir o erro UMD global
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, LabelList, Cell } from "recharts";
+import { camaraOrcamentoData } from '../../lib/data/charts-data';
 
 const data = [
   { label: "Orçado", value: 45600000 },

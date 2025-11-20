@@ -2,7 +2,7 @@
 
 import React from 'react'; // Import explícito para garantir compatibilidade
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, LabelList, Cell } from "recharts";
-
+import { camaraDespesasTop10Data } from '../../lib/data/charts-data';
 const data = [
   { name: "Vencimentos Fixos", value: 20909693.0 },
   { name: "Obrigações Patronais", value: 2957414.88 },

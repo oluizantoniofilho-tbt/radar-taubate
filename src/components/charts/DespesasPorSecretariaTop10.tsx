@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { useState } from "react";
 import {
   ResponsiveContainer,
@@ -10,7 +11,8 @@ import {
   Tooltip,
   Cell,
 } from "recharts";
-import InsightsDrawer from "@/components/home/InsightsDrawer";
+import InsightsDrawer from "../../components/home/InsightsDrawer";
+import { despesasPorSecretariaTop10Data } from "../../lib/data/charts-data";
 
 // Raw data as provided
 const rawData = [

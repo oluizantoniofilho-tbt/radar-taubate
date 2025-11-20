@@ -1,4 +1,7 @@
-const areas = [
+
+import { execucaoTermometrosData } from "../../lib/data/charts-data";
+import React from "react";
+const areas = execucaoTermometrosData; [
   { area: "Saúde", pct: 74 },
   { area: "Educação", pct: 82 },
   { area: "Obras", pct: 68 },
@@ -15,17 +18,17 @@ export function ExecucaoTermometros() {
 
       <div className="space-y-4">
         {areas.map((a) => (
-          <div key={a.area}>
+          <div key={a.label}>
             <div className="flex justify-between text-sm mb-1 text-slate-700 dark:text-slate-300">
-              <span>{a.area}</span>
-              <span>{a.pct}%</span>
+              <span>{a.label}</span>
+              <span>{a.value}%</span>
             </div>
 
             <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-3">
               <div
                 className="h-3 rounded-full transition-all"
                 style={{
-                  width: `${a.pct}%`,
+                  width: `${a.value}%`,
                   background: "linear-gradient(90deg, #0077CC, #00C8E8)",
                 }}
               ></div>

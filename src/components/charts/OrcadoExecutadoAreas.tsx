@@ -1,6 +1,9 @@
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, Legend } from "recharts";
+import { orcadoExecutadoAreasData } from "../../lib/data/charts-data";
+import React from "react";
 
-const data = [
+
+const data = orcadoExecutadoAreasData; [ 
   { area: "Saúde", orcado: 420000000, executado: 310000000 },
   { area: "Educação", orcado: 380000000, executado: 290000000 },
   { area: "Obras", orcado: 120000000, executado: 84000000 },
