@@ -25,35 +25,43 @@ const topGastosMunicipaisData = [
   { label: "ABC Transporte Coletivo", value: 17_477_400 },
 ];
 
-export default function TopGastosMunicipaisChart() {
+function TopGastosMunicipaisChart() {
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 480;
+
   return (
-    <div className="w-full h-[420px]">
-      <ResponsiveContainer width="100%" height="100%">
+    <div className="w-full overflow-x-hidden">
+      <ResponsiveContainer width="100%" height={400}>
         <BarChart
           data={topGastosMunicipaisData}
           layout="vertical"
-          margin={{ left: 80, right: 40, top: 20, bottom: 20 }}
+          margin={{
+            top: 20,
+            left: isMobile ? 10 : 40,
+            right: isMobile ? 10 : 40,
+            bottom: 20,
+          }}
         >
           <CartesianGrid strokeDasharray="3 3" opacity={0.15} />
 
           <YAxis
             dataKey="label"
             type="category"
-            width={210}
-            tick={{ fill: "currentColor", fontSize: 12 }}
+            width={isMobile ? 80 : 200}
+            tick={{
+              fontSize: isMobile ? 10 : 12,
+              fill: "currentColor",
+            }}
           />
 
           <XAxis
             type="number"
-            tickFormatter={(v: number) =>
-              `R${(v / 1_000_000).toFixed(1).replace(".", ",")} mi`
-            }
-            tick={{ fill: "currentColor", fontSize: 12 }}
+            tickFormatter={(v) => `R$ ${(v / 1_000_000).toFixed(1)} mi`}
+            tick={{ fill: "currentColor", fontSize: isMobile ? 10 : 12 }}
           />
 
           <Tooltip
-            formatter={(value: any) =>
-              (value as number).toLocaleString("pt-BR", {
+            formatter={(v: number) =>
+              v.toLocaleString("pt-BR", {
                 style: "currency",
                 currency: "BRL",
               })
@@ -70,12 +78,10 @@ export default function TopGastosMunicipaisChart() {
             <LabelList
               dataKey="value"
               position="right"
-              formatter={(v: any) =>
-                `R${(v / 1_000_000).toFixed(1).replace(".", ",")} mi`
-              }
+              formatter={(v: number) => `R$ ${(v / 1_000_000).toFixed(1)} mi`}
               style={{
                 fill: "currentColor",
-                fontSize: 12,
+                fontSize: isMobile ? 10 : 12,
                 fontWeight: 600,
               }}
             />
@@ -85,3 +91,6 @@ export default function TopGastosMunicipaisChart() {
     </div>
   );
 }
+
+export { TopGastosMunicipaisChart };
+export default TopGastosMunicipaisChart;

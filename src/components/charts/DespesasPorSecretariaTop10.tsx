@@ -10,57 +10,57 @@ import {
   Tooltip,
   LabelList,
   CartesianGrid,
-  Legend,
 } from "recharts";
 
-// Dados finais (Top 10)
 const despesasSecretariaData = [
-  { label: "Saúde", value: 420000000 },
-  { label: "Educação", value: 380000000 },
-  { label: "Obras", value: 120000000 },
-  { label: "Administração", value: 98000000 },
-  { label: "Segurança", value: 42000000 },
-  { label: "Assistência Social", value: 28000000 },
-  { label: "Esportes", value: 21000000 },
-  { label: "Cultura", value: 18000000 },
-  { label: "Mobilidade Urbana", value: 15000000 },
-  { label: "Meio Ambiente", value: 12000000 },
+  { label: "Saúde", value: 420_000_000 },
+  { label: "Educação", value: 380_000_000 },
+  { label: "Obras", value: 120_000_000 },
+  { label: "Administração", value: 98_000_000 },
+  { label: "Segurança", value: 42_000_000 },
+  { label: "Assistência Social", value: 28_000_000 },
+  { label: "Esportes", value: 21_000_000 },
+  { label: "Cultura", value: 18_000_000 },
+  { label: "Mobilidade Urbana", value: 15_000_000 },
+  { label: "Meio Ambiente", value: 12_000_000 },
 ];
 
-function DespesasPorSecretariaChart() {
-  const isMobile =
-    typeof window !== "undefined" && window.innerWidth < 480;
+function DespesasPorSecretariaTop10() {
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 480;
 
   return (
-    <div className="w-full overflow-hidden">
-      <ResponsiveContainer width="100%" height={460}>
+    <div className="w-full overflow-x-hidden">
+      <ResponsiveContainer width="100%" height={400}>
         <BarChart
           data={despesasSecretariaData}
           layout="vertical"
-          margin={{ left: isMobile ? 50 : 80, right: 20, top: 20, bottom: 20 }}
+          margin={{
+            top: 20,
+            left: isMobile ? 10 : 40,
+            right: isMobile ? 10 : 40,
+            bottom: 20,
+          }}
         >
           <CartesianGrid strokeDasharray="3 3" opacity={0.15} />
 
-          {/* Eixo Y (categorias) */}
           <YAxis
             dataKey="label"
             type="category"
-            width={isMobile ? 100 : 180}
-            tick={{ fontSize: isMobile ? 10 : 12 }}
+            width={isMobile ? 80 : 160}
+            tick={{
+              fontSize: isMobile ? 10 : 12,
+              fill: "currentColor",
+            }}
           />
 
-          {/* Eixo X (valores) */}
           <XAxis
             type="number"
-            tickFormatter={(v) =>
-              `R$ ${(v / 1_000_000).toFixed(1)} mi`
-            }
-            tick={{ fontSize: isMobile ? 10 : 12 }}
+            tickFormatter={(v) => `R$ ${(v / 1_000_000).toFixed(1)} mi`}
+            tick={{ fill: "currentColor", fontSize: isMobile ? 10 : 12 }}
           />
 
-          {/* Tooltip BR */}
           <Tooltip
-            formatter={(v) =>
+            formatter={(v: number) =>
               v.toLocaleString("pt-BR", {
                 style: "currency",
                 currency: "BRL",
@@ -74,17 +74,11 @@ function DespesasPorSecretariaChart() {
             }}
           />
 
-          {/* Legend */}
-          <Legend
-            wrapperStyle={{ fontSize: 12 }}
-          />
-
-          {/* BARRA */}
           <Bar dataKey="value" fill="#3b82f6" radius={[6, 6, 6, 6]}>
             <LabelList
               dataKey="value"
               position="right"
-              formatter={(v:number) => `R$ ${(v / 1_000_000).toFixed(1)} mi`}
+              formatter={(v: number) => `R$ ${(v / 1_000_000).toFixed(1)} mi`}
               style={{
                 fill: "currentColor",
                 fontSize: isMobile ? 10 : 12,
@@ -98,6 +92,5 @@ function DespesasPorSecretariaChart() {
   );
 }
 
-// Suporte a imports antigos e dinâmicos
-export { DespesasPorSecretariaChart };
-export default DespesasPorSecretariaChart;
+export { DespesasPorSecretariaTop10 };
+export default DespesasPorSecretariaTop10;
