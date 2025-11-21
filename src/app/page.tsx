@@ -1,12 +1,13 @@
 'use client';
 
+import NoticiasOficiaisSection from "@/components/home/NoticiasOficiaisSection";
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
-
 import { Hero } from "@/components/home/Hero";
 import { ManifestoSection } from "@/components/home/ManifestoSection";
 import { CamaraHeroCTA } from "@/components/home/CamaraHeroCTA";
 import InsightsDrawer from "@/components/home/InsightsDrawer";
+
 
 // componentes dinâmicos
 const MacroDashboard = dynamic(
@@ -37,6 +38,9 @@ export default function Home() {
     <main>
       {/* Dobra 1: Hero */}
       <Hero />
+
+      {/* NOVA DOBRA: Notícias Oficiais */}
+      <NoticiasOficiaisSection />
 
       {/* Dobra 2: Manifesto */}
       <ManifestoSection />
