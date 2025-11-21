@@ -1,6 +1,6 @@
 'use client';
 
-import { TopGastosMunicipaisChart } from "@/components/charts/TopGastosMunicipaisChart";
+import  TopGastosMunicipaisChart  from "@/components/charts/TopGastosMunicipaisChart";
 
 export default function GastosMunicipaisGrid() {
   return (

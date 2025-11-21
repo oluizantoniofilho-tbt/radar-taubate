@@ -1,6 +1,6 @@
 'use client';
 
-import { DespesasPorSecretariaTop10 } from "@/components/charts/DespesasPorSecretariaTop10";
+import  DespesasPorSecretariaTop10  from "@/components/charts/DespesasPorSecretariaTop10";
 
 export default function SecretariasGrid() {
   return (
