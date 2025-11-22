@@ -1,133 +1,140 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
-interface NoticiaOficial {
+interface NoticiaItem {
   title: string;
   link: string;
-  description: string;
   pubDate: string;
-  image: string | null;
+  description: string;
+  image?: string | null;
 }
 
 export default function NoticiasOficiaisSection() {
-  const [noticias, setNoticias] = useState<NoticiaOficial[]>([]);
+  const [noticias, setNoticias] = useState<NoticiaItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    const fetchNoticias = async () => {
+    async function carregar() {
       try {
         const res = await fetch("/api/noticias-oficiais");
-        if (!res.ok) {
-          throw new Error("Erro ao buscar notícias");
-        }
+        const data = await res.json();
 
-        const data = (await res.json()) as {
-          items: NoticiaOficial[];
-          error?: string;
-        };
-
-        if (data.error) {
-          throw new Error(data.error);
-        }
-
-        setNoticias(data.items.slice(0, 4)); // exibe só as 4 últimas
-      } catch (err) {
-        console.error(err);
-        setError(
-          "Não foi possível carregar as notícias da prefeitura agora. Tente novamente mais tarde."
-        );
+        setNoticias(data.items ?? []);
+      } catch (e) {
+        console.error("Erro ao carregar notícias:", e);
+        setError("Não foi possível carregar as notícias agora. Tente novamente mais tarde.");
       } finally {
         setLoading(false);
       }
-    };
+    }
 
-    fetchNoticias();
+    carregar();
   }, []);
 
+  function formatDate(dateStr: string) {
+    if (!dateStr) return "";
+    const d = new Date(dateStr);
+    if (Number.isNaN(d.getTime())) return "";
+    return d.toLocaleDateString("pt-BR", {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+    });
+  }
+
+  function resumirTexto(text: string, max = 220) {
+    if (!text) return "";
+    const clean = text.replace(/\s+/g, " ").trim();
+    if (clean.length <= max) return clean;
+    return clean.slice(0, max).trimEnd() + "…";
+  }
+
   return (
-    <section className="bg-slate-950/80 border-y border-slate-800/60">
-      <div className="max-w-7xl mx-auto px-4 py-12 md:py-16 grid gap-8 md:grid-cols-[minmax(0,1.2fr)_minmax(0,2fr)] items-start">
-        {/* Coluna de texto / título */}
-        <div>
-          <h2 className="text-sm font-semibold tracking-widest text-sky-400 uppercase mb-2">
-            Editorial Aletheia · Radar Taubaté
-          </h2>
-          <h3 className="text-3xl md:text-[32px] font-bold text-slate-50 leading-tight">
+    <section className="py-16 px-4 bg-slate-950">
+      <div className="max-w-7xl mx-auto">
+        {/* Cabeçalho */}
+        <div className="flex flex-col gap-3 mb-10">
+          <p className="text-xs font-semibold tracking-[0.25em] text-sky-400 uppercase">
+            Editorial Aletheia • Radar Taubaté
+          </p>
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-50">
             Últimas Notícias Oficiais de Taubaté
-          </h3>
-          <p className="mt-4 text-slate-300 text-base md:text-lg max-w-lg">
-            Atualizações diretamente das fontes públicas oficiais. Acompanhe os
-            principais movimentos da cidade em tempo quase real.
+          </h2>
+          <p className="text-slate-300 max-w-2xl text-sm md:text-base">
+            Atualizações diretamente das fontes públicas oficiais. Acompanhe os principais
+            movimentos da cidade em tempo quase real.
           </p>
         </div>
 
-        {/* Coluna de cards */}
-        <div className="space-y-4">
-          {loading && (
-            <p className="text-slate-400 text-sm">
-              Carregando notícias oficiais...
-            </p>
-          )}
+        {/* Estados de carregamento / erro */}
+        {loading && (
+          <p className="text-slate-400 text-sm">
+            Carregando notícias oficiais…
+          </p>
+        )}
 
-          {!loading && error && (
-            <p className="text-slate-400 text-sm max-w-md">{error}</p>
-          )}
+        {!loading && error && (
+          <p className="text-slate-400 text-sm">
+            {error}
+          </p>
+        )}
 
-          {!loading && !error && noticias.length === 0 && (
-            <p className="text-slate-400 text-sm">
-              Nenhuma notícia encontrada no momento. Tente novamente mais tarde.
-            </p>
-          )}
+        {!loading && !error && noticias.length === 0 && (
+          <p className="text-slate-400 text-sm">
+            Nenhuma notícia encontrada no momento. Tente novamente mais tarde.
+          </p>
+        )}
 
-          {!loading &&
-            !error &&
-            noticias.map((noticia) => (
+        {/* Lista de notícias */}
+        {!loading && !error && noticias.length > 0 && (
+          <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-slate-700/70 scrollbar-track-slate-900/40">
+            {noticias.map((noticia) => (
               <Link
                 key={noticia.link}
                 href={noticia.link}
                 target="_blank"
-                className="group flex gap-4 rounded-xl border border-slate-800/80 bg-slate-900/70 hover:bg-slate-900 transition-colors overflow-hidden"
+                rel="noopener noreferrer"
+                className="min-w-[260px] max-w-xs bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-md hover:shadow-lg hover:border-sky-500/70 transition-all duration-200 flex flex-col"
               >
-                {/* Thumb (se vier imagem do feed, já encaixa aqui) */}
-                <div className="w-24 md:w-28 bg-slate-800/70 flex items-center justify-center text-xs text-slate-400">
-                  {noticia.image ? (
-                    // se quiser, depois trocamos para <Image /> do Next
-                    <span className="px-2 text-center">Imagem</span>
-                  ) : (
-                    <span className="px-2 text-center">
-                      Prefeitura de Taubaté
-                    </span>
-                  )}
-                </div>
+                {/* Thumb */}
+                {noticia.image && (
+                  <div className="relative h-32 w-full">
+                    <Image
+                      src={noticia.image}
+                      alt={noticia.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                )}
 
-                <div className="flex-1 py-3 pr-4">
-                  <h4 className="text-sm md:text-base font-semibold text-slate-50 group-hover:text-sky-300 line-clamp-2">
+                {/* Conteúdo */}
+                <div className="p-4 flex flex-col gap-2">
+                  <span className="text-[11px] uppercase tracking-wide text-sky-400 font-semibold">
+                    Prefeitura de Taubaté • {formatDate(noticia.pubDate)}
+                  </span>
+
+                  <h3 className="text-sm font-semibold text-slate-50 leading-snug">
                     {noticia.title}
-                  </h4>
-                  {noticia.description && (
-                   <p className="mt-1 text-xs md:text-sm text-slate-400 line-clamp-2">
-                   {noticia.description
-                     .replace(/<\/?[^>]+(>|$)/g, "")
-                     .trim()}
-                 </p>
-               )}
-               {noticia.pubDate && (
-                 <p className="mt-2 text-[11px] text-slate-500">
-                   {new Date(noticia.pubDate).toLocaleDateString("pt-BR", {
-                     day: "2-digit",
-                     month: "short",
-                     year: "numeric",
-                   })}
-                 </p>
-               )}
-             </div>
-           </Link>
-         ))}
-     </div>
-   </div>
- </section>
-);
-} 
+                  </h3>
+
+                  <p className="text-xs text-slate-300 leading-relaxed">
+                    {resumirTexto(noticia.description)}
+                  </p>
+
+                  <span className="mt-2 text-xs font-semibold text-sky-400">
+                    Ler matéria completa →
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
