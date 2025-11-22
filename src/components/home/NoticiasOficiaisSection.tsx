@@ -46,7 +46,8 @@ export default function NoticiasOficiaisSection() {
     });
   }
 
-  function resumirTexto(text: string, max = 220) {
+  // 🔹 Resumo mais curto (cards menores, sem textão)
+  function resumirTexto(text: string, max = 140) {
     if (!text) return "";
     const clean = text.replace(/\s+/g, " ").trim();
     if (clean.length <= max) return clean;
@@ -89,20 +90,20 @@ export default function NoticiasOficiaisSection() {
           </p>
         )}
 
-        {/* Lista de notícias */}
+        {/* Lista de notícias – apenas as 4 primeiras, cards compactos */}
         {!loading && !error && noticias.length > 0 && (
           <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-slate-700/70 scrollbar-track-slate-900/40">
-            {noticias.map((noticia) => (
+            {noticias.slice(0, 4).map((noticia) => (
               <Link
                 key={noticia.link}
                 href={noticia.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="min-w-[260px] max-w-xs bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-md hover:shadow-lg hover:border-sky-500/70 transition-all duration-200 flex flex-col"
+                className="min-w-[230px] max-w-[260px] bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-md hover:shadow-lg hover:border-sky-500/70 transition-all duration-200 flex flex-col"
               >
-                {/* Thumb */}
+                {/* Thumb (se tiver) */}
                 {noticia.image && (
-                  <div className="relative h-32 w-full">
+                  <div className="relative h-28 w-full">
                     <Image
                       src={noticia.image}
                       alt={noticia.title}
@@ -111,18 +112,17 @@ export default function NoticiasOficiaisSection() {
                     />
                   </div>
                 )}
-
                 {/* Conteúdo */}
                 <div className="p-4 flex flex-col gap-2">
                   <span className="text-[11px] uppercase tracking-wide text-sky-400 font-semibold">
                     Prefeitura de Taubaté • {formatDate(noticia.pubDate)}
                   </span>
 
-                  <h3 className="text-sm font-semibold text-slate-50 leading-snug">
+                  <h3 className="text-sm font-semibold text-slate-50 leading-snug line-clamp-2">
                     {noticia.title}
                   </h3>
 
-                  <p className="text-xs text-slate-300 leading-relaxed">
+                  <p className="text-[11px] text-slate-300 leading-relaxed">
                     {resumirTexto(noticia.description)}
                   </p>
 
