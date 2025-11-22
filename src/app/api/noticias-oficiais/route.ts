@@ -17,29 +17,28 @@ export async function GET() {
     const itemsRaw = parsed?.rss?.channel?.[0]?.item ?? [];
 
     const items = itemsRaw.slice(0, 4).map((item: any) => {
-      // 🔹 1) Extrair imagem corretamente
-      const media = item["media:content"]?.[0]?.$?.url ?? null;
 
-      // 🔹 2) Extrair descrição e limpar o HTML
-      const descRaw = item.description?.[0] ?? "";
-      const descClean = descRaw
-        .replace(/<[^>]+>/g, " ") // remove tags
-        .replace(/&[a-z]+;/gi, " ") // remove entidades tipo &eacute;
-        .replace(/\s+/g, " ") // remove espaços extras
-        .trim();
-
-      return {
-        title: item.title?.[0] ?? "",
-        link: item.link?.[0] ?? "#",
-        pubDate: item.pubDate?.[0] ?? "",
-        description: descClean,
-        image: media,
-      };
-    });
-
-    return NextResponse.json({ items });
-  } catch (e) {
-    console.error("Erro no RSS:", e);
-    return NextResponse.json({ items: [], error: "Erro interno" });
-  }
-}
+      // 🧠 Função para extrair imagem de forma inteligente
+      function extrairImagem(item: any): string | null {
+        try {
+          // 1) media:content
+          const media = item["media:content"];
+          if (media?.[0]?.$?.url) return media[0].$.url;
+      
+          // 2) media:thumbnail
+          const thumb = item["media:thumbnail"];
+          if (thumb?.[0]?.$?.url) return thumb[0].$.url;
+      
+          // 3) <image><url>...</url></image>
+          if (item.image?.[0]?.url?.[0]) return item.image[0].url[0];
+      
+          // 4) <img src="..."> dentro da descrição
+          const desc = item.description?.[0] ?? "";
+          const imgMatch = desc.match(/<img[^>]+src="([^">]+)"/);
+          if (imgMatch?.[1]) return imgMatch[1];
+      
+          return null;
+        } catch (e) {
+          return null;
+        }
+      }
