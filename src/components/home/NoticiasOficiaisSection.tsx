@@ -1,8 +1,17 @@
+
 "use client";
 
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+
+// 🔥 decoder seguro para HTML entities (resolve acentos quebrados)
+function decode(text: string) {
+  if (!text) return "";
+  const textarea = document.createElement("textarea");
+  textarea.innerHTML = text;
+  return textarea.value;
+}
 
 interface NoticiaItem {
   title: string;
@@ -21,7 +30,19 @@ export default function NoticiasOficiaisSection() {
       try {
         const res = await fetch("/api/noticias-oficiais");
         const data = await res.json();
-        setNoticias(data.items?.slice(0, 4) ?? []);
+
+        const arrumadas = (data.items ?? []).slice(0, 4).map((n: NoticiaItem) => ({
+          ...n,
+          title: decode(n.title),
+          description: decode(
+            n.description
+              ?.replace(/<[^>]+>/g, " ")   // remove tags sem quebrar palavras
+              ?.replace(/\s+/g, " ")       // normaliza espaços
+              ?.trim()
+          ),
+        }));
+
+        setNoticias(arrumadas);
       } catch (e) {
         console.error("Erro ao carregar notícias:", e);
       } finally {
@@ -43,10 +64,14 @@ export default function NoticiasOficiaisSection() {
     });
   }
 
+  // resumo elegante sem quebrar palavras
   function resumo(text: string, max = 130) {
     if (!text) return "";
-    const clean = text.replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
-    return clean.length <= max ? clean : clean.slice(0, max).trimEnd() + "…";
+    if (text.length <= max) return text;
+
+    const cortado = text.slice(0, max);
+    const ultimoEspaco = cortado.lastIndexOf(" ");
+    return cortado.slice(0, ultimoEspaco) + "…";
   }
 
   return (
@@ -64,10 +89,9 @@ export default function NoticiasOficiaisSection() {
         <div className="absolute inset-0 bg-gradient-to-b from-slate-950/60 via-slate-900/80 to-slate-950/95" />
       </div>
 
-      {/* CONTEÚDO */}
       <div className="relative z-10 max-w-7xl mx-auto px-4">
 
-        {/* Header Editorial */}
+        {/* Cabeçalho */}
         <div className="mb-10">
           <p className="text-xs font-semibold tracking-[0.25em] text-sky-400 uppercase">
             Editorial Aletheia • Radar Taubaté
@@ -83,12 +107,11 @@ export default function NoticiasOficiaisSection() {
           </p>
         </div>
 
-        {/* Noticias */}
+        {/* Lista */}
         {loading ? (
           <p className="text-slate-400 text-sm">Carregando notícias…</p>
         ) : (
           <div className="flex gap-5 overflow-x-auto pb-3 scrollbar-thin scrollbar-thumb-slate-700/50">
-            
             {noticias.map((n) => (
               <Link
                 href={n.link}
@@ -101,9 +124,9 @@ export default function NoticiasOficiaisSection() {
                   overflow-hidden shadow-xl hover:shadow-sky-500/20
                   hover:border-sky-500/50 transition-all duration-200
                   backdrop-blur-sm
-                "
-              >
 
+"
+              >
                 {/* Thumb */}
                 <div className="relative h-28 w-full bg-slate-800">
                   {n.image ? (
@@ -122,10 +145,10 @@ export default function NoticiasOficiaisSection() {
 
                 {/* Conteúdo */}
                 <div className="p-4 flex flex-col gap-2">
-
                   <span className="text-[11px] uppercase tracking-wide text-sky-400 font-semibold">
                     {formatarData(n.pubDate)}
                   </span>
+
                   <h3 className="text-sm font-semibold text-white leading-snug line-clamp-2">
                     {n.title}
                   </h3>
@@ -137,7 +160,6 @@ export default function NoticiasOficiaisSection() {
                   <span className="mt-2 text-xs font-semibold text-sky-400">
                     Ler mais →
                   </span>
-
                 </div>
               </Link>
             ))}
