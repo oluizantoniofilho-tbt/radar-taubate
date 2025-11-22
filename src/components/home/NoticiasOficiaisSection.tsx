@@ -123,8 +123,14 @@ export default function NoticiasOficiaisSection() {
                   </h3>
 
                   <p className="text-[11px] text-slate-300 leading-relaxed">
-                    {resumirTexto(noticia.description)}
-                  </p>
+                    {resumirTexto(noticia.description
+                                  ?.replace(/<[^>]*>/g, "")      // remove tags HTML
+                                  ?.replace(/\s+/g, " ")         // remove quebras estranhas
+                                  ?.trim()                       // limpa início/fim
+                    )}
+                                  </p>
+
+                   
 
                   <span className="mt-2 text-xs font-semibold text-sky-400">
                     Ler matéria completa →
