@@ -30,27 +30,17 @@ export async function GET() {
       ? [channel.item]
       : [];
 
-    const items = itemsRaw.map((item: any) => {
-      // alguns feeds usam media:content, outros <enclosure>, então deixo flexível
-      const mediaContent =
-        item["media:content"] ||
-        item.media?.content ||
-        item.enclosure ||
-        null;
-
-      const imageUrl =
-        mediaContent?.$.url ||
-        mediaContent?.url ||
-        null;
-
-      return {
-        title: item.title ?? "",
-        link: item.link ?? "",
-        description: item.description ?? "",
-        pubDate: item.pubDate ?? "",
-        image: imageUrl,
-      };
-    });
+      const items = itemsRaw.map((item: any) => {
+        const media = item["media:content"]?.[0]?.$?.url || null;
+      
+        return {
+          title: item.title?.[0] ?? "",
+          link: item.link?.[0] ?? "#",
+          pubDate: item.pubDate?.[0] ?? "",
+          description: item.description?.[0] ?? "",
+          image: media,
+        };
+      });
 
     return NextResponse.json({ items });
   } catch (err) {

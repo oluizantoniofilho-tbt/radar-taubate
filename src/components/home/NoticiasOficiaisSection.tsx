@@ -92,55 +92,62 @@ export default function NoticiasOficiaisSection() {
 
         {/* Lista de notícias – apenas as 4 primeiras, cards compactos */}
         {!loading && !error && noticias.length > 0 && (
-          <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-slate-700/70 scrollbar-track-slate-900/40">
-            {noticias.slice(0, 4).map((noticia) => (
-              <Link
-                key={noticia.link}
-                href={noticia.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="min-w-[230px] max-w-[260px] bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-md hover:shadow-lg hover:border-sky-500/70 transition-all duration-200 flex flex-col"
-              >
-                {/* Thumb (se tiver) */}
-                {noticia.image && (
-                  <div className="relative h-28 w-full">
-                    <Image
-                      src={noticia.image}
-                      alt={noticia.title}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                )}
-                {/* Conteúdo */}
-                <div className="p-4 flex flex-col gap-2">
-                  <span className="text-[11px] uppercase tracking-wide text-sky-400 font-semibold">
-                    Prefeitura de Taubaté • {formatDate(noticia.pubDate)}
-                  </span>
+            <div className="flex gap-4 overflow-x-auto pb-2 
+                  scrollbar-thin scrollbar-thumb-slate-700/70 
+                  scrollbar-track-slate-900/40">
 
-                  <h3 className="text-sm font-semibold text-slate-50 leading-snug line-clamp-2">
-                    {noticia.title}
-                  </h3>
+    {noticias.slice(0, 4).map((noticia) => (
+      <Link
+        key={noticia.link}
+        href={noticia.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="min-w-[260px] max-w-[260px] bg-slate-900
+                   border border-slate-800 rounded-2xl overflow-hidden
+                   shadow-md hover:shadow-lg hover:border-sky-500/70
+                   transition-all duration-200 flex flex-col"
+      >
+        {/* THUMB */}
+        <div className="relative h-32 w-full bg-slate-800">
+          <Image
+            src={noticia.image ?? "/placeholder-news.jpg"}
+            alt={noticia.title}
+            fill
+            className="object-cover"
+          />
+        </div>
 
-                  <p className="text-[11px] text-slate-300 leading-relaxed">
-                    {resumirTexto(noticia.description
-                                  ?.replace(/<[^>]*>/g, "")      // remove tags HTML
-                                  ?.replace(/\s+/g, " ")         // remove quebras estranhas
-                                  ?.trim()                       // limpa início/fim
-                    )}
-                                  </p>
+        {/* CONTEÚDO */}
+        <div className="p-4 flex flex-col gap-2">
+          <span className="text-[11px] uppercase tracking-wide 
+                           text-sky-400 font-semibold">
+            Prefeitura de Taubaté • {formatDate(noticia.pubDate)}
+          </span>
 
-                   
+          <h3 className="text-sm font-semibold text-slate-50 
+                         leading-snug line-clamp-2">
+            {noticia.title}
+          </h3>
 
-                  <span className="mt-2 text-xs font-semibold text-sky-400">
-                    Ler matéria completa →
-                  </span>
-                </div>
-              </Link>
-            ))}
-          </div>
-        )}
-      </div>
-    </section>
-  );
+          <p className="text-[11px] text-slate-300 leading-relaxed line-clamp-3">
+            {resumirTexto(
+              noticia.description
+                ?.replace(/<[^>]*>/g, "")  // remove tags HTML
+                ?.replace(/\s+/g, " ")     // remove quebras
+                ?.trim()
+            )}
+          </p>
+
+          <span className="mt-2 text-xs font-semibold text-sky-400">
+            Ler matéria completa →
+          </span>
+        </div>
+
+      </Link>
+    ))}
+   </div>
+  )}
+  </div>
+ </section>
+ );
 }
