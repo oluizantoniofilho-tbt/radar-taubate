@@ -27,7 +27,7 @@ export default function CamaraPage() {
     }).format(value);
 
   return (
-    <div className="container mx-auto p-4 md:p-8 bg-gray-50 dark:bg-gray-900">
+    <div className="container mx-auto pt-28 pb-8 px-4 md:pt-32 md:pb-10 bg-gray-50 dark:bg-gray-900">
       <header className="mb-8 text-center">
         <div className="inline-block bg-blue-100 dark:bg-blue-900 p-3 rounded-full mb-4">
           <Landmark className="h-8 w-8 text-blue-600 dark:text-blue-300" />
@@ -92,7 +92,7 @@ export default function CamaraPage() {
             <CardHeader>
               <CardTitle>Orçamento da Câmara (2025)</CardTitle>
             </CardHeader>
-            <CardContent className="h-[400px] flex items-center justify-center">
+            <CardContent className="h-[400px] flex items-start">
               <CamaraOrcamentoChart orcado={orcado2025} pago={pago2025} />
             </CardContent>
           </Card>
@@ -102,7 +102,7 @@ export default function CamaraPage() {
             <CardHeader>
               <CardTitle>Top 10 Despesas</CardTitle>
             </CardHeader>
-            <CardContent className="h-[400px] flex items-center justify-center">
+            <CardContent className="h-[400px] flex items-start">
               <CamaraDespesasTop10Chart />
             </CardContent>
           </Card>

@@ -30,7 +30,7 @@ export default function CamaraOrcamentoChart({ orcado, pago }: CamaraOrcamentoCh
       </h2>
 
       {/* Definimos uma altura fixa (h-full) para o container de dados */}
-      <ResponsiveContainer width="100%" height="70%">
+      <ResponsiveContainer width="100%" height={300}>
         <BarChart 
           data={data} 
           layout="vertical" 
