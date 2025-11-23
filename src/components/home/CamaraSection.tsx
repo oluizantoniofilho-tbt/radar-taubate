@@ -2,8 +2,8 @@
 
 import React from "react";
 import Link from "next/link";
-import { CamaraOrcamentoChart } from "../charts/CamaraOrcamentoChart";
-import { CamaraDespesasTop10Chart } from "../charts/CamaraDespesasTop10Chart";
+import  CamaraOrcamentoChart  from "../charts/CamaraOrcamentoChart";
+import  CamaraDespesasTop10Chart  from "../charts/CamaraDespesasTop10Chart";
 
 export function CamaraSection() {
   return (
@@ -22,7 +22,9 @@ export function CamaraSection() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <CamaraOrcamentoChart />
+          <CamaraOrcamentoChart
+            orcado={45600000}
+            pago={33185611.14} />
           <CamaraDespesasTop10Chart />
         </div>
 
