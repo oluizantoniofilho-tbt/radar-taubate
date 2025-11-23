@@ -8,6 +8,7 @@ import ReceitaGeralSection from "@/components/indicadores/ReceitaGeralSection";
 import { DespesaGeralSection } from "@/components/indicadores/DespesaGeralSection";
 import IpmSection from "@/components/indicadores/IpmSection";
 import CamaraResumoSection from "@/components/indicadores/CamaraResumoSection";
+import ExecucaoPorFuncaoSection from "@/components/indicadores/ExecucaoPorFuncaoSection";
 
 export default function IndicadoresPage() {
   return (
@@ -45,6 +46,12 @@ export default function IndicadoresPage() {
         =========================== */}
         <div className="mt-16">
           <CamaraResumoSection />
+
+        {/* ===========================
+            BLOCO 6 — EXECUÇÃO POR FUNÇÃO
+        =========================== */}
+          <ExecucaoPorFuncaoSection />
+
         </div>
 
       </div>
