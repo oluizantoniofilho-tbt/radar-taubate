@@ -1,105 +1,113 @@
-// src/app/camara/page.tsx
-// Server Component - Ótimo para conteúdo estático e SEO.
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { CircleDollarSign, Landmark, TrendingDown, Users } from "lucide-react";
+import dynamic from "next/dynamic";
 
-/*
- * PROMPT DE SEGURANÇA (SYSTEM INSTRUCTION) PARA CHAMADAS DA IA GEMINI (USO FUTURO):
- *
- * Utilize esta instrução para garantir que o modelo de linguagem (IA) aja com neutralidade e foco técnico,
- * caso decida gerar o conteúdo dos placeholders desta página ou de outras:
- *
- * Aja como um analista de controle social e gestão pública com foco estrito na transparência
- * fiscal e legislação brasileira (como LRF, PPA, LOA).
- *
- * Sua missão é:
- * 1. Análise Factual: Analisar tecnicamente os documentos e dados fornecidos.
- * 2. Geração de Conteúdo: Gerar resumos, artigos ou análises baseadas estritamente nos dados,
- * transformando informações técnicas em conteúdo claro para o cidadão.
- *
- * Regras de Segurança e Foco (Restrições):
- * - Neutralidade Obrigatória: Evite qualquer juízo de valor político, partidário ou especulativo.
- * O tom deve ser estritamente técnico, imparcial e factual.
- * - Escopo Fechado: Não ofereça conselhos de investimento, sugestões de política pública, ou
- * opiniões. Mantenha o foco no dado e no documento.
- * - Proibido Inventar: Não crie ou infira informações que não possam ser diretamente verificadas.
- * - Linguagem: Use Português do Brasil, mantendo um tom informativo e de alta credibilidade.
- */
+// Corrigido: Uso do alias @/ para ambos os componentes
+const CamaraOrcamentoChart = dynamic(
+  () => import("@/components/charts/CamaraOrcamentoChart"),
+  { ssr: false }
+);
 
-import React from 'react'; // CORREÇÃO: Import explícito do React para evitar o erro UMD global
-import Link from "next/link";
-import { CamaraOrcamentoChart } from "../../components/charts/CamaraOrcamentoChart";
-import { CamaraDespesasTop10Chart } from "../../components/charts/CamaraDespesasTop10Chart";
+const CamaraDespesasTop10Chart = dynamic(
+  () => import("@/components/charts/CamaraDespesasTop10Chart"),
+  { ssr: false }
+);
 
 export default function CamaraPage() {
+  // números-base (você pode depois puxar isso de um JSON ou API)
+  const orcado2025 = 45_600_000;
+  const pago2025 = 33_185_611.14;
+  const execucaoPercent = (pago2025 / orcado2025) * 100; // ~72,8%
+
+  const formatCurrency = (value: number) =>
+    new Intl.NumberFormat("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    }).format(value);
+
   return (
-    // Max-w-7xl para dar mais respiro na tela e px-6 para padding em mobile
-    <main className="max-w-7xl mx-auto px-6 pt-24 pb-16">
-      {/* CABEÇALHO */}
-      <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white mb-4">
-        Câmara Municipal — Transparência e Execução Orçamentária
-      </h1>
-
-      <p className="text-lg md:text-xl text-slate-600 dark:text-slate-300 max-w-4xl mb-12">
-        Nesta página você encontra uma visão detalhada sobre o orçamento e
-        a execução financeira da Câmara Municipal de Taubaté no exercício de 2025.
-      </p>
-      
-      {/* SEÇÃO 1: CONTEÚDO TEXTUAL */}
-      <section className="mb-16 border-l-4 border-blue-500 pl-4">
-        <h2 className="text-3xl font-bold text-slate-800 dark:text-slate-100 mb-6">
-          Análise Detalhada e Contexto Político-Orçamentário
-        </h2>
-        <div className="space-y-6 text-slate-700 dark:text-slate-300 text-lg">
-          <p>
-            O Poder Legislativo municipal, exercido pela Câmara de Vereadores, desempenha um papel crucial no equilíbrio das contas públicas. Além de sua função primária de legislar, a Câmara tem o dever de fiscalizar as ações do Poder Executivo, garantindo que o orçamento aprovado seja executado com transparência e eficiência. Os vereadores são os representantes diretos dos cidadãos nessa fiscalização, sendo responsáveis por aprovar, rejeitar ou emendar as leis orçamentárias, bem como por analisar as contas do prefeito, assegurando o uso correto do dinheiro público.
-          </p>
-          <p>
-            A gestão financeira da Câmara Municipal é estritamente regulada pela Constituição Federal e pela Lei de Responsabilidade Fiscal (LRF - Lei Complementar nº 101/2000). A LRF impõe limites claros para os gastos do Legislativo, incluindo despesas com pessoal, que não podem exceder um percentual da Receita Corrente Líquida do município. As receitas da Câmara são provenientes de repasses do Poder Executivo, conhecidos como duodécimo, que correspondem a uma parcela da arrecadação municipal e devem ser liberados mensalmente para custear suas atividades.
-          </p>
+    <div className="container mx-auto p-4 md:p-8 bg-gray-50 dark:bg-gray-900">
+      <header className="mb-8 text-center">
+        <div className="inline-block bg-blue-100 dark:bg-blue-900 p-3 rounded-full mb-4">
+          <Landmark className="h-8 w-8 text-blue-600 dark:text-blue-300" />
         </div>
-      </section>
-
-      {/* SEÇÃO 2: GRÁFICOS - CORRIGIDO PARA RESPONSIVIDADE */}
-      <section className="mb-16">
-        <h2 className="text-3xl font-bold text-slate-800 dark:text-slate-100 mb-8">
-            Orçamento Anual da Câmara (Série Histórica)
-        </h2>
-        
-        <div className="rounded-xl border border-border p-4 shadow-lg bg-white dark:bg-gray-800">
-            <div className="w-full overflow-x-auto">
-                <CamaraOrcamentoChart />
-            </div>
-        </div>
-      </section>
-
-      <section className="mb-16">
-        <h2 className="text-3xl font-bold text-slate-800 dark:text-slate-100 mb-8">
-            Top 10 Despesas por Natureza
-        </h2>
-        
-        <div className="rounded-xl border border-border p-4 shadow-lg bg-white dark:bg-gray-800">
-            <div className="w-full overflow-x-auto">
-                <div className="min-w-[550px] sm:min-w-0"> 
-                    <CamaraDespesasTop10Chart />
-                </div>
-            </div>
-        </div>
-      </section>
-
-      {/* SEÇÃO 3: CTA INTERNO - Navegação para Próxima Análise */}
-      <section className="mt-20 text-center bg-blue-50 dark:bg-slate-800 p-10 rounded-lg shadow-inner">
-        <h3 className="text-2xl font-semibold text-slate-800 dark:text-white mb-4">
-            Compare o Legislativo com o Executivo
-        </h3>
-        <p className="text-md text-slate-600 dark:text-slate-300 mb-6">
-            Quer entender como a Câmara se encaixa no panorama geral do planejamento municipal?
+        <h1 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-white">
+          Câmara Municipal de Taubaté
+        </h1>
+        <p className="mt-4 text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+          Análise do orçamento, despesas e quadro de pessoal da casa legislativa da cidade.
         </p>
-        
-        <Link href="/planejamento" passHref>
-          <span className="inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-[1.02]">
-            Ver Planejamento (PPA & LOA)
-          </span>
-        </Link>
-      </section>
-    </main>
+      </header>
+
+      {/* Seção de KPIs */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Orçamento 2025</CardTitle>
+            <CircleDollarSign className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{formatCurrency(orcado2025)}</div>
+            <p className="text-xs text-muted-foreground">Valor total autorizado</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Despesas Pagas (2025)</CardTitle>
+            <TrendingDown className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{formatCurrency(pago2025)}</div>
+            <p className="text-xs text-muted-foreground">Até a data atual</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Execução Orçamentária</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">{execucaoPercent.toFixed(1)}%</div>
+            <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700 mt-2">
+              <div className="bg-blue-600 h-2.5 rounded-full" style={{ width: `${execucaoPercent}%` }}></div>
+            </div>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Vereadores</CardTitle>
+            <Users className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">19</div>
+            <p className="text-xs text-muted-foreground">Mandato 2021-2024</p>
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* Seção dos Gráficos */}
+      <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
+        <div className="lg:col-span-3">
+          <Card className="h-full">
+            <CardHeader>
+              <CardTitle>Orçamento da Câmara (2025)</CardTitle>
+            </CardHeader>
+            <CardContent className="h-[400px] flex items-center justify-center">
+              <CamaraOrcamentoChart orcado={orcado2025} pago={pago2025} />
+            </CardContent>
+          </Card>
+        </div>
+        <div className="lg:col-span-2">
+          <Card className="h-full">
+            <CardHeader>
+              <CardTitle>Top 10 Despesas</CardTitle>
+            </CardHeader>
+            <CardContent className="h-[400px] flex items-center justify-center">
+              <CamaraDespesasTop10Chart />
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    </div>
   );
 }

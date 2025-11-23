@@ -20,7 +20,7 @@ const currencyFormatter = (value: number) =>
   value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 
 
-export function CamaraDespesasTop10Chart() {
+export default function CamaraDespesasTop10Chart() {
   return (
     // 'overflow-x-auto' está no pai, mas mantemos aqui para garantir o comportamento em diferentes contextos
     <div className="w-full h-96 p-4 bg-white dark:bg-slate-900 rounded-xl shadow">

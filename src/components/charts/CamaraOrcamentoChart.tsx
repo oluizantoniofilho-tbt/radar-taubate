@@ -4,6 +4,11 @@ import React from 'react'; // Import explícito para corrigir o erro UMD global
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, LabelList, Cell } from "recharts";
 import { camaraOrcamentoData } from '../../lib/data/charts-data';
 
+interface CamaraOrcamentoChartProps {
+  orcado: number;
+  pago: number;
+}
+
 const data = [
   { label: "Orçado", value: 45600000 },
   { label: "Empenhado", value: 34911105.97 },
@@ -15,7 +20,7 @@ const data = [
 const currencyFormatter = (value: number) => 
   value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 
-export function CamaraOrcamentoChart() {
+export default function CamaraOrcamentoChart({ orcado, pago }: CamaraOrcamentoChartProps)  {
   return (
     // Removendo o min-w daqui e confiando no wrapper da página principal.
     // Usamos um height fixo e o ResponsiveContainer garante a largura máxima.
