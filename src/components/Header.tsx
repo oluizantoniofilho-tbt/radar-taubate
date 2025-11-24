@@ -8,12 +8,15 @@ import clsx from "clsx";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
+
 export default function Header() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
 
+  // 🚀 Adicionado "Manifesto" preservando a ordem lógica
   const navItems = [
     { name: "Início", href: "/" },
+    { name: "Manifesto", href: "/manifesto" },
     { name: "Indicadores", href: "/indicadores" },
     { name: "Planejamento (PPA & LOA)", href: "/planejamento" },
     { name: "Câmara Municipal", href: "/camara" },
@@ -24,11 +27,12 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-background/80 backdrop-blur-md shadow-sm">
       <div className="mx-auto flex items-center justify-between max-w-7xl px-6 py-4">
+        
         {/* Identidade */}
         <Link href="/" className="flex items-center gap-1 text-2xl md:text-3xl tracking-tight">
-           <span className="logo-radar font-bold">Radar</span>
-           <span className="logo-taubate font-bold">Taubaté</span>
-       </Link>
+          <span className="logo-radar font-bold">Radar</span>
+          <span className="logo-taubate font-bold">Taubaté</span>
+        </Link>
 
         {/* Botão Mobile */}
         <button
@@ -63,7 +67,7 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Menu Mobile Expandido */}
+      {/* Menu Mobile */}
       {menuOpen && (
         <div className="md:hidden bg-white dark:bg-background/95 backdrop-blur-lg border-t border-gray-200 dark:border-white/10 px-6 pb-4">
           <nav className="flex flex-col space-y-3 pt-2">
@@ -91,3 +95,5 @@ export default function Header() {
     </header>
   );
 }
+
+
