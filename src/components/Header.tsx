@@ -44,22 +44,22 @@ export default function Header() {
         </button>
 
         {/* Menu Desktop */}
-        <nav className="hidden md:flex items-center justify-center gap-8">
-          {navItems.map((item) => (
+        <nav className="hidden md:flex items-center justify-center gap-12">
+            {navItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               className={clsx(
-                "relative text-base font-medium transition-all duration-300",
+                "relative text-[15px] font-medium px-1 transition-all duration-300 whitespace-nowrap",
                 pathname === item.href
-                  ? "text-[#1E40AF] dark:text-cyan-400 after:absolute after:left-0 after:-bottom-1 after:w-full after:h-[2px] after:bg-[#1E40AF] dark:after:bg-cyan-400"
-                  : "text-gray-500 dark:text-gray-300 hover:text-black dark:hover:text-white hover:scale-105"
-              )}
-            >
-              {item.name}
-            </Link>
-          ))}
-        </nav>
+          ? "text-[#1E40AF] dark:text-cyan-400 after:absolute after:left-0 after:-bottom-1 after:w-full after:h-[2px] after:bg-[#1E40AF] dark:after:bg-cyan-400"
+          : "text-gray-500 dark:text-gray-300 hover:text-black dark:hover:text-white hover:scale-[1.05]"
+      )}
+    >
+      {item.name}
+    </Link>
+  ))}
+</nav>
 
         {/* Tema Desktop */}
         <div className="hidden md:flex items-center justify-end w-24">
