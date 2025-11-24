@@ -32,8 +32,8 @@ export default function ManifestoPage() {
           </p>
 
           <p className="text-slate-300 text-lg">
-            As informações existem — estão em PDFs, sistemas, portais federais,
-            planilhas e documentos técnicos — mas não estão organizadas,
+            As informações existem, mas estão em PDFs, sistemas, portais federais,
+            planilhas e documentos técnicos, mas não estão organizadas,
             interpretadas ou traduzidas para a linguagem do cidadão.
           </p>
 
@@ -48,7 +48,7 @@ export default function ManifestoPage() {
           <h2 className="text-3xl font-bold">Nosso propósito</h2>
 
           <p className="text-slate-300 text-lg">
-            Construir uma cidade mais consciente, crítica e capaz de cobrar resultados —
+            Construir uma cidade mais consciente, crítica e capaz de cobrar resultados,
             não narrativas. Transformar números frios em compreensão pública. Mostrar,
             com clareza, onde o orçamento é cumprido, onde trava e onde precisa melhorar.
           </p>
@@ -62,7 +62,7 @@ export default function ManifestoPage() {
 
         {/* BLOCO 3 — O QUE SOMOS / O QUE NÃO SOMOS */}
         <section className="space-y-6">
-          <h2 className="text-3xl font-bold">O que o Radar é — e o que não é</h2>
+          <h2 className="text-3xl font-bold">O que o Radar é, e o que não é</h2>
 
           <div className="space-y-3">
             <p className="text-slate-300 text-lg">
@@ -108,13 +108,13 @@ export default function ManifestoPage() {
           </p>
 
           <p className="text-slate-300 text-lg">
-            O Radar é o início — o primeiro farol.
+            O Radar é o início, o primeiro farol.
           </p>
         </section>
 
         {/* BLOCO 5 — ROADMAP */}
         <section className="space-y-4">
-          <h2 className="text-3xl font-bold">Roadmap — a evolução já começou</h2>
+          <h2 className="text-3xl font-bold">Roadmap, a evolução já começou</h2>
 
           <p className="text-slate-300 text-lg">
             Esta é a versão <span className="text-white font-semibold">1.0</span> do Radar.
@@ -142,8 +142,8 @@ export default function ManifestoPage() {
           </p>
 
           <p className="text-slate-300 text-lg">
-            Acreditamos que **uma população bem informada é mais difícil de manipular,
-            mais forte para exigir resultados e mais preparada para transformar sua cidade.**
+            Acreditamos que uma população bem informada é mais difícil de manipular,
+            mais forte para exigir resultados e mais preparada para transformar sua cidade.
           </p>
 
           <p className="text-slate-300 text-lg font-semibold">
