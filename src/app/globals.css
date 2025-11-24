@@ -156,3 +156,91 @@
   border-radius: 2px; /* leve e editorial */
   font-weight: 500;
 }
+
+/* =========================================================
+   PATCH GLOBAL DE APRIMORAMENTO DO LIGHT MODE — RADAR v1.0
+   ========================================================= */
+
+   @layer base {
+    /* Cards e blocos genéricos */
+    .light-card {
+      @apply bg-white border border-[#e2e8f0] rounded-2xl shadow-sm;
+    }
+  
+    /* Containers de seção (ex: Indicadores) */
+    .section-light {
+      @apply bg-white rounded-2xl shadow-sm border border-[#e5e7eb] p-6 md:p-8;
+    }
+  
+    /* Respiro padrão interno */
+    .content-spacing {
+      @apply p-4 md:p-6;
+    }
+  
+    /* Texto padrão de seção */
+    .section-text {
+      @apply text-slate-800 leading-relaxed;
+    }
+  
+    /* Títulos */
+    .section-title {
+      @apply text-2xl md:text-3xl font-bold text-slate-900 mb-4;
+    }
+  
+    /* Subtítulos */
+    .section-subtitle {
+      @apply text-lg md:text-xl font-medium text-slate-600 mb-3;
+    }
+  
+    /* Aplique suavidade aos blocos do Indicadores */
+    .indicadores-block {
+      @apply bg-white shadow-sm border border-[#e2e8f0] rounded-2xl p-6 md:p-8;
+    }
+  
+    /* Corrige tabelas no light mode */
+    table.light-table {
+      @apply w-full border border-[#e2e8f0] rounded-xl overflow-hidden bg-white;
+    }
+    table.light-table th {
+      @apply bg-gray-50 text-slate-700 font-semibold px-4 py-3 border-b border-[#e2e8f0];
+    }
+    table.light-table td {
+      @apply px-4 py-3 text-slate-700 border-b border-[#f1f5f9];
+    }
+  
+    /* Gráficos — força contraste suave */
+    .recharts-default-tooltip {
+      @apply bg-white border border-gray-200 shadow-lg text-slate-800 !important;
+    }
+    .recharts-cartesian-grid-horizontal line,
+    .recharts-cartesian-grid-vertical line {
+      stroke: #e5e7eb !important;
+    }
+  }
+  
+  /* =========================================================
+     OTIMIZAÇÃO DOS CARDS E KPIs
+     ========================================================= */
+  @layer components {
+    .kpi-card {
+      @apply bg-white border border-[#e2e8f0] rounded-xl shadow-sm p-6 text-slate-900;
+    }
+  
+    .kpi-card h3 {
+      @apply text-slate-600 font-medium;
+    }
+  
+    .kpi-card-value {
+      @apply text-4xl font-extrabold text-slate-900;
+    }
+  }
+  
+  /* =========================================================
+     AJUSTES DE ESPAÇAMENTO GLOBAL PARA LIGHT MODE
+     ========================================================= */
+  @layer utilities {
+    .block-light {
+      @apply bg-white rounded-2xl shadow-sm border border-[#e2e8f0] p-6 md:p-8;
+    }
+  }
+  

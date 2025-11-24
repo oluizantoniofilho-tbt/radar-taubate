@@ -22,8 +22,9 @@ export default function ReceitaGeralSection() {
 
   const total = receitas.reduce((acc, r) => acc + r.valor, 0);
 
+  {/* Acrescentei section-light e content-spacing para melhorar a visualização no light mode */}
   return (
-    <section className="max-w-6xl mx-auto px-4 pt-10 pb-16 space-y-10">
+    <section className="max-w-6xl mx-auto px-4 pt-10 pb-16 space-y-10 section-light content-spacing">
       
       {/* TÍTULO PRINCIPAL */}
       <header className="space-y-3">
@@ -40,9 +41,9 @@ export default function ReceitaGeralSection() {
         </p>
       </header>
 
-      {/* TABELA */}
-      <div className="overflow-x-auto rounded-2xl border border-slate-800 bg-slate-900/60 shadow-xl backdrop-blur">
-        <table className="w-full text-left">
+      {/* TABELA e acrescentei kpi-card para melhorar a visualização no light-mode */} 
+      <div className="overflow-x-auto rounded-2xl border border-slate-800 bg-slate-900/60 shadow-xl backdrop-blur kpi-card">
+        <table className="w-full text-left light-table">
           <thead className="bg-slate-900/80 border-b border-slate-700">
             <tr>
               <th className="px-6 py-3 text-slate-400 text-sm font-semibold">Categoria</th>
@@ -84,8 +85,8 @@ export default function ReceitaGeralSection() {
         </table>
       </div>
 
-      {/* BLOCO ANALÍTICO CURTO (já pronto para expansão futura) */}
-      <div className="rounded-2xl border border-slate-800 bg-slate-900/70 p-6 shadow-lg space-y-3">
+      {/* BLOCO ANALÍTICO CURTO (já pronto para expansão futura) acrescentei light-table para melhorar a visualização no light-mode */}
+      <div className="rounded-2xl border border-slate-800 bg-slate-900/70 p-6 shadow-lg space-y-3 light-table">
         <h3 className="text-xl font-semibold text-white">
           O que esta estrutura revela?
         </h3>
