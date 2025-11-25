@@ -1,9 +1,12 @@
 
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function ReceitaGeralSection() {
+  const [open, setOpen] = useState(false); // <<< Drawer control
+
   const receitas = [
     { categoria: "Receita Tributária", valor: 350_000_000 },
     { categoria: "Receita de Contribuições", valor: 21_000_000 },
@@ -22,83 +25,177 @@ export default function ReceitaGeralSection() {
 
   const total = receitas.reduce((acc, r) => acc + r.valor, 0);
 
-  {/* Acrescentei section-light e content-spacing para melhorar a visualização no light mode */}
   return (
-    <section className="max-w-6xl mx-auto px-4 pt-10 pb-16 space-y-10 section-light content-spacing">
-      
-      {/* TÍTULO PRINCIPAL */}
-      <header className="space-y-3">
-        <h2 className="text-3xl md:text-4xl font-bold text-white">
-          Receita Pública — Visão Geral (2025)
-        </h2>
-        <p className="text-slate-300 max-w-3xl text-base md:text-lg">
-          Estrutura das receitas estimadas do Município segundo a LOA 2025.  
-          Estes valores representam o <span className="font-semibold text-sky-300">potencial de financiamento</span> das políticas públicas da cidade.
-        </p>
+    <>
+      {/* =========================================== */}
+      {/* SECTION PRINCIPAL */}
+      {/* =========================================== */}
+      <section className="max-w-6xl mx-auto px-4 pt-10 pb-16 space-y-10">
+        
+        {/* -------- TÍTULO -------- */}
+        <header className="space-y-3">
+          <h2 className="text-3xl md:text-4xl font-bold text-white dark:text-white text-slate-900">
+            Receita Pública — Visão Geral (2025)
+          </h2>
 
-        <p className="text-xs text-slate-400 italic">
-          *Valores estimados conforme LOA 2025. Podem sofrer alterações durante o ano.
-        </p>
-      </header>
+          <p className="text-slate-300 dark:text-slate-300 text-slate-600 max-w-3xl text-base md:text-lg">
+            Estrutura das receitas estimadas do Município segundo a LOA 2025.
+            Esses valores representam o{" "}
+            <span className="font-semibold text-sky-300 dark:text-sky-300 text-sky-700">
+              potencial de financiamento
+            </span>{" "}
+            das políticas públicas da cidade.
+          </p>
 
-      {/* TABELA e acrescentei kpi-card para melhorar a visualização no light-mode */} 
-      <div className="overflow-x-auto rounded-2xl border border-slate-800 bg-slate-900/60 shadow-xl backdrop-blur kpi-card">
-        <table className="w-full text-left light-table">
-          <thead className="bg-slate-900/80 border-b border-slate-700">
-            <tr>
-              <th className="px-6 py-3 text-slate-400 text-sm font-semibold">Categoria</th>
-              <th className="px-6 py-3 text-right text-slate-400 text-sm font-semibold">
-                Valor Estimado (R$)
-              </th>
-            </tr>
-          </thead>
+          <p className="text-xs text-slate-400 italic">
+            *Valores estimados conforme LOA 2025. Podem sofrer alterações durante o ano.
+          </p>
+        </header>
 
-          <tbody>
-            {receitas.map((r, i) => (
-              <tr
-                key={i}
-                className={`border-b border-slate-800 ${
-                  i % 2 === 0 ? "bg-slate-900/40" : "bg-slate-900/20"
-                }`}
-              >
-                <td className="px-6 py-3 text-slate-200 text-sm">{r.categoria}</td>
-                <td className="px-6 py-3 text-right text-slate-100 font-semibold">
-                  {r.valor.toLocaleString("pt-BR", {
+        {/* -------- TABELA -------- */}
+        <div className="overflow-x-auto rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900/60 shadow-xl backdrop-blur">
+          <table className="w-full text-left">
+            <thead className="bg-slate-100 dark:bg-slate-900/80 border-b border-slate-300 dark:border-slate-700">
+              <tr>
+                <th className="px-6 py-3 text-slate-600 dark:text-slate-400 text-sm font-semibold">
+                  Categoria
+                </th>
+                <th className="px-6 py-3 text-right text-slate-600 dark:text-slate-400 text-sm font-semibold">
+                  Valor Estimado (R$)
+                </th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {receitas.map((r, i) => (
+                <tr
+                  key={i}
+                  className={`border-b border-slate-200 dark:border-slate-800 ${
+                    i % 2 === 0
+                      ? "bg-white dark:bg-slate-900/40"
+                      : "bg-slate-50 dark:bg-slate-900/20"
+                  }`}
+                >
+                  <td className="px-6 py-3 text-slate-700 dark:text-slate-200 text-sm">
+                    {r.categoria}
+                  </td>
+                  <td className="px-6 py-3 text-right text-slate-900 dark:text-slate-100 font-semibold">
+                    {r.valor.toLocaleString("pt-BR", {
+                      minimumFractionDigits: 2,
+                    })}
+                  </td>
+                </tr>
+              ))}
+
+              {/* TOTAL */}
+              <tr className="bg-sky-100 dark:bg-sky-900/30 border-t border-slate-300 dark:border-slate-700">
+                <td className="px-6 py-4 font-bold text-sky-700 dark:text-sky-300 text-base">
+                  Total Estimado
+                </td>
+                <td className="px-6 py-4 text-right font-bold text-sky-700 dark:text-sky-300 text-base">
+                  {total.toLocaleString("pt-BR", {
                     minimumFractionDigits: 2,
                   })}
                 </td>
               </tr>
-            ))}
+            </tbody>
+          </table>
+        </div>
 
-            {/* TOTAL */}
-            <tr className="bg-sky-900/30 border-t border-slate-700">
-              <td className="px-6 py-4 font-bold text-sky-300 text-base">
-                Total Estimado
-              </td>
-              <td className="px-6 py-4 text-right font-bold text-sky-300 text-base">
-                {total.toLocaleString("pt-BR", {
-                  minimumFractionDigits: 2,
-                })}
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+        {/* -------- RESUMO + CTA “SAIBA MAIS” -------- */}
+        <div className="rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900/70 p-6 shadow-lg space-y-3">
+          <h3 className="text-xl font-semibold text-slate-900 dark:text-white">
+            O que esta estrutura revela?
+          </h3>
 
-      {/* BLOCO ANALÍTICO CURTO (já pronto para expansão futura) acrescentei light-table para melhorar a visualização no light-mode */}
-      <div className="rounded-2xl border border-slate-800 bg-slate-900/70 p-6 shadow-lg space-y-3 light-table">
-        <h3 className="text-xl font-semibold text-white">
-          O que esta estrutura revela?
-        </h3>
-        <p className="text-slate-300 text-sm leading-relaxed">
-          A maior parte do financiamento municipal vem de{" "}
-          <span className="font-semibold text-sky-300">Transferências Correntes</span>,
-          principalmente do Estado e da União.  
-        </p>
-        <p className="text-slate-300 text-sm leading-relaxed">
-          A dependência elevada de repasses externos reduz a autonomia financeira da cidade, ao mesmo tempo em que pressiona por maior eficiência na Receita Própria.
-        </p>
-      </div>
-    </section>
+          <p className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
+            A maior parte do financiamento municipal vem de{" "}
+            <span className="font-semibold text-sky-700 dark:text-sky-300">
+              Transferências Correntes
+            </span>
+            , principalmente do Estado e da União.
+          </p>
+
+          <p className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
+            A dependência elevada de repasses externos reduz a autonomia financeira
+            da cidade e reforça a importância da Receita Própria.
+          </p>
+
+          {/* BTN SAIBA MAIS */}
+          <button
+            onClick={() => setOpen(true)}
+            className="mt-4 inline-flex items-center justify-center px-4 py-2.5 rounded-lg 
+              bg-sky-600 hover:bg-sky-700 text-white font-medium transition-all shadow-md
+              dark:bg-sky-500 dark:hover:bg-sky-400"
+          >
+            Saiba mais
+          </button>
+        </div>
+      </section>
+
+      {/* =========================================== */}
+      {/* DRAWER PEDAGÓGICO */}
+      {/* =========================================== */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            className="fixed inset-0 bg-black/40 backdrop-blur-sm flex justify-center items-center z-[999]"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            {/* Caixa do Drawer */}
+            <motion.div
+              className="bg-white dark:bg-slate-900 rounded-2xl shadow-xl max-w-lg w-full p-6 space-y-4 border border-slate-300 dark:border-slate-700"
+              initial={{ y: 40, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: 40, opacity: 0 }}
+            >
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white">
+                Como funciona a Receita Municipal?
+              </h3>
+
+              <p className="text-slate-700 dark:text-slate-300 leading-relaxed text-sm">
+                Toda receita arrecadada pela cidade — impostos, serviços,
+                transferências e recursos de capital — forma o orçamento público.
+                Ele é a soma de tudo que permite financiar saúde, educação,
+                infraestrutura, segurança, assistência social e demais áreas.
+              </p>
+
+              <p className="text-slate-700 dark:text-slate-300 leading-relaxed text-sm">
+                Em Taubaté, mais de{" "}
+                <span className="font-semibold text-sky-700 dark:text-sky-300">
+                  70% do orçamento
+                </span>{" "}
+                vem de transferências do Estado e da União. Isso significa que:
+              </p>
+
+              <ul className="list-disc ml-5 space-y-1 text-sm text-slate-700 dark:text-slate-300">
+                <li>A autonomia financeira do município é reduzida.</li>
+                <li>Boa parte das receitas já chega carimbada (vinculada a áreas específicas).</li>
+                <li>A eficiência da Receita Própria é crucial para investimentos.</li>
+              </ul>
+
+              <p className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
+                Quanto maior a capacidade de arrecadar bem — sem aumentar impostos,
+                mas melhorando processos — maior a liberdade para investimentos
+                estratégicos previstos no PPA.
+              </p>
+
+              {/* BTN FECHAR */}
+              <button
+                onClick={() => setOpen(false)}
+                className="mt-4 inline-flex items-center justify-center w-full px-4 py-2.5 rounded-lg 
+                  bg-slate-800 hover:bg-slate-700 text-white font-medium transition-all
+                  dark:bg-slate-700 dark:hover:bg-slate-600"
+              >
+                Fechar
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
+
