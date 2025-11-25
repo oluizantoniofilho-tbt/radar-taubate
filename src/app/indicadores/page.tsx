@@ -6,7 +6,7 @@ import React from "react";
 import ReceitaGeralIntroSection from "@/components/indicadores/ReceitaGeralIntroSection";
 import ReceitaGeralSection from "@/components/indicadores/ReceitaGeralSection";
 import { DespesaGeralSection } from "@/components/indicadores/DespesaGeralSection";
-import { IpmSection } from "@/components/indicadores/IpmSection";
+import IpmSection  from "@/components/indicadores/IpmSection";
 import CamaraResumoSection from "@/components/indicadores/CamaraResumoSection";
 import ExecucaoPorFuncaoSection from "@/components/indicadores/ExecucaoPorFuncaoSection";
 import TransferenciasCorrentesSection from "@/components/indicadores/TransferenciasCorrentesSection";
