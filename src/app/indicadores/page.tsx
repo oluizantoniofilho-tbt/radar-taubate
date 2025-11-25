@@ -1,5 +1,6 @@
 
- // src/app/indicadores/page.tsx
+// src/app/indicadores/page.tsx
+
 import React from "react";
 
 import ReceitaGeralIntroSection from "@/components/indicadores/ReceitaGeralIntroSection";
@@ -7,64 +8,81 @@ import ReceitaGeralSection from "@/components/indicadores/ReceitaGeralSection";
 import { DespesaGeralSection } from "@/components/indicadores/DespesaGeralSection";
 import IpmSection from "@/components/indicadores/IpmSection";
 import CamaraResumoSection from "@/components/indicadores/CamaraResumoSection";
-
-import ProgramasFederaisSection from "@/components/indicadores/ProgramasFederaisSection";
 import ExecucaoPorFuncaoSection from "@/components/indicadores/ExecucaoPorFuncaoSection";
+import TransferenciasCorrentesSection from "@/components/indicadores/TransferenciasCorrentesSection";
 
 export default function IndicadoresPage() {
   return (
     <main className="bg-slate-950 min-h-screen text-slate-50">
-
+      
       <div className="pt-24 pb-16 max-w-7xl mx-auto px-4">
 
-        {/* BLOCO 1 — INTRO RECEITAS */}
+        {/* ===========================================
+            1. INTRO DA RECEITA (contexto geral)
+        =========================================== */}
         <ReceitaGeralIntroSection />
 
-        {/* BLOCO 2 — RECEITA DETALHADA */}
+        {/* ===========================================
+            2. RECEITA DETALHADA
+        =========================================== */}
         <div className="mt-16">
           <ReceitaGeralSection />
         </div>
 
-        {/* BLOCO 3 — DESPESAS GERAIS */}
+        {/* ===========================================
+            3. DESPESAS GERAIS
+        =========================================== */}
         <div className="mt-16">
           <DespesaGeralSection />
         </div>
 
-        {/* BLOCO 4 — IPMT */}
+        {/* ===========================================
+            4. IPMT — SEGURIDADE SOCIAL
+        =========================================== */}
         <div className="mt-16">
           <IpmSection />
         </div>
 
-        {/* BLOCO 5 — RESUMO DA CÂMARA */}
+        {/* ===========================================
+            5. RESUMO DA CÂMARA MUNICIPAL
+        =========================================== */}
         <div className="mt-16">
           <CamaraResumoSection />
         </div>
-        
-        {/* BLOCO 6 — PROGRAMAS FEDERAIS */}
+
+        {/* ===========================================
+            6. TRANSFERÊNCIAS CORRENTES
+        =========================================== */}
         <div className="mt-16">
-          <ProgramasFederaisSection />
+          <TransferenciasCorrentesSection />
         </div>
 
-        {/* BLOCO 7 — EXECUÇÃO POR FUNÇÃO */}
+        {/* ===========================================
+            7. EXECUÇÃO ORÇAMENTÁRIA POR FUNÇÃO
+            (último sempre, pois fala de execução real)
+        =========================================== */}
         <div className="mt-16">
           <ExecucaoPorFuncaoSection />
         </div>
 
       </div>
 
-      {/* CTA FINAL */}
+      {/* ===========================================
+          8. CTA FINAL PARA PPA/LOA
+      =========================================== */}
       <section
         className="max-w-5xl mx-auto mt-10 mb-16 px-6 py-10
-          rounded-2xl bg-slate-100 dark:bg-slate-800
-          border border-slate-300 dark:border-slate-700 shadow-lg"
+        rounded-2xl bg-slate-100 dark:bg-slate-800
+        border border-slate-300 dark:border-slate-700 shadow-lg"
       >
         <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
           Quer entender de onde vêm esses números?
         </h2>
 
         <p className="text-slate-700 dark:text-slate-300 mt-2 text-lg">
-          O planejamento oficial do município — PPA e LOA — define o que a cidade pretende
-          realizar e quanto cada ação vai custar. Acesse a análise completa e baixe os documentos.
+          O planejamento oficial do município — PPA e LOA — define o que Taubaté
+          pretende realizar e quanto cada ação vai custar.  
+          Acesse a análise completa e baixe os documentos oficiais.
         </p>
 
         <a
@@ -80,3 +98,4 @@ export default function IndicadoresPage() {
     </main>
   );
 }
+
