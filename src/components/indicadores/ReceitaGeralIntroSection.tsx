@@ -62,13 +62,7 @@ export default function ReceitaGeralIntroSection() {
           </p>
           </div>
 
-          <p className="text-xs font-semibold tracking-[0.25em] text-sky-600 dark:text-sky-400 uppercase">
-            Indicadores • Receita Orçamentária 2025
-          </p>
-
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">
-            Quanto Taubaté espera arrecadar em 2025?
-          </h2>
+    
 
           <p className="text-base md:text-lg text-slate-700 dark:text-slate-300 max-w-3xl leading-relaxed">
             Os valores abaixo representam a{" "}
