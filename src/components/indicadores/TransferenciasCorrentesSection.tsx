@@ -125,22 +125,37 @@ export default function TransferenciasCorrentesSection() {
   return (
     <section className="max-w-6xl mx-auto px-4 pt-20 pb-16 space-y-10">
       
-      {/* HEADER */}
-      <header className="space-y-3">
-        <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">
-          Transferências Correntes — 2025
-        </h2>
+      {/* ===========================
+    CABEÇALHO PADRÃO (CARD)
+=========================== */}
+<div className="rounded-3xl bg-slate-100 dark:bg-slate-900/80 
+    border border-slate-200 dark:border-slate-700 
+    shadow-md px-6 py-6 md:px-8 md:py-7">
 
-        <p className="text-slate-700 dark:text-slate-300 text-base md:text-lg max-w-3xl">
-          Este bloco detalha todo o dinheiro que **vem de fora do município** —
-          recursos federais, estaduais, fundos públicos, convênios e repasses que
-          financiam saúde, educação, assistência social e diversas políticas públicas.
-        </p>
+  <p className="text-[11px] font-semibold tracking-[0.2em] uppercase 
+      text-sky-600 dark:text-sky-400">
+    Indicadores • Transferências Correntes 2025
+  </p>
 
-        <p className="text-xs text-slate-500 dark:text-slate-400 italic">
-          Fonte: LOA 2025 — valores orçados, não executados.
-        </p>
-      </header>
+  <h2 className="mt-2 text-2xl md:text-3xl font-bold 
+      text-slate-900 dark:text-slate-50">
+    De onde vem o dinheiro de fora?
+  </h2>
+
+  <p className="mt-2 text-sm md:text-base text-slate-700 dark:text-slate-300 max-w-3xl">
+    Este bloco detalha todo o dinheiro que <span className="font-semibold">vem de fora do município</span> —
+    recursos federais, estaduais, fundos públicos, convênios e repasses que financiam 
+    saúde, educação, assistência social e diversas políticas públicas da cidade.
+  </p>
+
+  <p className="mt-2 text-[11px] text-slate-500 dark:text-slate-400 italic">
+    Fonte: LOA 2025 — valores orçados, não executados.
+  </p>
+</div>
+
+{/* RESPIRO PADRÃO ANTES DA TABELA */}
+<div className="mt-8" />
+
 
       {/* TABELA */}
       <div className="overflow-x-auto rounded-2xl border border-slate-300 dark:border-slate-800 bg-white dark:bg-slate-900/70 shadow-xl">
