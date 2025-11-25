@@ -109,14 +109,39 @@ export default function ExecucaoPorFuncaoSection() {
       : funcoesData.filter((f) => f.funcao === filtro);
 
   return (
+    
     <section className="mt-16 space-y-8">
-      <h2 className="text-3xl font-bold text-slate-100">
-        Execução Orçamentária por Função
-      </h2>
-      <p className="text-slate-300 max-w-3xl">
-        Visualize quanto cada área da administração pública executou em 2025 —
-        valores estimados segundo a LOA e dados de execução.
-      </p>
+      {/* ===========================
+    CABEÇALHO PADRÃO (CARD)
+=========================== */}
+<div className="rounded-3xl bg-slate-100 dark:bg-slate-900/80 
+    border border-slate-200 dark:border-slate-700 
+    shadow-md px-6 py-6 md:px-8 md:py-7">
+
+  <p className="text-[11px] font-semibold tracking-[0.2em] uppercase 
+      text-sky-600 dark:text-sky-400">
+    Indicadores • Execução Orçamentária 2025
+  </p>
+
+  <h2 className="mt-2 text-2xl md:text-3xl font-bold 
+      text-slate-900 dark:text-slate-50">
+    Execução Orçamentária por Função
+  </h2>
+
+  <p className="mt-2 text-sm md:text-base text-slate-700 dark:text-slate-300 max-w-3xl">
+    Veja quanto cada área da administração pública executou até agora em 2025 — 
+    considerando valores <span className="font-semibold">orçados, empenhados e liquidados</span>.
+    Estes dados mostram o ritmo da execução e ajudam a entender as prioridades reais do município.
+  </p>
+
+  <p className="mt-2 text-[11px] text-slate-500 dark:text-slate-400 italic">
+    Fonte: LOA 2025 e dados oficiais de execução financeira.
+  </p>
+</div>
+
+{/* RESPIRO PADRÃO ANTES DA TABELA */}
+<div className="mt-8" />
+
 
       {/* =============================
           FILTRO SIMPLES 

@@ -224,9 +224,9 @@ export default function TransferenciasCorrentesSection() {
       {/* NOTA PEDAGÓGICA */}
       <div className="rounded-2xl border border-slate-300 dark:border-slate-800 bg-slate-100 dark:bg-slate-800/50 p-6 shadow-md">
         <p className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
-          As transferências correntes representam a **principal fonte de financiamento**
+          As transferências correntes representam a principal fonte de financiamento
           do município. Elas explicam por que Taubaté depende fortemente de repasses
-          externos e por que a eficiência na **Receita Própria** é tão importante
+          externos e por que a eficiência na Receita Própria é tão importante
           para ampliar a autonomia financeira da cidade.
         </p>
       </div>
