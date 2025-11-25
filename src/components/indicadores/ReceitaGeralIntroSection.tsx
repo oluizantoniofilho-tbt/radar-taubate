@@ -61,16 +61,7 @@ export default function ReceitaGeralIntroSection() {
           investimentos e toda a administração pública.
           </p>
           </div>
-
-    
-
-          <p className="text-base md:text-lg text-slate-700 dark:text-slate-300 max-w-3xl leading-relaxed">
-            Os valores abaixo representam a{" "}
-            <span className="font-semibold">estimativa oficial de receita para 2025</span>
-            , conforme a <span className="font-semibold">LOA 2025</span>. Esses números
-            mostram de onde vem o dinheiro que financia saúde, educação, folha de pagamento,
-            investimentos e toda a administração pública.
-          </p>
+            
         
 
         {/* ================================================
