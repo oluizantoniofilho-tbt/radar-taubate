@@ -43,7 +43,25 @@ export default function ReceitaGeralIntroSection() {
         {/* ================================================
             CABEÇALHO — Tipografia reforçada no light mode
         ================================================= */}
-        <header className="mb-10 space-y-4">
+        {/* CARD DO TÍTULO — Agora com bordas, sombra e respiro */}
+          <div className="rounded-2xl bg-white dark:bg-slate-900/60 border border-slate-300 dark:border-slate-700 p-6 md:p-8 shadow-lg mb-12">
+          <p className="text-xs font-semibold tracking-[0.25em] text-sky-600 dark:text-sky-400 uppercase">
+            Indicadores • Receita Orçamentária 2025
+          </p>
+
+          <h2 className="mt-3 text-3xl md:text-4xl font-bold text-slate-900 dark:text-white leading-snug">
+            Quanto Taubaté espera arrecadar em 2025?
+          </h2>
+
+          <p className="mt-4 text-base md:text-lg text-slate-700 dark:text-slate-300 max-w-3xl leading-relaxed">
+          Os valores abaixo representam a{" "}
+          <span className="font-semibold">estimativa oficial de receita para 2025</span>,
+          conforme a <span className="font-semibold">LOA 2025</span>. Esses números mostram
+          de onde vem o dinheiro que financia saúde, educação, folha de pagamento,
+          investimentos e toda a administração pública.
+          </p>
+          </div>
+
           <p className="text-xs font-semibold tracking-[0.25em] text-sky-600 dark:text-sky-400 uppercase">
             Indicadores • Receita Orçamentária 2025
           </p>
@@ -59,7 +77,7 @@ export default function ReceitaGeralIntroSection() {
             mostram de onde vem o dinheiro que financia saúde, educação, folha de pagamento,
             investimentos e toda a administração pública.
           </p>
-        </header>
+        
 
         {/* ================================================
             CARDS RESUMO — bordas e paddings uniformizados
