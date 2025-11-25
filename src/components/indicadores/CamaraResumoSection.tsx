@@ -34,21 +34,29 @@ export default function CamaraResumoSection() {
     <>
       <section className="max-w-6xl mx-auto px-4 py-12 space-y-10">
 
-        {/* ===== HEADER ===== */}
-        <header className="space-y-3">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">
-            Câmara Municipal — Orçamento 2025
-          </h2>
+                      {/* ===========================
+                        CABEÇALHO EM CARD (PADRÃO OFICIAL)
+                            =========================== */}
+                  <div className="rounded-3xl bg-slate-100 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-700 shadow-md px-6 py-6 md:px-8 md:py-7">
 
-          <p className="text-slate-700 dark:text-slate-300 max-w-4xl text-base md:text-lg">
-            O orçamento da Câmara é parte do Poder Legislativo e tem regras próprias.
-            É composto majoritariamente por gastos de pessoal e custeio interno.
-          </p>
+                  <p className="text-[11px] font-semibold tracking-[0.2em] uppercase text-sky-600 dark:text-sky-400">
+                    Indicadores • Câmara Municipal 2025
+                  </p>
 
-          <p className="text-xs text-slate-500 dark:text-slate-400 italic">
-            *Valores estimados conforme LOA 2025. Podem variar durante a execução.
-          </p>
-        </header>
+                  <h2 className="mt-2 text-2xl md:text-3xl font-bold text-slate-900 dark:text-slate-50">
+  Câmara Municipal — Orçamento 2025
+</h2>
+
+<p className="mt-2 text-sm md:text-base text-slate-700 dark:text-slate-300 max-w-3xl">
+  O orçamento da Câmara é parte do Poder Legislativo e tem regras próprias.
+  A maior parte dos recursos é destinada a gastos de pessoal e custeio interno.
+</p>
+
+<p className="mt-2 text-[11px] text-slate-500 dark:text-slate-400 italic">
+  Fonte: LOA 2025 — valores orçados, não executados.
+</p>
+</div>
+
 
         {/* ===== TABELA ===== */}
         <div className="overflow-x-auto rounded-2xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900/60 shadow-xl">
