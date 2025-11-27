@@ -8,11 +8,13 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Radar Taubaté — Painel de Inteligência Pública",
-  description: "Análise inteligente das finanças e dados públicos de Taubaté. Acompanhe receitas, despesas, e indicadores de forma transparente.",
+  description:
+    "Análise inteligente das finanças e dados públicos de Taubaté. Acompanhe receitas, despesas e indicadores com transparência e pedagogia.",
   openGraph: {
     title: "Radar Taubaté",
-    description: "Painel de Inteligência Pública para as finanças de Taubaté.",
-    url: "https://taubate.aledata.com.br",
+    description:
+      "Painel de Inteligência Pública para as finanças e dados públicos de Taubaté.",
+    url: "https://radartaubate.vercel.app",
     siteName: "Radar Taubaté",
     images: [
       {
@@ -28,8 +30,12 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Radar Taubaté",
-    description: "Painel de Inteligência Pública para as finanças de Taubaté.",
+    description:
+      "Painel de Inteligência Pública para as finanças e dados públicos de Taubaté.",
     images: ["/taubate-panorama.jpg"],
+  },
+  other: {
+    "google-site-verification": "google2f92f95777bc39d2.html",
   },
 };
 
