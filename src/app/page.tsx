@@ -15,10 +15,6 @@ const MacroDashboard = dynamic(
   { ssr: false }
 );
 
-const FiscalOverview = dynamic(
-  () => import("@/components/home/FiscalOverview"),
-  { ssr: false }
-);
 
 const DespesasPorSecretariaTop10 = dynamic(
   () => import("@/components/charts/DespesasPorSecretariaTop10"),
@@ -49,7 +45,7 @@ export default function Home() {
       <MacroDashboard />
 
       {/* Dobra 4: Análise Fiscal (Termômetros) */}
-      <FiscalOverview />
+      
 
       {/* Dobra 5: Despesas por Secretaria — Top 10 */}
       <section className="py-16 px-4 bg-gray-100 dark:bg-gray-900/50">
