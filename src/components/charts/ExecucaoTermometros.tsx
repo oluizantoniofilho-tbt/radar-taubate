@@ -2,11 +2,11 @@
 import { execucaoTermometrosData } from "../../lib/data/charts-data";
 import React from "react";
 const areas = execucaoTermometrosData; [
-  { area: "Saúde", pct: 74.8 },
-  { area: "Educação", pct: 70.7 },
-  { area: "Obras", pct: 66.7 },
-  { area: "Administração", pct: 70.6 },
-  { area: "Segurança", pct: 71.6 },
+  { area: "Saúde", pct: 75 },
+  { area: "Educação", pct: 71 },
+  { area: "Obras", pct: 67 },
+  { area: "Administração", pct: 71 },
+  { area: "Segurança", pct: 72 },
 ];
 
 export function ExecucaoTermometros() {
