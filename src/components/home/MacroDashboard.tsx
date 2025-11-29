@@ -123,7 +123,7 @@ export default function MacroDashboard() {
               onClick={() => setDrawerOpen(true)}
               className="inline-flex items-center gap-2 px-5 py-2.5 mt-4 text-sm font-semibold rounded-xl shadow-md bg-white/90 text-slate-900 hover:bg-white dark:bg-slate-800 dark:text-white dark:hover:bg-slate-700 transition-all duration-300 border border-white/20 hover:scale-[1.03] active:scale-[1.00]"
             >
-              Saiba mais
+              Análise completa
             </button>
           </div>
         </div>
@@ -132,16 +132,42 @@ export default function MacroDashboard() {
 
       {/* DRAWER */}
       <InsightsDrawer
-        isOpen={isDrawerOpen}
-        onClose={() => setDrawerOpen(false)}
-        title="Orçado vs. Executado"
-      >
-        <p>
-          Este gráfico compara o orçamento aprovado com os valores realmente executados
-          pelas áreas da administração municipal.  
-          É um indicador direto da eficiência do planejamento e da execução do gasto público.
-        </p>
-      </InsightsDrawer>
+  isOpen={isDrawerOpen}
+  onClose={() => setDrawerOpen(false)}
+  title="Análise completa: Orçado x Executado"
+>
+  <div className="space-y-4 text-sm leading-relaxed text-slate-700 dark:text-slate-200">
+    <p>
+      Este painel mostra quanto a cidade planejou gastar em cada grande área e quanto de fato já foi executado. 
+      As barras em azul representam o orçamento aprovado e as barras em verde mostram o que saiu do papel até agora.
+    </p>
+
+    <p>
+      Quando uma área aparece com valor executado muito abaixo do orçado, isso pode indicar atraso de projetos, 
+      dificuldade de execução, licitações demoradas ou prioridades que mudaram ao longo do ano. 
+      Quando o executado se aproxima rapidamente do orçado, pode sinalizar aceleração de gastos 
+      e demanda por mais controle e acompanhamento.
+    </p>
+
+    <p>
+      É importante lembrar que nem todo gasto baixo é sinal de problema e nem todo gasto alto é sinal de eficiência. 
+      O que este gráfico entrega é um retrato objetivo para que o cidadão possa fazer perguntas melhores: 
+      por que esta área executou tão pouco, por que aquela avançou tão rápido, quais entregas estão associadas a esses valores.
+    </p>
+
+    <p>
+      Em uma plataforma de inteligência pública, a ideia não é apenas mostrar números, 
+      mas ajudar a interpretar o que eles sugerem. 
+      Aqui você vê, em um único olhar, se o ritmo de execução do orçamento está coerente com o que foi prometido 
+      e com as áreas que mais impactam a vida da população.
+    </p>
+
+    <p className="font-semibold">
+      Use este painel como ponto de partida: compare áreas entre si, observe quem concentra mais recursos 
+      e acompanhe, ao longo do tempo, se o que foi planejado está sendo de fato realizado.
+    </p>
+    </div>
+  </InsightsDrawer>
     </section>
   );
 }
