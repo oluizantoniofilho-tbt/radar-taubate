@@ -59,7 +59,7 @@ export default function RootLayout({
           </div>
 
           <footer className="w-full border-t border-border py-4 mt-8 text-center text-sm text-muted-foreground">
-            © {new Date().getFullYear()} <strong>Aletheia</strong> — Observatório de Governança e Dados Públicos
+            © {new Date().getFullYear()} <strong>Radar Taubaté</strong> — Plataforma Independente de Inteligência Pública
           </footer>
         </ThemeProvider>
       </body>
