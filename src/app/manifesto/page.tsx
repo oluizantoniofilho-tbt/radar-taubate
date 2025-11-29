@@ -5,7 +5,7 @@ import clsx from "clsx";
 
 /* ============================
    COMPONENTE — TÍTULO DE SEÇÃO
-   ============================ */
+=============================== */
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
     <h2
@@ -28,11 +28,17 @@ export default function ManifestoPage() {
         "dark:bg-slate-950 dark:text-slate-100"
       )}
     >
-      <section className="max-w-5xl mx-auto space-y-20">
-
+      <section
+        className={clsx(
+          "max-w-5xl mx-auto space-y-20",
+          "bg-white dark:bg-slate-900",
+          "rounded-2xl shadow-xl",
+          "p-8 md:p-12 lg:p-14"
+        )}
+      >
         {/* ===================================
-           HEADER — HERO EDITORIAL PREMIUM
-           =================================== */}
+           HEADER — HERO EDITORIAL
+        =================================== */}
         <header className="space-y-6">
           <h1
             className={clsx(
@@ -41,7 +47,7 @@ export default function ManifestoPage() {
               "dark:from-white dark:to-slate-300"
             )}
           >
-            Manifesto Radar Taubaté
+            Manifesto — Radar Taubaté
           </h1>
 
           <p
@@ -50,34 +56,37 @@ export default function ManifestoPage() {
               "text-slate-600 dark:text-slate-300"
             )}
           >
-            Uma nova cultura de transparência, educação cívica e inteligência pública
-            começa aqui. Esta é a <span className="font-semibold dark:text-white">versão 1.0</span> 
-            do primeiro observatório social independente do Vale do Paraíba.
+            A primeira <strong className="text-slate-900 dark:text-white">Plataforma Independente de Inteligência Pública</strong> do Vale do Paraíba.  
+            Uma nova cultura de clareza, verdade e consciência cívica começa aqui — versão 1.0.
           </p>
         </header>
 
-        {/* BLOCO 1 — VISÃO */}
+        {/* BLOCO 1 — ORIGEM */}
         <section className="space-y-6">
           <SectionTitle>Por que o Radar existe?</SectionTitle>
 
           <p className="text-lg leading-relaxed text-slate-600 dark:text-slate-300">
-            O Radar Taubaté nasce para resolver um problema real:
+            O maior problema das cidades brasileiras não é a falta de dados.  
             <span className="font-semibold text-slate-900 dark:text-white">
-              {" "}a população não sabe onde o dinheiro público está sendo aplicado,
-              quais são as prioridades reais do governo ou se as promessas estão
-              sendo cumpridas.
+              É a falta de compreensão.
             </span>
           </p>
 
           <p className="text-lg leading-relaxed text-slate-600 dark:text-slate-300">
-            As informações existem, mas estão espalhadas em PDFs, sistemas, portais
-            federais, planilhas e documentos técnicos. Porém, não estão organizadas,
-            traduzidas ou interpretadas de forma acessível para o cidadão.
+            As informações públicas existem — mas estão dispersas em PDFs, portais, planilhas,
+            leis e sistemas fragmentados. Nada está organizado, traduzido ou explicado para
+            o cidadão comum.
           </p>
 
           <p className="text-lg leading-relaxed text-slate-600 dark:text-slate-300">
-            O Radar resolve isso tornando dados públicos compreensíveis, visualizáveis
-            e acionáveis. Transparência que faz sentido. Dados que viram poder cívico.
+            O Radar Taubaté nasce para transformar dados públicos em clareza: visualizações simples, análises profundas e entendimento real sobre como a cidade funciona e como o dinheiro público é aplicado.
+          </p>
+
+          <p className="text-lg leading-relaxed text-slate-600 dark:text-slate-300">
+            Transparência que ilumina. Dados que fortalecem.  
+            <span className="font-semibold text-slate-900 dark:text-white">
+              Inteligência pública que empodera.
+            </span>
           </p>
         </section>
 
@@ -86,42 +95,42 @@ export default function ManifestoPage() {
           <SectionTitle>Nosso propósito</SectionTitle>
 
           <p className="text-lg leading-relaxed text-slate-600 dark:text-slate-300">
-            Construir uma cidade mais consciente, crítica e capaz de cobrar resultados —
-            não narrativas. Transformar números frios em compreensão pública. Mostrar,
-            com clareza, onde o orçamento é cumprido, onde trava e onde precisa melhorar.
+            Construir uma cultura pública baseada em evidências, não narrativas.  
+            O Radar existe para traduzir o complexo, iluminar prioridades e permitir
+            que qualquer cidadão entenda como o orçamento é planejado, executado e fiscalizado.
           </p>
 
           <p className="text-lg leading-relaxed text-slate-600 dark:text-slate-300">
-            Ser ponte entre o cidadão e o funcionamento do Estado. Facilitar o
-            entendimento e fortalecer uma cultura de participação cívica baseada em
-            dados, não em opiniões soltas.
+            Nosso papel é fortalecer a cidadania informada, qualificar o debate público
+            e aproximar o funcionamento do Estado daqueles que ele serve.
           </p>
         </section>
 
-        {/* BLOCO 3 — O QUE SOMOS / NÃO SOMOS */}
+        {/* BLOCO 3 — O QUE É / NÃO É */}
         <section className="space-y-6">
           <SectionTitle>O que o Radar é — e o que não é</SectionTitle>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {/* COLUNA: SOMOS */}
             <div className="space-y-3">
               <h3 className="text-xl font-semibold text-slate-900 dark:text-white">
                 ✔ O Radar É
               </h3>
 
-              <p className="text-lg text-slate-600 dark:text-slate-300">
-                • <span className="font-semibold text-slate-900 dark:text-white">Independente</span>  
-                — não representa governo nem oposição.
-              </p>
-              <p className="text-lg text-slate-600 dark:text-slate-300">
-                • <span className="font-semibold text-slate-900 dark:text-white">Cívico</span>  
-                — existe para educar e fortalecer a sociedade.
-              </p>
-              <p className="text-lg text-slate-600 dark:text-slate-300">
-                • <span className="font-semibold text-slate-900 dark:text-white">Técnico</span>  
-                — usa dados oficiais, metodologia e rigor.
-              </p>
+              <ul className="space-y-3 text-lg text-slate-600 dark:text-slate-300">
+                <li>
+                  • <strong className="text-slate-900 dark:text-white">Independente</strong> — não pertence a governo, oposição ou grupos de influência.
+                </li>
+                <li>
+                  • <strong className="text-slate-900 dark:text-white">Técnico</strong> — fundamentado em dados oficiais e metodologia clara.
+                </li>
+                <li>
+                  • <strong className="text-slate-900 dark:text-white">Cívico</strong> — feito para servir a população.
+                </li>
+                <li>
+                  • <strong className="text-slate-900 dark:text-white">Educativo</strong> — ajuda Taubaté a pensar sobre si mesma.
+                </li>
+              </ul>
             </div>
 
             {/* COLUNA: NÃO SOMOS */}
@@ -130,51 +139,42 @@ export default function ManifestoPage() {
                 ✘ O Radar NÃO É
               </h3>
 
-              <p className="text-lg text-slate-600 dark:text-slate-300">
-                • Ferramenta política ou eleitoral.
-              </p>
-              <p className="text-lg text-slate-600 dark:text-slate-300">
-                • Criação partidária.
-              </p>
-              <p className="text-lg text-slate-600 dark:text-slate-300">
-                • Grupo de interesse.
-              </p>
+              <ul className="space-y-3 text-lg text-slate-600 dark:text-slate-300">
+                <li>• Ferramenta partidária.</li>
+                <li>• Máquina de narrativa política.</li>
+                <li>• Projeto de interesse privado.</li>
+                <li>• Plataforma de opinião sem evidência.</li>
+              </ul>
             </div>
-
           </div>
         </section>
 
         {/* BLOCO 4 — ALETHEIA HUB */}
         <section className="space-y-6">
-          <SectionTitle>Parte de algo maior: Aletheia Hub</SectionTitle>
+          <SectionTitle>Aletheia Hub — o ecossistema por trás do Radar</SectionTitle>
 
-          <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-            O Radar Taubaté é o primeiro grande produto público do  
-            <span className="font-semibold text-slate-900 dark:text-white"> Aletheia Hub</span>,  
-            um ecossistema dedicado a construir transparência, inteligência governamental
-            e alta performance institucional.
+          <p className="text-lg leading-relaxed text-slate-600 dark:text-slate-300">
+            O Radar Taubaté é o primeiro grande produto público do{" "}
+            <strong className="text-slate-900 dark:text-white">Aletheia Hub</strong>,
+            um ecossistema dedicado à inteligência governamental, transparência
+            institucional e fortalecimento cívico.
           </p>
 
-          <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-            É o início — o primeiro farol de uma mudança cultural.
+          <p className="text-lg leading-relaxed text-slate-600 dark:text-slate-300">
+            O Radar é a porta de entrada, o primeiro farol de uma transformação cultural.
           </p>
         </section>
 
         {/* BLOCO 5 — ROADMAP */}
         <section className="space-y-6">
-          <SectionTitle>Roadmap — a evolução já começou</SectionTitle>
-
-          <p className="text-lg text-slate-600 dark:text-slate-300">
-            Esta é a versão <span className="font-semibold text-slate-900 dark:text-white">1.0</span> do Radar.
-            O ponto de partida. E já estamos construindo o próximo passo.
-          </p>
+          <SectionTitle>Roadmap — o que vem a seguir</SectionTitle>
 
           <ul className="space-y-3 text-lg text-slate-600 dark:text-slate-300">
-            <li>🚀 <span className="font-semibold">Versão 1.1</span> — novos indicadores e séries históricas.</li>
-            <li>🤖 <span className="font-semibold">Radar Analytics</span> — diagnóstico automático, IA e machine learning.</li>
-            <li>📊 <span className="font-semibold">Portal Regional</span> — expansão para todo o Vale do Paraíba.</li>
-            <li>🏛 <span className="font-semibold">Painéis Temáticos</span> — Saúde, Educação, Infraestrutura, etc.</li>
-            <li>🧭 <span className="font-semibold">Índices Próprios</span> — eficiência legislativa, rigor fiscal e mais.</li>
+            <li>🚀 <strong>Versão 1.1</strong> — novos indicadores, comparativos e séries históricas.</li>
+            <li>🤖 <strong>Radar Analytics</strong> — IA, machine learning e diagnósticos automáticos.</li>
+            <li>📊 <strong>Portal Regional</strong> — Vale do Paraíba completo em dados.</li>
+            <li>🏛 <strong>Painéis Temáticos</strong> — Saúde, Educação, Infraestrutura e Governança.</li>
+            <li>🧭 <strong>Índices Proprietários</strong> — eficiência legislativa, rigor fiscal e capacidade de governo.</li>
           </ul>
         </section>
 
@@ -183,11 +183,11 @@ export default function ManifestoPage() {
           <SectionTitle>Nosso chamado ao cidadão</SectionTitle>
 
           <p className="text-lg text-slate-600 dark:text-slate-300">
-            O Radar existe para iluminar. Para mostrar a verdade dos números.
+            O Radar existe para iluminar, para transformar a complexidade em compreensão.
           </p>
 
           <p className="text-lg text-slate-600 dark:text-slate-300">
-            Cidadãos bem informados não são manipulados — são protagonistas.
+            Cidadãos bem informados não são manipulados, são protagonistas.
           </p>
 
           <p className="text-xl font-semibold text-slate-900 dark:text-white">
@@ -200,7 +200,7 @@ export default function ManifestoPage() {
           <SectionTitle>Contato Oficial</SectionTitle>
 
           <p className="text-lg text-slate-600 dark:text-slate-300">
-            Como estamos na versão 1.0, nossos canais estão evoluindo. Por enquanto, use:
+            Enquanto evoluímos para a versão 2.0, nossos canais oficiais são:
           </p>
 
           <ul className="mt-6 space-y-3 text-lg">
@@ -213,7 +213,6 @@ export default function ManifestoPage() {
                 contatoaletheiahub@gmail.com
               </a>
             </li>
-
             <li>
               <span className="font-semibold text-sky-600 dark:text-sky-400">Instagram:</span>
               <a
@@ -226,7 +225,6 @@ export default function ManifestoPage() {
             </li>
           </ul>
         </section>
-
       </section>
     </main>
   );
