@@ -201,9 +201,9 @@ export function PpaLoaContent() {
 
         {/* ASIDE FINAL */}
         <aside className="rounded-xl border border-dashed border-border p-6 mt-12 bg-blue-50 dark:bg-blue-900/20">
-            <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-2">Desafios para o Observatório</h3>
+            <h3 className="text-xl font-bold text-slate-800 dark:text-white mb-2">Objetivo do Radar Taubaté</h3>
             <p className="text-md text-slate-700 dark:text-slate-300">
-                O foco não é só auditar contas, é garantir que Taubaté transforme o PPA (Vontade) em LOA (Resultado). Nossa meta: usar a promessa de &quot;Gestão Moderna&quot; do PPA para cobrar eficiência, clareza e impacto real — e transformar menos de 10% de investimento em resultados concretos para a cidade.
+            Do PPA à execução: mostramos onde o planejamento entrega, onde trava e onde precisa melhorar. Inteligência pública para transformar intenção em resultado real.
             </p>
         </aside>
     </section>
