@@ -19,40 +19,34 @@ export function Hero() {
           mx-auto
         "
       >
+        {/* TÍTULO PRINCIPAL */}
         <motion.h1
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.9 }}
           className="
             font-bold text-white drop-shadow-2xl
-            text-4xl leading-tight 
+            text-4xl leading-tight
             md:text-5xl md:leading-snug
             lg:text-5xl lg:leading-tight
             xl:text-6xl xl:leading-tight
             max-w-full md:max-w-4xl lg:max-w-5xl
           "
         >
-          O Primeiro Observatório Social Independente do Vale do Paraíba
+          A Primeira Plataforma de Inteligência Pública do Vale do Paraíba
         </motion.h1>
 
+        {/* SUBTÍTULO PRINCIPAL (único subtítulo agora) */}
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.9 }}
           className="max-w-2xl mt-6 text-white/90 text-base md:text-lg lg:text-xl"
         >
-          Criado em Taubaté para inspirar uma nova cultura de transparência no Vale.
+          Criado em Taubaté para transformar dados públicos em clareza, impacto e decisões melhores.
         </motion.p>
 
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.9 }}
-          className="hidden md:block max-w-2xl mt-4 text-white/80 text-base lg:text-lg"
-        >
-          Transparência e educação pública para fortalecer o cidadão.
-        </motion.p>
-
+        {/* CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -70,7 +64,7 @@ export function Hero() {
                 ring-2 ring-blue-500/50 transition-all
               "
             >
-              Explorar Dados
+              Explorar Indicadores
               <ArrowRight className="w-5 h-5 ml-2" />
             </span>
           </Link>
