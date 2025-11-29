@@ -69,7 +69,7 @@ export default function Home() {
                   onClick={() => setSecretariasDrawerOpen(true)}
                   className="inline-flex items-center gap-2 px-5 py-2.5 mt-2 text-sm font-semibold rounded-xl shadow-md bg-white/90 text-slate-900 hover:bg-white dark:bg-slate-800 dark:text-white dark:hover:bg-slate-700 transition-all duration-300 border border-white/20 hover:scale-[1.03] active:scale-[1.00]"
                 >
-                  Saiba mais
+                  Análise completa
                 </button>
               </div>
             </div>
@@ -99,7 +99,7 @@ export default function Home() {
                   onClick={() => setTopGastosDrawerOpen(true)}
                   className="inline-flex items-center gap-2 px-5 py-2.5 mt-2 text-sm font-semibold rounded-xl shadow-md bg-white/90 text-slate-900 hover:bg-white dark:bg-slate-800 dark:text-white dark:hover:bg-slate-700 transition-all duration-300 border border-white/20 hover:scale-[1.03] active:scale-[1.00]"
                 >
-                  Saiba mais
+                  Análise completa
                 </button>
               </div>
             </div>
