@@ -73,7 +73,7 @@ export default function ManifestoPage() {
           </p>
 
           <p className="text-lg leading-relaxed text-slate-600 dark:text-slate-300">
-            As informações públicas existem — mas estão dispersas em PDFs, portais, planilhas,
+            As informações públicas existem, mas estão dispersas em PDFs, portais, planilhas,
             leis e sistemas fragmentados. Nada está organizado, traduzido ou explicado para
             o cidadão comum.
           </p>
@@ -83,7 +83,7 @@ export default function ManifestoPage() {
           </p>
 
           <p className="text-lg leading-relaxed text-slate-600 dark:text-slate-300">
-            Transparência que ilumina. Dados que fortalecem.  
+            Transparência que ilumina. Dados que fortalecem.   
             <span className="font-semibold text-slate-900 dark:text-white">
               Inteligência pública que empodera.
             </span>
@@ -151,7 +151,7 @@ export default function ManifestoPage() {
 
         {/* BLOCO 4 — ALETHEIA HUB */}
         <section className="space-y-6">
-          <SectionTitle>Aletheia Hub — o ecossistema por trás do Radar</SectionTitle>
+          <SectionTitle>Aletheia Hub, o ecossistema por trás do Radar</SectionTitle>
 
           <p className="text-lg leading-relaxed text-slate-600 dark:text-slate-300">
             O Radar Taubaté é o primeiro grande produto público do{" "}
@@ -167,7 +167,7 @@ export default function ManifestoPage() {
 
         {/* BLOCO 5 — ROADMAP */}
         <section className="space-y-6">
-          <SectionTitle>Roadmap — o que vem a seguir</SectionTitle>
+          <SectionTitle>Roadmap, o que vem a seguir</SectionTitle>
 
           <ul className="space-y-3 text-lg text-slate-600 dark:text-slate-300">
             <li>🚀 <strong>Versão 1.1</strong> — novos indicadores, comparativos e séries históricas.</li>
