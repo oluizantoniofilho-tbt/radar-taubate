@@ -12,10 +12,10 @@ import DespesaPessoalRCLChart from "@/components/blog-charts/DespesaPessoalRCLCh
 import DeficitPercentualRCLChart from "@/components/blog-charts/DeficitPercentualRCLChart";
 import TendenciaFiscalChart from "@/components/blog-charts/TendenciaFiscalChart";
 
-// DATA (JSON que você enviou)
+// DATA
 import fiscalData from "./fiscal-data.json";
 
-// COMPONENTE – TÍTULO DE SEÇÃO
+// Título de seção
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
     <h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white mb-4">
@@ -24,7 +24,7 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
   );
 }
 
-// COMPONENTE DO SUMÁRIO
+// Sidebar
 function Sidebar({ sections }: { sections: any[] }) {
   return (
     <aside className="hidden lg:block w-64 pr-8 sticky top-32 h-max">
@@ -47,10 +47,11 @@ function Sidebar({ sections }: { sections: any[] }) {
   );
 }
 
-// COMPONENTE DO CONTEÚDO
+// Conteúdo principal
 function ArticleContent({ data }: { data: any }) {
   return (
-    <article className="max-w-4xl">
+    <article className="w-full max-w-4xl">
+      
       {/* HEADER */}
       <header className="mb-12">
         <motion.h1
@@ -74,7 +75,6 @@ function ArticleContent({ data }: { data: any }) {
       {/* SEÇÕES */}
       {data.sections.map((sec: any) => (
         <section key={sec.id} id={sec.id} className="mb-20 scroll-mt-32">
-
           <SectionTitle>{sec.title}</SectionTitle>
 
           {sec.content.map((p: string, i: number) => (
@@ -85,7 +85,7 @@ function ArticleContent({ data }: { data: any }) {
             />
           ))}
 
-          {/* INSERÇÃO AUTOMÁTICA DOS GRÁFICOS POR ID */}
+          {/* Gráficos */}
           {sec.id === "oito-anos-deficit" && (
             <div className="my-12">
               <ExecucaoOrcamentariaChart />
@@ -124,20 +124,24 @@ function ArticleContent({ data }: { data: any }) {
 // ===============================
 // PAGE FINAL
 // ===============================
+
 export default function FiscalStudyPage() {
   return (
-    <main className="pt-28 pb-20 px-6 bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 min-h-screen">
-      <div className="max-w-7xl mx-auto flex flex-row gap-10">
+    <main className="pt-28 pb-20 px-4 md:px-6 bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 min-h-screen">
+      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-10">
 
-        {/* SUMÁRIO */}
+        {/* Sidebar */}
         <Sidebar sections={fiscalData.sections} />
 
-        {/* CONTEÚDO */}
-        <ArticleContent data={fiscalData} />
+        {/* Conteúdo em card */}
+        <div className="w-full bg-gray-50 dark:bg-slate-900/40 rounded-2xl p-6 md:p-10 shadow">
+          <ArticleContent data={fiscalData} />
+        </div>
 
       </div>
     </main>
   );
 }
+
 
 
