@@ -8,7 +8,8 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  ResponsiveContainer
+  ResponsiveContainer,
+  Legend
 } from "recharts";
 
 const data = [
@@ -26,49 +27,55 @@ const data = [
 
 export default function RclEvolucaoChart() {
   return (
-    <div className="w-full h-96 bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow">
-      <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
+    <div className="w-full bg-gray-50 dark:bg-gray-900 p-6 rounded-xl shadow">
+      <h3 className="text-xl font-semibold mb-6 text-gray-900 dark:text-white">
         Evolução da Receita Corrente Líquida (RCL) — 2015 a 2024
       </h3>
 
-      <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={data}>
-          <CartesianGrid
-            strokeDasharray="3 3"
-            stroke="rgba(255,255,255,0.1)"
-          />
-          <XAxis
-            dataKey="ano"
-            stroke="#9CA3AF"
-            tick={{ fill: "#9CA3AF" }}
-          />
-          <YAxis
-            stroke="#9CA3AF"
-            tickFormatter={(v) =>
-              `R$ ${(v / 1_000_000).toFixed(0)} mi`
-            }
-          />
-          <Tooltip
-            formatter={(v: number) =>
-              `R$ ${v.toLocaleString("pt-BR")}`
-            }
-            contentStyle={{
-              backgroundColor: "rgba(31,41,55,0.9)",
-              borderColor: "rgba(255,255,255,0.1)",
-              color: "#fff",
-            }}
-          />
+      <div className="w-full h-[420px]">
+        <ResponsiveContainer width="100%" height="100%">
+          <LineChart data={data}>
+            <CartesianGrid
+              strokeDasharray="3 3"
+              stroke="rgba(255,255,255,0.08)"
+            />
 
-          <Line
-            type="monotone"
-            dataKey="rcl"
-            stroke="#3b82f6"
-            strokeWidth={3}
-            dot={{ r: 4, fill: "#3b82f6" }}
-            activeDot={{ r: 6 }}
-          />
-        </LineChart>
-      </ResponsiveContainer>
+            <XAxis
+              dataKey="ano"
+              stroke="#9CA3AF"
+              tick={{ fill: "#9CA3AF", fontSize: 12 }}
+            />
+
+            <YAxis
+              stroke="#9CA3AF"
+              tickFormatter={(v) => `R$ ${(v / 1_000_000).toFixed(0)} mi`}
+              tick={{ fill: "#9CA3AF", fontSize: 12 }}
+            />
+
+            <Tooltip
+              formatter={(v: number) => `R$ ${v.toLocaleString("pt-BR")}`}
+              contentStyle={{
+                backgroundColor: "rgba(31,41,55,0.9)",
+                borderColor: "rgba(255,255,255,0.1)",
+                color: "#fff",
+                borderRadius: "8px"
+              }}
+            />
+
+            <Legend />
+
+            <Line
+              type="monotone"
+              dataKey="rcl"
+              name="Receita Corrente Líquida"
+              stroke="#3b82f6"
+              strokeWidth={3}
+              dot={{ r: 4, fill: "#3b82f6" }}
+              activeDot={{ r: 6 }}
+            />
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
     </div>
   );
 }
