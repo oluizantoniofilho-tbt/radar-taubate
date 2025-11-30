@@ -13,14 +13,6 @@ import {
   ReferenceLine,
 } from "recharts";
 
-/*  
-   GRÁFICO: Resultado da Execução Orçamentária (2016–2024)
-
-   Dados enviados por você:
-   - valores reais (R$)
-   - percentuais (% da RCL)
-*/
-
 const data = [
   { ano: 2016, valor: 5935967.08, perc: 0.58 },
   { ano: 2017, valor: -10678385.08, perc: -0.99 },
@@ -35,14 +27,17 @@ const data = [
 
 export default function ExecucaoOrcamentariaChart() {
   return (
-    <div className="w-full h-[420px] bg-gray-50 dark:bg-gray-900/50 rounded-xl p-6 shadow">
-      <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
+    <div className="w-full h-[420px] bg-gray-50 dark:bg-gray-900 p-6 rounded-xl shadow-md">
+      <h3 className="text-xl font-semibold mb-6 text-gray-900 dark:text-white">
         Resultado da Execução Orçamentária (2016–2024)
       </h3>
 
       <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={data} margin={{ top: 10, right: 25, left: 0, bottom: 5 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
+        <LineChart
+          data={data}
+          margin={{ top: 10, right: 25, left: 10, bottom: 5 }}
+        >
+          <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.15)" />
 
           <XAxis
             dataKey="ano"
@@ -56,17 +51,16 @@ export default function ExecucaoOrcamentariaChart() {
             tick={{ fontSize: 12 }}
           />
 
-          {/* Linha do zero para clareza */}
           <ReferenceLine y={0} stroke="#ffffff55" strokeWidth={2} />
 
           <Tooltip
             formatter={(v: number) => `R$ ${v.toLocaleString("pt-BR")}`}
             labelFormatter={(label) => `Ano: ${label}`}
             contentStyle={{
-              backgroundColor: "rgba(31,41,55,0.9)",
+              backgroundColor: "rgba(31,41,55,0.95)",
               borderColor: "rgba(255,255,255,0.1)",
               color: "#fff",
-              borderRadius: "8px",
+              borderRadius: 10,
             }}
           />
 
@@ -75,17 +69,20 @@ export default function ExecucaoOrcamentariaChart() {
             dataKey="valor"
             stroke="#DC2626"
             strokeWidth={3}
-            dot={{ r: 5, fill: "#DC2626" }}
+            dot={{ r: 4 }}
+            activeDot={{ r: 6 }}
             name="Resultado (R$)"
           />
         </LineChart>
       </ResponsiveContainer>
 
-      <p className="text-sm text-gray-600 dark:text-gray-400 mt-4 leading-relaxed">
-        Valores negativos indicam déficit orçamentário — quando o município gastou mais do que arrecadou.
-        O gráfico revela **8 anos consecutivos de déficit**, com destaque para 2018, 2019, 2022 e 2023.
+      <p className="text-sm text-gray-600 dark:text-gray-400 mt-6 leading-relaxed">
+        Valores negativos indicam déficit orçamentário — quando o município
+        gastou mais do que arrecadou. O gráfico revela 8 anos consecutivos de
+        déficit, com destaque para 2018, 2019, 2022 e 2023.
       </p>
     </div>
   );
 }
+
 
