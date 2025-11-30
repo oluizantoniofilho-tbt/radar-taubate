@@ -9,7 +9,6 @@ import { ArrowRight } from "lucide-react";
 type Article = {
   title: string;
   summary?: string;
-  description?: string;
   slug: string;
   date?: string;
 };
@@ -26,12 +25,14 @@ const ArticleCard = ({ article, index }: ArticleCardProps) => (
     transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
     className="bg-card border border-border rounded-lg overflow-hidden flex flex-col"
   >
-  
     <div className="p-6 flex-grow flex flex-col">
       <h3 className="text-xl font-bold mb-2">{article.title}</h3>
-      <p className="text-muted-foreground flex-grow mb-4">{article.summary}</p>
+      <p className="text-muted-foreground flex-grow mb-4">
+        {article.summary}
+      </p>
+
       <div className="mt-auto">
-         <Button asChild variant="outline" className="w-full sm:w-auto">
+        <Button asChild variant="outline" className="w-full sm:w-auto">
           <Link href={`/blog/${article.slug}`}>
             Ler análise
             <ArrowRight className="ml-2 h-4 w-4" />
@@ -42,38 +43,56 @@ const ArticleCard = ({ article, index }: ArticleCardProps) => (
   </motion.div>
 );
 
+export default function BlogPage() {
+  const articles: Article[] = [
+    // =======================================
+    // 📌 SEU PRIMEIRO ARTIGO OFICIAL
+    // =======================================
+    {
+      slug: "raio-x-fiscal-taubate-2015-2025",
+      title: "Raio X Fiscal de Taubaté (2015–2025)",
+      summary:
+        "Uma década de déficits, rigidez orçamentária e deterioração fiscal — entenda a crise estrutural de Taubaté e as projeções para os próximos anos.",
+    },
 
-const BlogPage = () => {
-  const placeholderArticles = [
+    // =======================================
+    // PLACEHOLDERS
+    // =======================================
     {
       slug: "desmistificando-orcamento-publico",
       title: "Desmistificando o Orçamento Público",
-      summary: "Um guia completo para entender como o dinheiro da cidade é arrecadado e para onde ele vai, desde os impostos até os investimentos em serviços.",
+      summary:
+        "Um guia completo para entender como o dinheiro da cidade é arrecadado e para onde ele vai.",
     },
     {
       slug: "analise-ppa-2025",
       title: "Análise do Plano Plurianual (PPA) 2022-2025",
-      summary: "Investigamos as metas, os programas e os resultados esperados do principal instrumento de planejamento de médio prazo do município.",
+      summary:
+        "Metas, programas e resultados do principal instrumento de planejamento municipal.",
     },
     {
       slug: "saude-taubate-raio-x",
       title: "Raio-X da Saúde em Taubaté",
-      summary: "Como os recursos da saúde são distribuídos? Quais os principais indicadores e desafios da rede municipal? Confira nossa análise detalhada.",
+      summary:
+        "Como a saúde municipal é financiada, onde o dinheiro é gasto e quais são os desafios reais.",
     },
-     {
+    {
       slug: "educacao-investimentos-futuro",
       title: "Educação: Investimentos e o Futuro",
-      summary: "Análise sobre os investimentos na rede de ensino de Taubaté, o impacto no IDEB e as prioridades para os próximos anos.",
+      summary:
+        "Como Taubaté investe em educação, o impacto nos indicadores e os desafios estruturais.",
     },
     {
       slug: "o-papel-do-vereador",
       title: "Qual o Papel de um Vereador?",
-      summary: "Entenda as funções, responsabilidades e o poder de fiscalização dos vereadores na Câmara Municipal e como isso afeta a sua vida.",
+      summary:
+        "Funções, responsabilidades e como o Legislativo influencia diretamente a vida da cidade.",
     },
     {
       slug: "lei-de-acesso-a-informacao-pratica",
       title: "A Lei de Acesso à Informação na Prática",
-      summary: "Um tutorial passo a passo sobre como você, cidadão, pode usar a LAI para solicitar dados e documentos à Prefeitura e à Câmara.",
+      summary:
+        "Como qualquer cidadão pode usar a LAI para solicitar dados à Prefeitura e à Câmara.",
     },
   ];
 
@@ -88,18 +107,18 @@ const BlogPage = () => {
             transition={{ duration: 0.7, ease: "easeInOut" }}
             className="text-left mb-16"
           >
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tighter text-foreground leading-tight">
+            <h1 className="text-4xl md:text-6xl font-bold tracking-tighter leading-tight">
               Artigos & Análises
             </h1>
             <p className="mt-4 text-lg md:text-xl text-muted-foreground max-w-3xl">
-              Análises, guias e conteúdos educativos sobre gestão pública e dados
-              municipais.
+              Análises aprofundadas, investigações independentes e conteúdo
+              técnico sobre gestão pública.
             </p>
           </motion.div>
 
-          {/* Grade de Artigos */}
+          {/* Grade */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {placeholderArticles.map((article, index) => (
+            {articles.map((article, index) => (
               <ArticleCard key={article.slug} article={article} index={index} />
             ))}
           </div>
@@ -107,6 +126,5 @@ const BlogPage = () => {
       </main>
     </div>
   );
-};
+}
 
-export default BlogPage;
