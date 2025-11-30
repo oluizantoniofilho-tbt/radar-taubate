@@ -12,6 +12,8 @@ import {
   ReferenceLine,
 } from "recharts";
 
+import ChartWrapper from "./ChartWrapper"; // ← USANDO O WRAPPER PADRÃO
+
 const data = [
   { ano: 2016, valor: 5935967.08, perc: 0.58 },
   { ano: 2017, valor: -10678385.08, perc: -0.99 },
@@ -26,40 +28,43 @@ const data = [
 
 export default function ExecucaoOrcamentariaChart() {
   return (
-    <div className="w-full aspect-[16/10] bg-gray-50 dark:bg-gray-900/50 rounded-xl p-4 sm:p-6 shadow">
-      <h3 className="text-lg sm:text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
-        Resultado da Execução Orçamentária (2016–2024)
-      </h3>
-
+    <ChartWrapper
+      title="Resultado da Execução Orçamentária (2016–2024)"
+      description="O município fecha no vermelho há 8 anos consecutivos, evidenciando perda de liquidez e deterioração fiscal."
+    >
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
           data={data}
-          margin={{ top: 10, right: 10, left: -10, bottom: 0 }}
+          margin={{ top: 10, right: 20, left: 0, bottom: 5 }}
         >
-          <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
+          <CartesianGrid
+            strokeDasharray="3 3"
+            stroke="rgba(148,163,184,0.25)"
+          />
 
           <XAxis
             dataKey="ano"
-            stroke="#9CA3AF"
-            tick={{ fontSize: 10 }}
+            stroke="#94A3B8"
+            tick={{ fontSize: 12 }}
           />
 
           <YAxis
-            stroke="#9CA3AF"
-            tick={{ fontSize: 10 }}
+            stroke="#94A3B8"
+            tick={{ fontSize: 12 }}
             tickFormatter={(v) => `R$ ${(v / 1_000_000).toFixed(0)} mi`}
           />
 
-          <ReferenceLine y={0} stroke="#ffffff55" strokeWidth={2} />
+          <ReferenceLine y={0} stroke="#CBD5E1" strokeWidth={2} />
 
           <Tooltip
             formatter={(v: number) => `R$ ${v.toLocaleString("pt-BR")}`}
             labelFormatter={(label) => `Ano: ${label}`}
             contentStyle={{
-              backgroundColor: "rgba(31,41,55,0.9)",
+              backgroundColor: "rgba(30,41,59,0.9)",
               borderColor: "rgba(255,255,255,0.1)",
               color: "#fff",
               borderRadius: "8px",
+              fontSize: "14px",
             }}
           />
 
@@ -70,13 +75,14 @@ export default function ExecucaoOrcamentariaChart() {
             strokeWidth={3}
             dot={{ r: 4, fill: "#DC2626" }}
             activeDot={{ r: 6 }}
-            name="Resultado (R$)"
+            name="Resultado"
           />
         </LineChart>
       </ResponsiveContainer>
-    </div>
+    </ChartWrapper>
   );
 }
+
 
 
 

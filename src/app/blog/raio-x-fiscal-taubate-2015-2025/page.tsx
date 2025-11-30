@@ -3,7 +3,6 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
 import { motion } from "framer-motion";
 
 // CHARTS
@@ -16,7 +15,6 @@ import TendenciaFiscalChart from "@/components/blog-charts/TendenciaFiscalChart"
 // DATA
 import fiscalData from "./fiscal-data.json";
 
-
 // Título
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
@@ -25,7 +23,6 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
     </h2>
   );
 }
-
 
 // Sidebar
 function Sidebar({ sections }: { sections: any[] }) {
@@ -49,7 +46,6 @@ function Sidebar({ sections }: { sections: any[] }) {
     </aside>
   );
 }
-
 
 // Conteúdo principal
 function ArticleContent({ data }: { data: any }) {
@@ -78,8 +74,11 @@ function ArticleContent({ data }: { data: any }) {
 
       {/* SEÇÕES */}
       {data.sections.map((sec: any) => (
-        <section key={sec.id} id={sec.id} className="mb-28 scroll-mt-32">
-
+        <section
+          key={sec.id}
+          id={sec.id}
+          className="mb-24 scroll-mt-32"
+        >
           <SectionTitle>{sec.title}</SectionTitle>
 
           {sec.content.map((p: string, i: number) => (
@@ -90,61 +89,29 @@ function ArticleContent({ data }: { data: any }) {
             />
           ))}
 
-          {/* Gráficos — cada bloco com respiro adequado */}
-          {sec.id === "oito-anos-deficit" && (
-            <div className="my-12 md:my-16">
-              <ExecucaoOrcamentariaChart />
-            </div>
-          )}
-
-          {sec.id === "rcl-confirma" && (
-            <div className="my-12 md:my-16">
-              <EvolucaoRCLChart />
-            </div>
-          )}
-
-          {sec.id === "causa-estrutural-pessoal" && (
-            <div className="my-12 md:my-16">
-              <DespesaPessoalRCLChart />
-            </div>
-          )}
-
-          {sec.id === "ponto-ruptura" && (
-            <div className="my-12 md:my-16">
-              <DeficitPercentualRCLChart />
-            </div>
-          )}
-
-          {sec.id === "projecao" && (
-            <div className="my-16 md:my-20">
-              <TendenciaFiscalChart />
-            </div>
-          )}
+          {/* Renderização dos Gráficos */}
+          {sec.id === "oito-anos-deficit" && <ExecucaoOrcamentariaChart />}
+          {sec.id === "rcl-confirma" && <EvolucaoRCLChart />}
+          {sec.id === "causa-estrutural-pessoal" && <DespesaPessoalRCLChart />}
+          {sec.id === "ponto-ruptura" && <DeficitPercentualRCLChart />}
+          {sec.id === "projecao" && <TendenciaFiscalChart />}
         </section>
       ))}
     </article>
   );
 }
 
-
 // PAGE FINAL
 export default function FiscalStudyPage() {
   return (
     <main className="pt-28 pb-20 px-4 md:px-6 bg-white dark:bg-slate-950 min-h-screen">
-
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-10">
 
         {/* SIDEBAR */}
         <Sidebar sections={fiscalData.sections} />
 
-        {/* CONTEÚDO EM CARD PREMIUM */}
-        <div className="
-          w-full 
-          bg-gray-50 dark:bg-slate-900/40 
-          rounded-2xl shadow 
-          p-6 md:p-10
-          border border-slate-200/60 dark:border-white/10
-        ">
+        {/* CONTEÚDO SEM CARD EXTERNO */}
+        <div className="w-full">
           <ArticleContent data={fiscalData} />
         </div>
 
@@ -152,6 +119,7 @@ export default function FiscalStudyPage() {
     </main>
   );
 }
+
 
 
 
