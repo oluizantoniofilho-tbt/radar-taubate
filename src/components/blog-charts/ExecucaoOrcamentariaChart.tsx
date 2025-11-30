@@ -26,7 +26,7 @@ const data = [
 
 export default function ExecucaoOrcamentariaChart() {
   return (
-    <div className="w-full h-[360px] sm:h-[420px] bg-gray-50 dark:bg-gray-900/50 rounded-xl p-4 sm:p-6 shadow overflow-hidden">
+    <div className="w-full aspect-[16/10] bg-gray-50 dark:bg-gray-900/50 rounded-xl p-4 sm:p-6 shadow">
       <h3 className="text-lg sm:text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
         Resultado da Execução Orçamentária (2016–2024)
       </h3>
@@ -77,6 +77,7 @@ export default function ExecucaoOrcamentariaChart() {
     </div>
   );
 }
+
 
 
 
