@@ -1,4 +1,5 @@
 
+
 "use client";
 
 import React from "react";
@@ -15,21 +16,23 @@ import TendenciaFiscalChart from "@/components/blog-charts/TendenciaFiscalChart"
 // DATA
 import fiscalData from "./fiscal-data.json";
 
-// Título de seção
+
+// Título
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
-    <h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white mb-4">
+    <h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white mb-6">
       {children}
     </h2>
   );
 }
 
+
 // Sidebar
 function Sidebar({ sections }: { sections: any[] }) {
   return (
     <aside className="hidden lg:block w-64 pr-8 sticky top-32 h-max">
-      <nav className="space-y-3 border-l border-slate-300/30 dark:border-white/10 pl-4">
-        <h3 className="text-sm font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-4">
+      <nav className="space-y-4 border-l border-slate-300/30 dark:border-white/10 pl-4">
+        <h3 className="text-xs font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-2">
           Sumário
         </h3>
 
@@ -37,7 +40,7 @@ function Sidebar({ sections }: { sections: any[] }) {
           <a
             key={sec.id}
             href={`#${sec.id}`}
-            className="block text-slate-600 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 text-sm"
+            className="block text-slate-600 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400 text-sm leading-relaxed"
           >
             {sec.title}
           </a>
@@ -47,13 +50,14 @@ function Sidebar({ sections }: { sections: any[] }) {
   );
 }
 
+
 // Conteúdo principal
 function ArticleContent({ data }: { data: any }) {
   return (
-    <article className="w-full max-w-4xl">
-      
+    <article className="w-full max-w-4xl mx-auto">
+
       {/* HEADER */}
-      <header className="mb-12">
+      <header className="mb-16">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -63,7 +67,7 @@ function ArticleContent({ data }: { data: any }) {
           {data.title}
         </motion.h1>
 
-        <p className="text-xl text-slate-600 dark:text-slate-300 mb-2">
+        <p className="text-xl text-slate-600 dark:text-slate-300 mb-3">
           {data.subtitle}
         </p>
 
@@ -74,7 +78,8 @@ function ArticleContent({ data }: { data: any }) {
 
       {/* SEÇÕES */}
       {data.sections.map((sec: any) => (
-        <section key={sec.id} id={sec.id} className="mb-20 scroll-mt-32">
+        <section key={sec.id} id={sec.id} className="mb-28 scroll-mt-32">
+
           <SectionTitle>{sec.title}</SectionTitle>
 
           {sec.content.map((p: string, i: number) => (
@@ -85,33 +90,33 @@ function ArticleContent({ data }: { data: any }) {
             />
           ))}
 
-          {/* Gráficos */}
+          {/* Gráficos — cada bloco com respiro adequado */}
           {sec.id === "oito-anos-deficit" && (
-            <div className="my-12">
+            <div className="my-12 md:my-16">
               <ExecucaoOrcamentariaChart />
             </div>
           )}
 
           {sec.id === "rcl-confirma" && (
-            <div className="my-12">
+            <div className="my-12 md:my-16">
               <EvolucaoRCLChart />
             </div>
           )}
 
           {sec.id === "causa-estrutural-pessoal" && (
-            <div className="my-12">
+            <div className="my-12 md:my-16">
               <DespesaPessoalRCLChart />
             </div>
           )}
 
           {sec.id === "ponto-ruptura" && (
-            <div className="my-12">
+            <div className="my-12 md:my-16">
               <DeficitPercentualRCLChart />
             </div>
           )}
 
           {sec.id === "projecao" && (
-            <div className="my-20">
+            <div className="my-16 md:my-20">
               <TendenciaFiscalChart />
             </div>
           )}
@@ -121,20 +126,25 @@ function ArticleContent({ data }: { data: any }) {
   );
 }
 
-// ===============================
-// PAGE FINAL
-// ===============================
 
+// PAGE FINAL
 export default function FiscalStudyPage() {
   return (
-    <main className="pt-28 pb-20 px-4 md:px-6 bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 min-h-screen">
+    <main className="pt-28 pb-20 px-4 md:px-6 bg-white dark:bg-slate-950 min-h-screen">
+
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-10">
 
-        {/* Sidebar */}
+        {/* SIDEBAR */}
         <Sidebar sections={fiscalData.sections} />
 
-        {/* Conteúdo em card */}
-        <div className="w-full bg-gray-50 dark:bg-slate-900/40 rounded-2xl p-6 md:p-10 shadow">
+        {/* CONTEÚDO EM CARD PREMIUM */}
+        <div className="
+          w-full 
+          bg-gray-50 dark:bg-slate-900/40 
+          rounded-2xl shadow 
+          p-6 md:p-10
+          border border-slate-200/60 dark:border-white/10
+        ">
           <ArticleContent data={fiscalData} />
         </div>
 
@@ -142,6 +152,7 @@ export default function FiscalStudyPage() {
     </main>
   );
 }
+
 
 
 
