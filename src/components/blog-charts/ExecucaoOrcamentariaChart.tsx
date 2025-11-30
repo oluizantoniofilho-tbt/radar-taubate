@@ -41,7 +41,7 @@ export default function ExecucaoOrcamentariaChart() {
       </h3>
 
       <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={data} margin={{ top: 20, right: 30, left: 10, bottom: 0 }}>
+        <LineChart data={data} margin={{ top: 10, right: 25, left: 0, bottom: 5 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
 
           <XAxis
