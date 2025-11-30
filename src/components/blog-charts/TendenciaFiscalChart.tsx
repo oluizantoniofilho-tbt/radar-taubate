@@ -1,8 +1,5 @@
 
-
-
 "use client";
-
 
 import {
   LineChart,
@@ -15,7 +12,6 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-
 export default function TendenciaFiscalChart() {
   const data = [
     { ano: 2025, ResultadoOrcamentario: -130000000, RCL: 2100000000, PessoalPercentual: 48.0 },
@@ -24,35 +20,39 @@ export default function TendenciaFiscalChart() {
     { ano: 2028, ResultadoOrcamentario: 10000000,   RCL: 2470000000, PessoalPercentual: 45.0 },
   ];
 
-
   return (
-    <div className="w-full h-[420px] bg-gray-50 dark:bg-gray-900 p-6 rounded-xl shadow-md">
-      <h3 className="text-xl font-semibold mb-6 text-gray-900 dark:text-white">
+    <div className="w-full aspect-[16/10] bg-gray-50 dark:bg-gray-900/50 p-4 sm:p-6 md:p-8 rounded-xl shadow-lg">
+      <h3 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6 text-gray-900 dark:text-white">
         Tendência Fiscal — Projeção 2025–2028
       </h3>
 
-
       <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={data} margin={{ top: 10, right: 25, left: 0, bottom: 5 }}>
+        <LineChart
+          data={data}
+          margin={{
+            top: 10,
+            right: 40,  // <<< ESSENCIAL PARA NÃO CORTAR O EIXO NO MOBILE
+            left: 20,
+            bottom: 10,
+          }}
+        >
           <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.15)" />
 
-
-          {/* Eixo X */}
+          {/* EIXO X */}
           <XAxis
             dataKey="ano"
             stroke="#9CA3AF"
             tick={{ fontSize: 12 }}
           />
 
-
-          {/* Eixo Y — lados diferentes */}
+          {/* EIXO Y ESQUERDO */}
           <YAxis
             yAxisId="left"
             stroke="#3B82F6"
             tickFormatter={(v) => `R$ ${(v / 1_000_000).toFixed(0)} mi`}
           />
 
-
+          {/* EIXO Y DIREITO */}
           <YAxis
             yAxisId="right"
             stroke="#EAB308"
@@ -60,8 +60,7 @@ export default function TendenciaFiscalChart() {
             tickFormatter={(v) => `${v}%`}
           />
 
-
-          {/* Tooltip corrigido */}
+          {/* TOOLTIP */}
           <Tooltip
             contentStyle={{
               backgroundColor: "rgba(31,41,55,0.95)",
@@ -70,22 +69,15 @@ export default function TendenciaFiscalChart() {
               borderRadius: 10,
             }}
             formatter={(value, name) => {
-              if (name === "PessoalPercentual") {
+              if (name === "PessoalPercentual")
                 return [`${value}%`, "% Pessoal / RCL"];
-              }
-              if (name === "ResultadoOrcamentario") {
-                return [`R$ ${value.toLocaleString("pt-BR")}`, "Resultado Orçamentário"];
-              }
-              if (name === "RCL") {
-                return [`R$ ${value.toLocaleString("pt-BR")}`, "RCL"];
-              }
-              return value;
+
+              return [`R$ ${value.toLocaleString("pt-BR")}`, name === "RCL" ? "RCL" : "Resultado Orçamentário"];
             }}
             labelFormatter={(label) => `Ano: ${label}`}
           />
 
-
-          {/* Legenda aprimorada */}
+          {/* LEGENDA */}
           <Legend
             wrapperStyle={{ paddingTop: 12 }}
             formatter={(value) => {
@@ -95,20 +87,19 @@ export default function TendenciaFiscalChart() {
             }}
           />
 
-
-          {/* Linhas */}
+          {/* LINHA – Resultado */}
           <Line
             yAxisId="left"
             type="monotone"
             dataKey="ResultadoOrcamentario"
             stroke="#DC2626"
-            strokeWidth={2}
             strokeDasharray="5 5"
+            strokeWidth={2}
             dot={{ r: 4 }}
             activeDot={{ r: 6 }}
           />
 
-
+          {/* LINHA – RCL */}
           <Line
             yAxisId="left"
             type="monotone"
@@ -119,7 +110,7 @@ export default function TendenciaFiscalChart() {
             activeDot={{ r: 6 }}
           />
 
-
+          {/* LINHA – % Pessoal */}
           <Line
             yAxisId="right"
             type="monotone"
@@ -134,4 +125,5 @@ export default function TendenciaFiscalChart() {
     </div>
   );
 }
+
 
