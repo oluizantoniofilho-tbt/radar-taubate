@@ -1,5 +1,4 @@
 
-
 "use client";
 
 import React from "react";
@@ -13,6 +12,8 @@ import {
   ResponsiveContainer,
   ReferenceLine,
 } from "recharts";
+
+import ChartWrapper from "./ChartWrapper"; // ← PADRÃO OFICIAL
 
 const data = [
   { ano: 2016, valor: 0.58 },
@@ -28,54 +29,49 @@ const data = [
 
 export default function DeficitPercentualRCLChart() {
   return (
-    <div className="w-full h-[420px] bg-gray-50 dark:bg-gray-900/50 rounded-xl p-6 shadow">
-      <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
-        Déficit Orçamentário como % da RCL (2016–2024)
-      </h3>
-
+    <ChartWrapper
+      title="Déficit Orçamentário como % da RCL (2016–2024)"
+      description="O déficit orçamentário se manteve negativo por oito anos consecutivos, atingindo picos críticos em 2018, 2019, 2022 e 2023. Déficits acima de 5% da RCL são considerados severos e refletem graves restrições fiscais."
+    >
       <ResponsiveContainer width="100%" height="100%">
         <BarChart
           data={data}
-          margin={{ top: 20, right: 30, left: 10, bottom: 0 }}
+          margin={{ top: 10, right: 15, left: 0, bottom: 5 }}
         >
-          <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
+          <CartesianGrid strokeDasharray="3 3" stroke="rgba(148,163,184,0.25)" />
 
-          {/* Eixo X */}
           <XAxis
             dataKey="ano"
-            stroke="#9CA3AF"
+            stroke="#94A3B8"
             tick={{ fontSize: 12 }}
           />
 
-          {/* Eixo Y centralizado no zero */}
           <YAxis
-            stroke="#9CA3AF"
+            stroke="#94A3B8"
             tick={{ fontSize: 12 }}
             tickFormatter={(v) => `${v}%`}
           />
 
-          {/* Linha zero */}
-          <ReferenceLine y={0} stroke="#6B7280" />
+          <ReferenceLine y={0} stroke="#CBD5E1" strokeWidth={2} />
 
-          {/* Tooltip */}
           <Tooltip
             formatter={(v: number) => `${v.toFixed(2)}%`}
             labelFormatter={(label) => `Ano: ${label}`}
             contentStyle={{
-              backgroundColor: "rgba(31,41,55,0.9)",
+              backgroundColor: "rgba(30,41,59,0.9)",
               borderColor: "rgba(255,255,255,0.1)",
               color: "#fff",
               borderRadius: "8px",
+              fontSize: "14px",
             }}
           />
 
-          {/* Barras – verde para superávit, vermelho para déficit */}
           <Bar
             dataKey="valor"
+            radius={[4, 4, 4, 4]}
             shape={(props: any) => {
-              const { fill, x, y, width, height, value } = props;
-              const cor =
-                value >= 0 ? "#16A34A" : "#DC2626"; // verde ou vermelho
+              const { x, y, width, height, value } = props;
+              const cor = value >= 0 ? "#16A34A" : "#DC2626";
               return (
                 <rect
                   x={x}
@@ -90,12 +86,8 @@ export default function DeficitPercentualRCLChart() {
           />
         </BarChart>
       </ResponsiveContainer>
-
-      <p className="text-sm text-gray-600 dark:text-gray-400 mt-4 leading-relaxed">
-        O déficit orçamentário se manteve negativo por oito anos consecutivos,
-        atingindo picos críticos em 2018, 2019, 2022 e 2023. Déficits acima de
-        5% da RCL são considerados severos e refletem graves restrições fiscais.
-      </p>
-    </div>
+    </ChartWrapper>
   );
 }
+
+
