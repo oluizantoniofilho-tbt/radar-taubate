@@ -12,6 +12,8 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
+import ChartWrapper from "./ChartWrapper"; // ← PADRÃO OFICIAL
+
 export default function TendenciaFiscalChart() {
   const data = [
     { ano: 2025, ResultadoOrcamentario: -130000000, RCL: 2100000000, PessoalPercentual: 48.0 },
@@ -21,109 +23,106 @@ export default function TendenciaFiscalChart() {
   ];
 
   return (
-    <div className="w-full aspect-[16/10] bg-gray-50 dark:bg-gray-900/50 p-4 sm:p-6 md:p-8 rounded-xl shadow-lg">
-      <h3 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-6 text-gray-900 dark:text-white">
-        Tendência Fiscal — Projeção 2025–2028
-      </h3>
-
+    <ChartWrapper
+      title="Tendência Fiscal — Projeção 2025–2028"
+      description="A projeção fiscal aponta possível estabilização em 2027 e capacidade moderada de recuperação em 2028. O principal desafio continua sendo a rigidez estrutural da despesa."
+    >
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
           data={data}
-          margin={{
-            top: 10,
-            right: 40,  // <<< ESSENCIAL PARA NÃO CORTAR O EIXO NO MOBILE
-            left: 20,
-            bottom: 10,
-          }}
+          margin={{ top: 10, right: 30, left: 0, bottom: 15 }}
         >
-          <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.15)" />
+          {/* Grid padronizado */}
+          <CartesianGrid strokeDasharray="3 3" stroke="rgba(148,163,184,0.25)" />
 
-          {/* EIXO X */}
+          {/* Eixo X */}
           <XAxis
             dataKey="ano"
-            stroke="#9CA3AF"
+            stroke="#94A3B8"
             tick={{ fontSize: 12 }}
           />
 
-          {/* EIXO Y ESQUERDO */}
+          {/* Eixo Y esquerdo — valores em R$ */}
           <YAxis
             yAxisId="left"
-            stroke="#3B82F6"
+            stroke="#1E40AF"
             tickFormatter={(v) => `R$ ${(v / 1_000_000).toFixed(0)} mi`}
+            tick={{ fontSize: 12 }}
           />
 
-          {/* EIXO Y DIREITO */}
+          {/* Eixo Y direito — percentual */}
           <YAxis
             yAxisId="right"
-            stroke="#EAB308"
             orientation="right"
+            stroke="#EAB308"
             tickFormatter={(v) => `${v}%`}
+            tick={{ fontSize: 12 }}
           />
 
-          {/* TOOLTIP */}
+          {/* Tooltip padronizado */}
           <Tooltip
             contentStyle={{
-              backgroundColor: "rgba(31,41,55,0.95)",
+              backgroundColor: "rgba(30,41,59,0.95)",
               borderColor: "rgba(255,255,255,0.1)",
               color: "#fff",
               borderRadius: 10,
+              fontSize: "14px",
             }}
             formatter={(value, name) => {
               if (name === "PessoalPercentual")
                 return [`${value}%`, "% Pessoal / RCL"];
-
-              return [`R$ ${value.toLocaleString("pt-BR")}`, name === "RCL" ? "RCL" : "Resultado Orçamentário"];
+              return [
+                `R$ ${value.toLocaleString("pt-BR")}`,
+                name === "RCL" ? "RCL" : "Resultado Orçamentário",
+              ];
             }}
             labelFormatter={(label) => `Ano: ${label}`}
           />
 
-          {/* LEGENDA */}
+          {/* Legenda padronizada */}
           <Legend
             wrapperStyle={{ paddingTop: 12 }}
             formatter={(value) => {
               if (value === "ResultadoOrcamentario") return "Resultado Orçamentário";
               if (value === "PessoalPercentual") return "% Pessoal / RCL";
+              if (value === "RCL") return "RCL";
               return value;
             }}
           />
 
-          {/* LINHA – Resultado */}
+          {/* Linhas */}
           <Line
             yAxisId="left"
             type="monotone"
             dataKey="ResultadoOrcamentario"
             stroke="#DC2626"
             strokeDasharray="5 5"
-            strokeWidth={2}
+            strokeWidth={3}
             dot={{ r: 4 }}
             activeDot={{ r: 6 }}
           />
 
-          {/* LINHA – RCL */}
           <Line
             yAxisId="left"
             type="monotone"
             dataKey="RCL"
             stroke="#1E40AF"
-            strokeWidth={2}
+            strokeWidth={3}
             dot={{ r: 4 }}
             activeDot={{ r: 6 }}
           />
 
-          {/* LINHA – % Pessoal */}
           <Line
             yAxisId="right"
             type="monotone"
             dataKey="PessoalPercentual"
             stroke="#EAB308"
-            strokeWidth={2}
+            strokeWidth={3}
             dot={{ r: 4 }}
             activeDot={{ r: 6 }}
           />
         </LineChart>
       </ResponsiveContainer>
-    </div>
+    </ChartWrapper>
   );
 }
-
-
