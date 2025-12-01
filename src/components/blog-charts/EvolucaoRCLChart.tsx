@@ -12,12 +12,10 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
+import ChartWrapper from "./ChartWrapper"; // ← padrão oficial
+
 /*
    GRÁFICO: Evolução da Receita Corrente Líquida (2015–2024)
-
-   Dados enviados:
-   - anos
-   - valores nominais da RCL
 */
 
 const data = [
@@ -35,57 +33,58 @@ const data = [
 
 export default function EvolucaoRCLChart() {
   return (
-    <div className="w-full h-[420px] bg-gray-50 dark:bg-gray-900/50 rounded-xl p-6 shadow">
-      <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
-        Evolução da Receita Corrente Líquida (2015–2024)
-      </h3>
-
+    <ChartWrapper
+      title="Evolução da Receita Corrente Líquida (2015–2024)"
+      description="A RCL mostra a força financeira estrutural do município. Entre 2015 e 2024, Taubaté mais que dobrou sua receita recorrente — um crescimento extremamente alto para cidades do mesmo porte."
+    >
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
           data={data}
-          margin={{ top: 20, right: 30, left: 10, bottom: 0 }}
+          margin={{ top: 10, right: 20, left: 0, bottom: 5 }}
         >
-          <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
+          {/* Grid padronizado */}
+          <CartesianGrid strokeDasharray="3 3" stroke="rgba(148,163,184,0.25)" />
 
+          {/* Eixo X */}
           <XAxis
             dataKey="ano"
-            stroke="#9CA3AF"
+            stroke="#94A3B8"
             tick={{ fontSize: 12 }}
           />
 
+          {/* Eixo Y com formatação em milhões */}
           <YAxis
-            stroke="#9CA3AF"
+            stroke="#94A3B8"
             tickFormatter={(v) => `R$ ${(v / 1_000_000).toFixed(0)} mi`}
             tick={{ fontSize: 12 }}
           />
 
+          {/* Tooltip padronizado */}
           <Tooltip
             formatter={(v: number) => `R$ ${v.toLocaleString("pt-BR")}`}
             labelFormatter={(label) => `Ano: ${label}`}
             contentStyle={{
-              backgroundColor: "rgba(31,41,55,0.9)",
+              backgroundColor: "rgba(30,41,59,0.9)",
               borderColor: "rgba(255,255,255,0.1)",
               color: "#fff",
               borderRadius: "8px",
+              fontSize: "14px",
             }}
           />
 
+          {/* Linha principal */}
           <Line
             type="monotone"
             dataKey="rcl"
             stroke="#2563EB"
             strokeWidth={3}
             dot={{ r: 5, fill: "#2563EB" }}
+            activeDot={{ r: 7 }}
             name="RCL (R$)"
           />
         </LineChart>
       </ResponsiveContainer>
-
-      <p className="text-sm text-gray-600 dark:text-gray-400 mt-4 leading-relaxed">
-        A RCL mostra a força financeira estrutural do município.  
-        Entre 2015 e 2024, Taubaté mais que dobrou sua receita recorrente — um crescimento
-        extremamente alto para cidades do mesmo porte.
-      </p>
-    </div>
+    </ChartWrapper>
   );
 }
+
