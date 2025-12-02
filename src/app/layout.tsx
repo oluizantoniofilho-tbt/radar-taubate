@@ -1,3 +1,4 @@
+
 import "./globals.css";
 import { Inter } from "next/font/google";
 import { ThemeProvider } from "../components/theme-provider";
@@ -46,6 +47,24 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR" suppressHydrationWarning>
+      <head>
+        {/* GOOGLE ANALYTICS */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-VRSWVBCV96"
+        ></script>
+
+        <script id="gtag-init">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-VRSWVBCV96');
+          `}
+        </script>
+        {/* FIM GOOGLE ANALYTICS */}
+      </head>
+
       <body className={`${inter.className} bg-background text-foreground`}>
         <ThemeProvider
           attribute="class"
@@ -66,3 +85,4 @@ export default function RootLayout({
     </html>
   );
 }
+
