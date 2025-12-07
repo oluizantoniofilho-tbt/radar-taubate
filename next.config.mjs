@@ -1,12 +1,10 @@
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Desativa totalmente o Turbopack
   experimental: {
-    turbo: false,
+    turbo: false, // força Webpack
   },
 
-  // Força o Next.js a usar Webpack e não Turbopack
   webpack(config, { isServer }) {
     if (isServer) {
       config.externals = config.externals || [];
@@ -18,4 +16,5 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+export default nextConfig;
+
