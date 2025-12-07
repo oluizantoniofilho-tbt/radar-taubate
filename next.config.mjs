@@ -1,17 +1,15 @@
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-
-  // Usa Turbopack por padrão no dev, mas builda com webpack estavelmente
+  // Desativa totalmente o Turbopack
   experimental: {
-    turbo: {
-      rules: {},
-    },
+    turbo: false,
   },
 
+  // Força o Next.js a usar Webpack e não Turbopack
   webpack(config, { isServer }) {
     if (isServer) {
-      // Evita empacotar módulos que dependem de fs, path etc.
+      config.externals = config.externals || [];
       config.externals.push({
         './src/app/api/loader/route.ts': 'commonjs ./src/app/api/loader/route.ts',
       });
@@ -20,4 +18,4 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
